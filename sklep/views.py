@@ -13,7 +13,23 @@ from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 
-
+def strona_glowna(request):
+    koszyk = request.session.get('koszyk', [])
+    #if koszyk:
+    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+    #else:
+    kontekst = {'koszyk': []}
+    
+    return direct_to_template(request, 'sklep/glowna.html', extra_context = kontekst)
+	
+def strona_kontakt(request):
+    koszyk = request.session.get('koszyk', [])
+    #if koszyk:
+    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+    #else:
+    kontekst = {'koszyk': []}
+    
+    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
 def koszyk(request):
     koszyk = request.session.get('koszyk', [])
     produkty = list(Towary.objects.filter(pk__in=koszyk))
@@ -47,6 +63,8 @@ def koszyk_dodaj(request, id_produktu):
         koszyk.append(int(id_produktu))
     request.session['koszyk'] = koszyk
     return HttpResponseRedirect(reverse('sklep_koszyk'))
+	
+
 	
 def produkty_z_kategorii(request, id_kategorii):
     kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
