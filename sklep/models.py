@@ -97,13 +97,27 @@ class Hasla(models.Model):
     def __unicode__(self):
         return self.login
 
+class Kategorie(models.Model):
+    identyfikator = models.BigIntegerField(primary_key=True)
+    nazwa = models.CharField(max_length=30, unique=True)
+    class Meta:
+		verbose_name='Kategoria'
+		db_table = u'kategorie'
+		verbose_name_plural = 'Kategorie'
+		ordering = ('identyfikator',)
+
+    def __unicode__(self):
+        return self.nazwa
+
 class Towary(models.Model):
     idtowaru = models.BigIntegerField(primary_key=True)
     nazwa_towaru = models.CharField(max_length=255, unique=True)
     ilosc_w_sklepie = models.BigIntegerField()
     cena_sklepowa = models.BigIntegerField()
     minimum_towar = models.BigIntegerField()
-    opis = models.CharField(max_length=255, blank=True)
+    opis = models.CharField(max_length=1000, blank=True)
+    zdjecie = models.CharField(max_length=255, blank=True)
+    kategoria = models.ForeignKey(Kategorie, db_column='kategoria')
     class Meta:
 		verbose_name='Towar'
 		db_table = u'towary'
@@ -171,36 +185,4 @@ class Ksiegowosc(models.Model):
 		db_table = u'ksiegowosc'
 		verbose_name_plural = 'Ksiegowosc'
 		ordering = ('idtransakcji',)
-
-
-
-class Towary(models.Model):
-    idtowaru = models.BigIntegerField(primary_key=True)
-    nazwa_towaru = models.CharField(max_length=255, unique=True)
-    ilosc_w_sklepie = models.BigIntegerField()
-    cena_sklepowa = models.BigIntegerField()
-    minimum_towar = models.BigIntegerField()
-    opis = models.CharField(max_length=1000, blank=True)
-    zdjecie = models.CharField(max_length=255, blank=True) # This field type is a guess.
-    kategoria = models.BigIntegerField()
-    class Meta:
-		verbose_name='Towar'
-		db_table = u'towary'
-		verbose_name_plural = 'Towary'
-		ordering = ('idtowaru',)
-
-    def __unicode__(self):
-        return self.nazwa_towaru
-		
-class Kategorie(models.Model):
-    identyfikator = models.BigIntegerField(primary_key=True)
-    nazwa = models.CharField(max_length=30, blank=True)
-    class Meta:
-		verbose_name='Kategoria'
-		db_table = u'kategorie'
-		verbose_name_plural = 'Kategorie'
-		ordering = ('identyfikator',)
-
-    def __unicode__(self):
-        return self.nazwa
 

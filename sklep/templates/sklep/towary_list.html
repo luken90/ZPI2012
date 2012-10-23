@@ -4,8 +4,9 @@
     <h2>Produkty</h2>
 
     {% for object in object_list %}
-        <h3><img src="{{ object.opis }}" , HEIGHT="200", WIDTH="200"/> {{ object.nazwa_towaru }}</h3>
+        <h3><img src="{{ object.zdjecie }}" , HEIGHT="200", WIDTH="200"/> {{ object.nazwa_towaru }}</h3>
         {{ object.opis|linebreaks }}
+		<p>Kategoria: {{ object.kategoria }}</p>
         <p>Cena: {{ object.cena_sklepowa|floatformat:"2" }}zł - </p>
         <p>Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} - </p>
 	 <p>Minimum: {{ object.minimum_towar|floatformat:"2" }}zł - </p>
