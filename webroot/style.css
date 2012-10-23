@@ -194,7 +194,8 @@ position:absolute;
   width:290px; }
   
 #main .sidebar .incolumn {
-  padding-left: 20px; }
+  padding-left: 20px; 
+  vertical-align: top;}
 
 #main .sidebar h3 {
   float: left;
@@ -210,3 +211,5 @@ position:absolute;
   background-color:#2F2C25; 
   text-align:center; 
   color: white}
+#main.short { width: 790px; margin-right: 10px; float: left; }
+#sidebox { width: 180px; float: left; vertical-align: top;}

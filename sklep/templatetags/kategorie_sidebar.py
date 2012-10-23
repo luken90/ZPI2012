@@ -1,0 +1,1 @@
+from django import templatefrom sklep.models import Kategorieregister = template.Library()@register.inclusion_tag('sklep/kategorie_sidebar.html')def kategorie_sidebar():    return { "kategoria1": Kategorie.objects.all()}

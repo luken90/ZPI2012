@@ -1,16 +1,25 @@
 {% extends "base.html" %}
+{% load kategorie_sidebar %}
 
+{% block main_class %} class="short"{% endblock %}
+
+{% block side_box %}
+<div id="sidebox">
+    <h3>Kategorie</h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
 {% block main_box %}
-    <h2>Produkty</h2>
+    <h2>Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
 
     {% for object in object_list %}
-        <h3><img src="{{ object.zdjecie }}" , HEIGHT="200", WIDTH="200"/> {{ object.nazwa_towaru }}</h3>
+		<p><img src="{{ object.zdjecie }}" , HEIGHT="200", WIDTH="200"/></p>
+        <h3>{{ object.nazwa_towaru }}</h3>
         {{ object.opis|linebreaks }}
 		<p>Kategoria: {{ object.kategoria }}</p>
-        <p>Cena: {{ object.cena|floatformat:"2" }}zł - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
         <p>Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} - </p>
-	 <p>Minimum: {{ object.minimum_towar|floatformat:"2" }}zł - </p>
-        <p>Kategorie: {{ object.kategorie.all|join:", "|lower }}</p>
+	 <p>Minimum: {{ object.minimum_towar|floatformat:"2" }} - </p>
+	 <p>Cena: {{ object.cena|floatformat:"2" }}zł - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
     {% endfor %}
 
     {% if is_paginated %}

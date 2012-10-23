@@ -1,13 +1,18 @@
 # Create your views here.
 # coding: utf-8
+from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 from django.template import Context, loader
 from django.conf import settings
-from sklep.models import Towary
+from sklep.models import Towary, Kategorie
 from sklep.forms import ZamowienieForm
+from django.views.generic.list_detail import object_list
+from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
+
 
 def koszyk(request):
     koszyk = request.session.get('koszyk', [])
@@ -42,3 +47,12 @@ def koszyk_dodaj(request, id_produktu):
         koszyk.append(int(id_produktu))
     request.session['koszyk'] = koszyk
     return HttpResponseRedirect(reverse('sklep_koszyk'))
+	
+def produkty_z_kategorii(request, id_kategorii):
+    kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
+    return object_list(
+        request,
+        queryset=Towary.objects.filter(kategoria=kategoria1).select_related('kategoria'),
+        paginate_by=1,
+        extra_context={'kategoria1': kategoria1}
+    )

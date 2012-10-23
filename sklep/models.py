@@ -8,6 +8,10 @@
 # into your database.
 
 from django.db import models
+import datetime
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 class Klienci(models.Model):
     nik = models.BigIntegerField(primary_key=True)
@@ -107,7 +111,14 @@ class Kategorie(models.Model):
 		ordering = ('identyfikator',)
 
     def __unicode__(self):
-        return self.nazwa
+        return self.nazwa	
+	
+	#@permalink
+	#def get_absolute_url(self):
+	#	return ('sklep_kategoria', (self.pk,)) 
+	
+    def get_absolute_url(self):
+        return reverse('sklep_kategoria', args=[self.pk,])
 
 class Towary(models.Model):
     idtowaru = models.BigIntegerField(primary_key=True)

@@ -1,0 +1,7 @@
+﻿<ul>
+{% for kategoria2 in kategoria1 %}
+    <li>
+        <a href="{{ kategoria2.get_absolute_url }}">{{ kategoria2.nazwa }}</a>
+    </li>
+{% endfor %}
+</ul>
