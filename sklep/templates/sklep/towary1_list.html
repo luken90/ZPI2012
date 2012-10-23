@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block main_box %}
+    <h2>Produkty</h2>
+
+    {% for object in object_list %}
+        <h3><img src="{{ object.opis }}" , HEIGHT="200", WIDTH="200"/> {{ object.nazwa_towaru }}</h3>
+        {{ object.opis|linebreaks }}
+        <p>Cena: {{ object.cena_sklepowa|floatformat:"2" }}zł - </p>
+        <p>Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} - </p>
+	 <p>Minimum: {{ object.minimum_towar|floatformat:"2" }}zł - </p>
+        <p>Kategorie: {{ object.kategorie.all|join:", "|lower }}</p>
+    {% endfor %}
+
+    {% if is_paginated %}
+        <div>
+            {% if has_previous %}<a href="?page={{ previous }}">Poprzednia</a>{% endif %}
+            {% if has_next %}<a href="?page={{ next }}">Następna</a>{% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
