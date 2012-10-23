@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',url(r'', include('sklep.urls')),
+urlpatterns = patterns('',url(r'^sklep/', include('sklep.urls')),
     # Examples:
     # url(r'^$', 'zpi.views.home', name='home'),
     # url(r'^zpi/', include('zpi.foo.urls')),

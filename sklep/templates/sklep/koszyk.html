@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+
+{% block main_box %}
+<h2>Koszyk</h2>
+
+{% if koszyk %}
+    <table>
+        <tr><th>Nazwa</th><th>Cena</th></tr>
+        {% for object in koszyk %}
+            <tr><td>{{ object.nazwa }}</td><td>{{ object.cena|floatformat:"2" }}</td></tr>
+        {% endfor %}
+    </table>
+
+    {% if formularz.errors %}
+        <p>Popraw błędy:</p>
+    {% endif %}
+
+    <form action="" method="post">
+        <table>{{ formularz.as_table }}</table>
+        <input type="submit" value="Zamów">
+    </form>
+
+{% else %}
+    <p>Koszyk jest pusty!</p>
+{% endif %}
+{% endblock %}

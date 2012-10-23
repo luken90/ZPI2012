@@ -151,3 +151,22 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+
+    'django.contrib.auth.context_processors.auth',
+
+    'django.core.context_processors.i18n',
+
+    'django.core.context_processors.media',
+	
+    #'django.core.context_processors.request',
+
+    'sklep.context_processors.koszyk',
+	
+    #'sklep.context_processors.klient'
+
+)
+EMAIL_PORT = 1025
+EMAIL_SKLEPU = 'luken90@wp.pl'
+#LOGIN_REDIRECT_URL = 'http://localhost:8000'
