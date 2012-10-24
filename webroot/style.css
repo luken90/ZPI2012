@@ -12,6 +12,7 @@
   font-family:Tahoma,sans-serif;
   color: #2F2C25; }
 
+  
 h3 {
   margin: 0;
   padding: 5px 0 5px 0; 
@@ -43,6 +44,21 @@ div {
   padding: 0; 
   text-align:left; }
 
+     .links {
+    display:block; 
+    background:url(button5.jpg) center top no-repeat; 
+    height:40px;
+    width:180px; 
+    text-align:center;
+    text-decoration:none;
+    }
+    .links:hover {
+    background:url(button6.jpg) center top no-repeat;
+    }
+	 .links:active {
+    background:url(button7.jpg) center top no-repeat;
+    } 
+  
 .external {
   width:923px;
   margin: 0 auto 0 auto; }
@@ -66,7 +82,7 @@ div {
   position:relative;
   width:960px;
   height:256px;
-  background-size: 960px 256px;
+  background-size: 960px 155px;
   background-repeat:no-repeat;
   background-position: 50% 0;
   background-image:url('banner.png'); }
@@ -109,70 +125,25 @@ div {
   list-style:none; }
 
 #logo ul li {
-	width: 170px;
-	height: 34px;
+	width: 180px;
+	height: 40px;
 	display: block;
 	float: left;
 	clear: none;
-	padding: 4px 5px 0 5px;
-	margin: 0 5px;
+	padding: 4px 0px 0 0px;
+	margin: 0 0px;
 	z-index: 2;
 
-}
-#img1{
-height:40px; 
-width:190px;
-z-index: 1;
-border:1;
-left: 5px;
-top: 2px;
-position:absolute;
-}
-#img2{
-height:40px; 
-width:190px;
-z-index: 1;
-border:1;
-left: 197px;
-top: 2px;
-position:absolute;
-}
-#img3{
-height:40px; 
-width:190px;
-z-index: 1;
-border:1;
-left: 390px;
-top: 2px;
-position:absolute;
-}
-#img4{
-height:40px; 
-width:190px;
-z-index: 1;
-border:1;
-left: 582px;
-top: 2px;
-position:absolute;
-}
-#img5{
-height:40px; 
-width:190px;
-z-index: 1;
-border:1;
-left: 775px;
-top: 2px;
-position:absolute;
-}
-  
+} 
 #logo ul li a {
-	font-size: 18px;
+	height:40px;
+	width:180px;
+	line-height:2.5;
+	font-size: 14px;
 	text-decoration: none;
-	color: #2F2C25;
+	color: white;
 	font-weight: bold;
 	text-decoration: none;
-	z-index: 2;
-	position: absolute;
 }
 
 #logo ul#menu {
@@ -194,8 +165,7 @@ position:absolute;
   width:290px; }
   
 #main .sidebar .incolumn {
-  padding-left: 20px; 
-  vertical-align: top;}
+  padding-left: 20px; }
 
 #main .sidebar h3 {
   float: left;
@@ -211,5 +181,3 @@ position:absolute;
   background-color:#2F2C25; 
   text-align:center; 
   color: white}
-#main.short { width: 790px; margin-right: 10px; float: left; }
-#sidebox { width: 180px; float: left; vertical-align: top;}

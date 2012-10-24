@@ -1,16 +1,17 @@
 # Create your views here.
 # coding: utf-8
 from django.http import Http404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 from django.template import Context, loader
 from django.conf import settings
 from sklep.models import Towary, Kategorie
-from sklep.forms import ZamowienieForm
+from sklep.forms import ZamowienieForm, TowarForm
 from django.views.generic.list_detail import object_list
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
 
 def strona_glowna(request):
@@ -22,14 +23,31 @@ def strona_glowna(request):
     
     return direct_to_template(request, 'sklep/glowna.html', extra_context = kontekst)
 	
+#def strona_kontakt(request):
+#    koszyk = request.session.get('koszyk', [])
+#    #if koszyk:
+#    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+#    #else:
+#    kontekst = {'koszyk': []}
+#    
+#    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
 def strona_kontakt(request):
-    koszyk = request.session.get('koszyk', [])
-    #if koszyk:
-    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
-    #else:
-    kontekst = {'koszyk': []}
-    
-    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
+    produkty = list(Towary.objects.filter(pk__in=2))
+    if request.method == 'POST': # If the form has been submitted...
+        form = TowarForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            # Process the data in form.cleaned_data
+            # ...
+            return HttpResponseRedirect('/') # Redirect after POST
+    else:
+        form = TowarForm(instance=produkty) # An unbound form
+
+    return TemplateResponse(request, 'sklep/kontakt.html', {'form': form})
+	
+    #return render(request, 'sklep/towary_list.html', {
+    #    'form': form,
+    #})
+	
 def koszyk(request):
     koszyk = request.session.get('koszyk', [])
     produkty = list(Towary.objects.filter(pk__in=koszyk))
