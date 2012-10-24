@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load kategorie_sidebar %}
 
 {% block main_class %} class="short"{% endblock %}
@@ -12,20 +12,26 @@
 {% block main_box %}
     <h2>Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
 
-    {% for object in object_list %}
-		<p><img src="{{ object.zdjecie }}" , HEIGHT="200", WIDTH="200"/></p>
-        <h3>{{ object.nazwa_towaru }}</h3>
+    {% for object in object_list %} <br>
+<table style="width: 100%">
+				<tr>
+								<td style="width: 225px">
+		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: left"/></td>
+								<td><h3>{{ object.nazwa_towaru }}</h3>
         {{ object.opis|linebreaks }}
 		<p>Kategoria: {{ object.kategoria }}</p>
         <p>Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} </p>
 	 <!--<p>Minimum: {{ object.minimum_towar|floatformat:"2" }} </p>-->
-	 <p>Cena: {{ object.cena_sklepowa|floatformat:"2" }} zł - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
-    {% endfor %}
+	 <p>Cena: {{ object.cena_sklepowa|floatformat:"2" }} zł‚ - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
+    							</td>
+				</tr>
+</table>
+		    {% endfor %}
 
     {% if is_paginated %}
         <div>
             {% if has_previous %}<a href="?page={{ previous }}">Poprzednia</a>{% endif %}
-            {% if has_next %}<a href="?page={{ next }}">Następna</a>{% endif %}
+            {% if has_next %}<a href="?page={{ next }}">NastÄ™pna</a>{% endif %}
         </div>
     {% endif %}
 {% endblock %}
