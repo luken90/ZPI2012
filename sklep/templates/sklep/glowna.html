@@ -1,6 +1,14 @@
 ﻿{% extends "base.html" %}
+{% load kategorie_sidebar %}
 
 {% block main_box %}
 <h2>Witaj na stronie głównej</h2>
 
+{% endblock %}
+
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
 {% endblock %}

@@ -28,11 +28,15 @@ h1 {
 h1 {
   font-size:30px;
   }
-
+  
 h3 {
-  color:#9B7502;
+  color:white;
   font-family:"Trebuchet MS",sans-serif;
-  font-size:30px; }
+  font-size:30px;
+  background:url(button7.jpg) center center;
+  height:50px;
+  width:230px;
+  }
 
 p {
   margin: 0;
@@ -44,7 +48,7 @@ div {
   padding: 0; 
   text-align:left; }
 
-     .links {
+    .links {
     display:block; 
     background:url(button5.jpg) center top no-repeat; 
     height:40px;
@@ -55,9 +59,16 @@ div {
     .links:hover {
     background:url(button6.jpg) center top no-repeat;
     }
-	 .links:active {
-    background:url(button7.jpg) center top no-repeat;
-    } 
+	
+.style3 {
+font-size: 60px;
+}
+.style4 {
+font-size: 40px;
+}
+.style5 {
+margin-top: 1;
+}
   
 .external {
   width:923px;
@@ -81,14 +92,14 @@ div {
 #logo {
   position:relative;
   width:960px;
-  height:256px;
+  height:155px;
   background-size: 960px 155px;
   background-repeat:no-repeat;
   background-position: 50% 0;
   background-image:url('banner.png'); }
 
 #logo h1 {
-  color: #380000;
+  color: 3b444b;
   font-family: georgia;
   display:block;
   position: absolute;
@@ -103,7 +114,7 @@ div {
   font-weight:bold; }
   
 #logo h2 {
-  color: #380000;
+  color: 3b444b;
   font-family: georgia;
   display:block;
   position: absolute;

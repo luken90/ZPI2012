@@ -32,7 +32,7 @@ def strona_glowna(request):
 #    
 #    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
 def strona_kontakt(request):
-    produkty = list(Towary.objects.filter(pk__in=2))
+    produkty = Towary.objects.get(name="Pingwiny")
     if request.method == 'POST': # If the form has been submitted...
         form = TowarForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
@@ -82,7 +82,12 @@ def koszyk_dodaj(request, id_produktu):
     request.session['koszyk'] = koszyk
     return HttpResponseRedirect(reverse('sklep_koszyk'))
 	
-
+def koszyk_usun(request, id_produktu):
+    koszyk = request.session.get('koszyk', [])
+    if int(id_produktu) in koszyk:
+        koszyk.remove(int(id_produktu))
+    request.session['koszyk'] = koszyk
+    return HttpResponseRedirect(reverse('sklep_koszyk'))
 	
 def produkty_z_kategorii(request, id_kategorii):
     kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))

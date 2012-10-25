@@ -3,6 +3,8 @@
     <title>ZPI</title>
   <meta name="description" content="" /> 
   <link rel="stylesheet" href="/files/style.css" type="text/css" />
+  	<script type="text/javascript" src="/files/js/jquery.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<style type="text/css">
     .style3 {
 	font-size: 60px;
@@ -22,7 +24,7 @@
   <div id="logo">
     <h1 style="left: 205px; top: 5px; width: 535px"><span class="style3">A</span><span class="style4">RTYKUŁY BIUROWE</span></h1>
 	<h2 style="left: 214px; top: 71px; width: 200px">Sklep internetowy</h2>
-	<ul id="menu" style="right: -56px; bottom: 102px; width: 776px" class="style5">
+	<ul id="menu" style="right: -56px; bottom: 1px; width: 776px" class="style5">
 	  <li><a href="/sklep/" class="links"><center>Strona Główna</center></a></li>
 	  <li><a href="/sklep/produkty/" class="links"><center>Produkty</center></a></li>
       <li><a href="/sklep/koszyk/" class="links"><center>Koszyk {{ stan_koszyka }}</center></a></li>
@@ -33,13 +35,13 @@
   <div id="main">
     <table style="width: 100%">
 					<tr>
-									<td style="width: 304px; vertical-align: top;">{% block side_box %}{% endblock %} </td>
+									<td style="width: 230px; vertical-align: top; background-color: #C0C0C0;">{% block side_box %}{% endblock %} </td>
 									<td><div class="style5">
 {% block main_box %}{% endblock %} </div>
   </div></td>
 					</tr>
 					<tr>
-									<td style="width: 304px">&nbsp;</td>
+									<td style="width: 230px; background-color: #b5e1ff;">&nbsp;</td>
 									<td>{% block main_class %}{% endblock %}</td>
 					</tr>
 	</table>    </div>

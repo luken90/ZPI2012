@@ -1,13 +1,11 @@
-﻿Zamówienie:
-{% for produkt in produkty %}
-  {{ produkt.nazwa}} - {{ produkt.cena|floatformat:"2" }}zł
-{% endfor %}
+﻿Towary:
 
-Dane do wysyłki:
-Email: {{ dane.email }}
-Imię i nazwisko: {{ dane.imie_nazwisko }}
-Adres: {{ dane.adres }}
-Kod pocztowy: {{ dane.kod_pocztowy }}
-Miasto: {{ dane.miasto }}
-Uwagi:
-{{ dane.uwagi }}
+Dane:
+Nazwa: {{ dane.nazwa_towaru }}
+Ilość: {{ dane.ilosc_w_sklepie }}
+Cena: {{ dane.cena_sklepowa }}
+Minimum: {{ dane.minimum_towar }}
+Opis: {{ dane.opis }}
+Zdjecie:
+{{ dane.zdjecie}}
+Kategoria: {{ dane.kategoria }}

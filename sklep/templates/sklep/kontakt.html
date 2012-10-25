@@ -1,5 +1,11 @@
 ﻿{% extends "base.html" %}
-
+{% load kategorie_sidebar %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
 {% block main_box %}
 <h2>Kontakt znany</h2>
   {% if form.errors and forms.errors %}

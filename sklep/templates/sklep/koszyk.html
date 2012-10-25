@@ -1,24 +1,88 @@
-﻿{% extends "base.html" %}
+﻿
+<head>
+<style type="text/css">
+.style1 {
+				border-width: 1px;
+}
+.style2 {
+				border-color: #00FF00;
+				border-width: 0;
+}
+</style>
+</head>
+
+{% extends "base.html" %}
+{% load i18n %}
+{% load kategorie_sidebar %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+
 
 {% block main_box %}
-<h2>Koszyk</h2>
+<h2>{% trans "Koszyk" %}</h2>
 
 {% if koszyk %}
-    <table>
-        <tr><th>Nazwa</th><th>Cena</th></tr>
-        {% for object in koszyk %}
-            <tr><td>{{ object.nazwa }}</td><td>{{ object.cena|floatformat:"2" }}</td></tr>
-        {% endfor %}
+    <table id="zakupy" class="style2">
+        <tr><th>{% trans "Nazwa" %} {{ object.nazwa_towaru }}</th><th>{% trans "Cena" %}</th><th>{% trans "Ilość" %}</th><th>{% trans "Razem" %}</th><th>{% trans "Usuń" %}</th></tr>
+		{% for object in koszyk %}
+			
+            <tr><td class="style1">{{ object.nazwa_towaru }}</td>
+			<!--<td class="style1" name="ilosc1[{{ object.pk}}]" id="ilosc1[{{ object.pk }}]">{{ object.cena|floatformat:"2" }}</td>-->
+			<td class="style1"><form><input type="text" name="ilosc-1[{{ object.pk }}]" id="ilosc-1[{{ object.pk }}]" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/></form></td>
+			<td class="style1"><form id="my1form"><input type="text" name="ilosc-2[{{ object.pk }}]" id="ilosc-2[{{ object.pk }}]" value="1"/><label for="ilosc-2[{{ object.pk }}]"><!--Required, decimal number: --></label></form></td>
+			<td class="style1"><form><input type="text" name="wynik-[{{ object.pk }}]" id="wynik-[{{ object.pk }}]" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/></form></td>
+			<td class="style1"><a href="{% url sklep_koszyk_usun object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a></td></tr>
+	   {% endfor %}
     </table>
+	<h4>{% trans "Razem: " %}</h4> <div id="razem"></div>
 
-    {% if formularz.errors %}
-        <p>Popraw błędy:</p>
-    {% endif %}
+  <p></p>
+<script>
+    $('input[name|="ilosc"]').change( function() {
+  index =  $(this).attr('name').substr(7);
+  val = (parseFloat($('input[name="ilosc-1' + index + '"]').val().replace(",","."), 10) || 0).toFixed(2)* (parseFloat($('input[name="ilosc-2' + index + '"]').val(), 10) || 0);
+  $('input[name="wynik-' + index + '"]').val(val.toFixed(2));
+ });
+</script>
 
-    <form action="" method="post">
-        <table>{{ formularz.as_table }}</table>
-        <input type="submit" value="Zamów">
-    </form>
+
+<script>
+$('input[name|="ilosc"]').change( function(){
+   suma=0;
+ $('input[name|="wynik"]').each(function(index) {
+  (suma+=parseFloat($(this).val(),10) || 0);
+  //alert(index + ': ' + $(this).val());
+ });
+ $('div#razem').text(suma.toFixed(2));
+});
+</script> 
+
+<script>
+$(document).ready(function() {
+     suma=0;
+ $('input[name|="wynik"]').each(function(index) {
+  (suma+=parseFloat($(this).val().replace(",","."),10) || 0);
+  //alert(index + ': ' + $(this).val());
+ });
+ $('div#razem').text(suma.toFixed(2));
+});
+</script>
+	
+	
+	{% if user.is_authenticated %}
+						
+						
+						<INPUT TYPE="BUTTON" VALUE="Finalizuj" ONCLICK="window.location.href='/sklep/zamow/'"> 
+						{% else %}
+						<INPUT TYPE="BUTTON" VALUE="Zaloguj" ONCLICK="window.location.href='/sklep/accounts/login/'"> 
+						
+						{% endif %}
+
+    
 
 {% else %}
     <p>Koszyk jest pusty!</p>

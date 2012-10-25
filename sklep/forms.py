@@ -23,6 +23,7 @@ class ZamowienieForm(forms.Form):
 	
 class TowarForm(forms.Form):
     
+	idtowaru = forms.CharField(max_length=255, required=True)
 	nazwa_towaru = forms.CharField(max_length=255, required=True)
 	ilosc_w_sklepie = forms.CharField(max_length=10, required=True)
 	cena_sklepowa = forms.CharField(max_length=10, required=True)
