@@ -25,7 +25,7 @@ class Klienci(models.Model):
     kod_pocztowy = models.CharField(max_length=6)
     poczta = models.CharField(max_length=30)
     telefon = models.CharField(max_length=13, blank=True)
-    login = models.CharField(max_length=20, blank=True)
+    login = models.ForeignKey(User, unique=True, max_length=20)
     class Meta:
 		verbose_name='Klient'
 		db_table = u'klienci'

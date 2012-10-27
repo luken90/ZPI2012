@@ -1,7 +1,19 @@
-﻿{% extends "base.html" %}
+﻿
+<head>
+<style type="text/css">
+.style1 {
+				text-align: center;
+}
+.style2 {
+				margin-left: 40px;
+}
+</style>
+</head>
+
+{% extends "base.html" %}
 {% load kategorie_sidebar %}
 
-{% block main_class %} class="short"{% endblock %}
+{% block main_class %}{% endblock %}
 
 {% block side_box %}
 <div id="sidebox">
@@ -10,20 +22,26 @@
 </div>
 {% endblock %}
 {% block main_box %}
-    <h2>Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
+    <h2 class="style2">Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
 
     {% for object in object_list %} <br>
 <table style="width: 100%">
 				<tr>
-								<td style="width: 225px">
-		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: left"/></td>
-								<td><h4>{{ object.nazwa_towaru }}</h4>
-        {{ object.opis|linebreaks }}
-		<p>Kategoria: {{ object.kategoria }}</p>
-        <p>Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} </p>
+								<td style="width: 250px" class="style1">
+		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: right"/></td>
+								<td class="style1"><h4 class="style1">{{ object.nazwa_towaru }}</h4>
+        						<div class="style1">
+        {{ object.opis|linebreaks }} </div>
+		<p class="style1">Kategoria: {{ object.kategoria }}</p>
+        <p class="style1">Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} </p>
 	 <!--<p>Minimum: {{ object.minimum_towar|floatformat:"2" }} </p>-->
-	 <p>Cena: {{ object.cena_sklepowa|floatformat:"2" }} zł‚ - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
+	 <p class="style1">Cena: {{ object.cena_sklepowa|floatformat:"2" }} zł - <a href="{% url sklep_koszyk_dodaj object.pk %}">Dodaj do koszyka</a></p>
     							</td>
+				</tr>
+				<tr>
+								<td style="width: 250px" class="style1">
+		&nbsp;</td>
+								<td><hr></td>
 				</tr>
 </table>
 		    {% endfor %}
@@ -31,7 +49,7 @@
     {% if is_paginated %}
         <div>
             {% if has_previous %}<a href="?page={{ previous }}">Poprzednia</a>{% endif %}
-            {% if has_next %}<a href="?page={{ next }}">NastÄ™pna</a>{% endif %}
+            {% if has_next %}<a href="?page={{ next }}">Następna</a>{% endif %}
         </div>
     {% endif %}
 {% endblock %}
