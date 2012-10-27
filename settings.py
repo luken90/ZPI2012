@@ -97,6 +97,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTH_PROFILE_MODULE = 'sklep.Klienci'
+
 ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -170,4 +172,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 EMAIL_PORT = 1025
 EMAIL_SKLEPU = 'luken90@wp.pl'
-#LOGIN_REDIRECT_URL = 'http://localhost:8000'
+LOGIN_REDIRECT_URL = 'http://192.168.1.30:8000/sklep/koszyk/'

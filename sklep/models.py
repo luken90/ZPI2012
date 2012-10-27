@@ -12,6 +12,7 @@ import datetime
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+from django.db.models.signals import post_save
 
 class Klienci(models.Model):
     nik = models.BigIntegerField(primary_key=True)

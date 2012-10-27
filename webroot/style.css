@@ -12,7 +12,7 @@
   font-family:Tahoma,sans-serif;
   color: #2F2C25; }
 
-  
+
 h3 {
   margin: 0;
   padding: 5px 0 5px 0; 
@@ -37,7 +37,9 @@ h3 {
   height:50px;
   width:230px;
   }
-
+a {
+  font-size:20px;
+  color:white; }
 p {
   margin: 0;
   padding: 5px 0 5px 0; }
@@ -69,6 +71,14 @@ font-size: 40px;
 .style5 {
 margin-top: 1;
 }
+
+.error {
+				color: #FF0000;
+}  
+.logowanie {
+  color:white;
+  font-size:20px;
+  text-align: right; }
   
 .external {
   width:923px;

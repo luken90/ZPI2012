@@ -4,9 +4,6 @@
 .style1 {
 				text-align: center;
 }
-.style2 {
-				margin-left: 40px;
-}
 </style>
 </head>
 
@@ -22,13 +19,13 @@
 </div>
 {% endblock %}
 {% block main_box %}
-    <h2 class="style2">Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
+    <h2>Produkty{% if kategoria1 %} z kategorii {{ kategoria1|lower }}{% endif %}</h2>
 
     {% for object in object_list %} <br>
 <table style="width: 100%">
 				<tr>
-								<td style="width: 250px" class="style1">
-		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: right"/></td>
+								<td style="width: 200px" class="style1">
+		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: inherit"/></td>
 								<td class="style1"><h4 class="style1">{{ object.nazwa_towaru }}</h4>
         						<div class="style1">
         {{ object.opis|linebreaks }} </div>
@@ -39,7 +36,7 @@
     							</td>
 				</tr>
 				<tr>
-								<td style="width: 250px" class="style1">
+								<td style="width: 200px" class="style1">
 		&nbsp;</td>
 								<td><hr></td>
 				</tr>

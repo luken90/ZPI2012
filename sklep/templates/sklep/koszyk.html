@@ -8,9 +8,6 @@
 				border-color: #00FF00;
 				border-width: 0;
 }
-.style31 {
-				margin-left: 40px;
-}
 .style4 {
 				border-width: 1px;
 				text-align: center;
@@ -30,14 +27,14 @@
 
 
 {% block main_box %}
-<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% trans "Koszyk" %}</h2>
+<h2>{% trans "Koszyk" %}</h2>
 
 {% if koszyk %}
     <table id="zakupy" class="style2">
-        <tr><th style="width: 30px">&nbsp;</th><th>{% trans "Nazwa" %} {{ object.nazwa_towaru }}</th><th>{% trans "Cena" %}</th><th>{% trans "Ilość" %}</th><th>{% trans "Razem" %}</th><th>{% trans "Usuń" %}</th></tr>
+        <tr><th>{% trans "Nazwa" %} {{ object.nazwa_towaru }}</th><th>{% trans "Cena" %}</th><th>{% trans "Ilość" %}</th><th>{% trans "Razem" %}</th><th>{% trans "Usuń" %}</th></tr>
 		{% for object in koszyk %}
 			
-            <tr><td class="style1" style="width: 30px">&nbsp;</td>
+            <tr>
 							<td class="style1">{{ object.nazwa_towaru }}</td>
 			<!--<td class="style1" name="ilosc1[{{ object.pk}}]" id="ilosc1[{{ object.pk }}]">{{ object.cena|floatformat:"2" }}</td>-->
 			<td class="style1"><form><input type="text" name="ilosc-1[{{ object.pk }}]" id="ilosc-1[{{ object.pk }}]" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/></form></td>
@@ -46,8 +43,8 @@
 			<td class="style4"><a href="{% url sklep_koszyk_usun object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a></td></tr>
 	   {% endfor %}
     </table>
-	<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% trans "Razem: " %}</h4> 
-<div id="razem" class="style31"></div>
+	<h4>{% trans "Razem: " %}</h4> 
+<div id="razem"></div>
 
   <p></p>
 <script>
@@ -82,9 +79,6 @@ $(document).ready(function() {
 </script>
 	
 	
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	
-	
 	{% if user.is_authenticated %}
 						
 						
@@ -97,6 +91,6 @@ $(document).ready(function() {
     
 
 {% else %}
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Koszyk jest pusty!</p>
+    <p>Koszyk jest pusty!</p>
 {% endif %}
 {% endblock %}
