@@ -39,7 +39,7 @@ h3 {
   }
 a {
   font-size:20px;
-  color:white; }
+  color:black; }
 p {
   margin: 0;
   padding: 5px 0 5px 0; }
@@ -70,6 +70,10 @@ font-size: 40px;
 }
 .style5 {
 margin-top: 1;
+}
+
+.style6 {
+color: white;
 }
 
 .error {
@@ -109,7 +113,7 @@ margin-top: 1;
   background-image:url('banner.png'); }
 
 #logo h1 {
-  color: 3b444b;
+  color: black;
   font-family: georgia;
   display:block;
   position: absolute;
@@ -124,7 +128,7 @@ margin-top: 1;
   font-weight:bold; }
   
 #logo h2 {
-  color: 3b444b;
+  color: black;
   font-family: georgia;
   display:block;
   position: absolute;

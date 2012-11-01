@@ -172,4 +172,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 EMAIL_PORT = 1025
 EMAIL_SKLEPU = 'luken90@wp.pl'
-LOGIN_REDIRECT_URL = 'http://192.168.1.30:8000/sklep/koszyk/'
+LOGIN_REDIRECT_URL = 'http://cytrynowypatrol.no-ip.org:8000/sklep/koszyk/'
