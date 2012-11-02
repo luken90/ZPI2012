@@ -8,7 +8,7 @@ from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 from django.template import Context, loader
 from django.conf import settings
-from sklep.models import Towary, Kategorie
+from sklep.models import Towary, Kategorie, Klienci
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 from sklep.forms import ZamowienieForm, TowarForm

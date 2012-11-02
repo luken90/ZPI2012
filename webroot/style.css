@@ -52,14 +52,14 @@ div {
 
     .links {
     display:block; 
-    background:url(button5.jpg) center top no-repeat; 
+    background:url(button5.jpg) center top; 
     height:40px;
     width:180px; 
     text-align:center;
     text-decoration:none;
     }
     .links:hover {
-    background:url(button6.jpg) center top no-repeat;
+    background:url(button6.jpg) center top;
     }
 	
 .style3 {
