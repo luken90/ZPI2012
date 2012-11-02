@@ -28,8 +28,9 @@
 						-->
 						
 						<INPUT TYPE="BUTTON" VALUE='wyloguj sie' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
-						
-						<INPUT TYPE="BUTTON" VALUE="Zmień dane" ONCLICK="window.location.href='/sklep/klienci/'">
+						<!--<INPUT TYPE="BUTTON" VALUE="Zmień dane" ONCLICK="window.location.href='/sklep/klient/'">
+						-->
+						<INPUT TYPE="BUTTON" VALUE="Zmień dane" ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
 						<!--
 						<INPUT TYPE="BUTTON" VALUE="Zmień dane2" ONCLICK="window.location.href='/sklep/add/'">-->
 					
@@ -50,7 +51,7 @@
 	  <li><a href="/sklep/" class="links"><center>Strona Główna</center></a></li>
 	  <li><a href="/sklep/produkty/" class="links"><center>Produkty</center></a></li>
       <li><a href="/sklep/koszyk/" class="links"><center>Koszyk {{ stan_koszyka }}</center></a></li>
-	  <li><a href="/sklep/index/" class="links"><center>Kontakt</center></a></li>
+	  <li><a href="/sklep/klient/" class="links"><center>Kontakt</center></a></li>
     </ul>
   </div>
 

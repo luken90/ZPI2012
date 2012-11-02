@@ -4,7 +4,7 @@ from django import forms
 
 from django.contrib.localflavor.pl.forms import PLPostalCodeField
 
-from sklep.models import Towary
+from sklep.models import Towary, Klienci, Stanowiska
 
 
 class ZamowienieForm(forms.Form):
@@ -32,6 +32,25 @@ class TowarForm(forms.Form):
 	zdjecie = forms.CharField(max_length=1000)
 	kategoria = forms.CharField(max_length=10, required=True)
 	
+#class KlienciForm(forms.Form):
+    
+#	nik = forms.CharField(max_length=255, required=True)
+#	nip = forms.CharField(max_length=255, required=True)
+#	nazwa_firmy = forms.CharField(max_length=255, required=True)
+#	nazwisko= forms.CharField(max_length=255, required=True)
+#	imie = forms.CharField(max_length=255, required=True)
+#	miasto = forms.CharField(max_length=255, required=True)
+#	ulica = forms.CharField(max_length=1000)
+#	numer = forms.CharField(max_length=1000)
+#	kod_pocztowy = forms.CharField(max_length=255, required=True)
+#	poczta = forms.CharField(max_length=255, required=True)
+#	telefon = forms.CharField(max_length=255, required=True)
+#	login = forms.CharField(max_length=255, required=True)
+	
 class KlienciForm(forms.ModelForm):
 	class Meta:
-		model = Towary
+		model = Klienci
+
+class StanowiskaForm(forms.ModelForm):
+    class Meta:
+        model = Stanowiska	

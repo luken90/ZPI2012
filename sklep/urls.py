@@ -1,11 +1,14 @@
 ﻿from django.conf.urls.defaults import *
-from sklep.models import Towary
+from sklep.models import Towary, Klienci
 from django.contrib.auth import authenticate, login, logout
 
 urlpatterns = patterns('',
     url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.all().select_related('kategorie'), 'paginate_by': 3}, "sklep_produkty"),
     url(r'^kontakt/$', 'sklep.views.strona_kontakt', name="sklep_kontakt"),
     url(r'^koszyk/$', 'sklep.views.koszyk', name="sklep_koszyk"),
+    url(r'^index/$', 'sklep.views.index', name="index"),
+    url(r'^klient/(\d+)/$', 'sklep.views.zmien_klienta', name="zmien_klienta"),
+	url(r'^klient/$', 'sklep.views.dodaj_klienta', name="dodaj_klienta"),
     url(r'^rejestracja/$', 'sklep.views.register', name="sklep_register"),
     url(r'^logowanie/$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
     url(r'^koszyk/dodaj/(\d+)/$', 'sklep.views.koszyk_dodaj', name="sklep_koszyk_dodaj"),

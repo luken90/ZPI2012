@@ -1,0 +1,45 @@
+﻿
+
+
+
+
+<head>
+
+</head>
+
+{% extends "base.html" %}
+{% load kategorie_sidebar %}
+{% load url from future %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+{% block main_box %}
+<form><input type="text" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
+{% if form.errors %}
+<p class="error">Niepoprawne dane lub hasło</p>
+{% endif %}
+
+    <h1>Dodaj stanowisko</h1>
+
+
+
+    <form action="." name="stanowiska" method="post" >
+    {% csrf_token %}
+
+        <label>
+            <div>identyfikator</div> <input type="text" name="identyfikator" id="identyfikator" value="{{identyfikator}}">
+        </label>
+        <label>
+            <div>stanowisko</div> <input type="text" name="stanowisko" id="stanowisko" value="{{stanowisko}}">
+        </label>
+
+        <div class="error">{{error}}</div>
+        <input type="submit" value="Wyślij">
+		<input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+
+{% endblock %}

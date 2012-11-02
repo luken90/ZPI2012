@@ -8,10 +8,11 @@ from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 from django.template import Context, loader
 from django.conf import settings
-from sklep.models import Towary, Kategorie, Klienci
+from sklep.models import Towary, Kategorie, Klienci, Stanowiska
+from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
-from sklep.forms import ZamowienieForm, TowarForm
+from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm
 from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
@@ -22,6 +23,63 @@ from django.contrib.auth import authenticate, login, logout
 #        Klienci.objects.create(login=instance)
 #
 #post_save.connect(create_user_profile, sender=User)
+def index(request):
+    if request.method == 'POST':
+        form = StanowiskaForm(request.POST)
+        new_stanowiska = form.save()
+    return render_to_response('sklep/index.html', context_instance=RequestContext(request))	
+
+def dodaj_klienta(request):
+    if request.method == 'POST': # If the form has been submitted...
+        form = KlienciForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            new_klienci = form.save(commit=False)
+            #new_klienci.nik = form.nik
+            #new_klienci.nip = form.nip
+            #new_klienci.nazwa_firmy = form.nazwa_firmy
+            #new_klienci.nazwisko = form.nazwisko
+            #new_klienci.imie = form.imie
+            #new_klienci.miasto = form.miasto
+            #new_klienci.ulica = form.ulica
+            #new_klienci.numer = form.numer
+            #new_klienci.kod_pocztowy = form.kod_pocztowy
+            #new_klienci.poczta = form.poczta
+            #new_klienci.telefon = form.telefon
+            new_klienci.login = request.user
+            new_klienci.save()
+            return HttpResponseRedirect('/sklep/') # Redirect after POST
+    else:
+        form = KlienciForm() # An unbound form
+
+    return render_to_response('sklep/klienci.html',{'form': form,}, context_instance=RequestContext(request))
+	
+
+def zmien_klienta(request, id):
+    klient = get_object_or_404(Klienci, login=id)
+    #klient = Klienci.object.get(login=id)
+    if request.method == 'POST': # If the form has been submitted...
+        form = KlienciForm(request.POST or None, instance=klient) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            new_klienci = form.save(commit=False)
+            #new_klienci.nik = form.nik
+            #new_klienci.nip = form.nip
+            #new_klienci.nazwa_firmy = form.nazwa_firmy
+            #new_klienci.nazwisko = form.nazwisko
+            #new_klienci.imie = form.imie
+            #new_klienci.miasto = form.miasto
+            #new_klienci.ulica = form.ulica
+            #new_klienci.numer = form.numer
+            #new_klienci.kod_pocztowy = form.kod_pocztowy
+            #new_klienci.poczta = form.poczta
+            #new_klienci.telefon = form.telefon
+            new_klienci.login = request.user
+            new_klienci.save()
+            return HttpResponseRedirect('/sklep/') # Redirect after POST
+    else:
+        form = KlienciForm(instance=klient) # An unbound form
+
+    return render_to_response('sklep/klienci.html',{'form': form,}, context_instance=RequestContext(request))
+
 def logowanie1(request):
     koszyk = request.session.get('koszyk', [])
     kontekst = {'koszyk': []}
@@ -135,6 +193,9 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
+            new_user = authenticate(username=request.POST['username'],
+            password=request.POST['password1'])
+            login(request, new_user)
             return HttpResponseRedirect("/sklep/")
     else:
         form = UserCreationForm()
