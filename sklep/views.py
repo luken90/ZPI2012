@@ -42,6 +42,7 @@ def koszykobsluga(request, id):
             #new_zamowienia.np = form.np
             new_zamowienia.data_zamowienia = date.today()
             #new_zamowienia.status = form.status
+            #new_zamowienia.wysylka = form.status
             new_zamowienia.save()
             return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:

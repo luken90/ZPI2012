@@ -50,7 +50,7 @@ class Stanowiska(models.Model):
 
 class Dostawcy(models.Model):
     nid = models.BigIntegerField(primary_key=True)
-    regon = models.BigIntegerField(unique=True)
+    regon = models.BigIntegerField(unique=True, null=True, blank=True)
     nip = models.CharField(max_length=15, unique=True)
     nazwa_dostawcy = models.CharField(max_length=30)
     miasto = models.CharField(max_length=30)
@@ -68,6 +68,7 @@ class Dostawcy(models.Model):
     def __unicode__(self):
         return self.nazwa_dostawcy
 
+
 class Pracownicy(models.Model):
     np = models.BigIntegerField(primary_key=True)
     nazwisko = models.CharField(max_length=30)
@@ -79,7 +80,7 @@ class Pracownicy(models.Model):
     numer = models.CharField(max_length=7)
     kod_pocztowy = models.CharField(max_length=6)
     poczta = models.CharField(max_length=30)
-    stanowisko = models.ForeignKey(Stanowiska, db_column='stanowisko')
+    stanowisko = models.ForeignKey(Stanowiska, null=True, db_column='stanowisko', blank=True)
     class Meta:
 		verbose_name='Pracownik'
 		db_table = u'pracownicy'
@@ -125,7 +126,7 @@ class Towary(models.Model):
     idtowaru = models.BigIntegerField(primary_key=True)
     nazwa_towaru = models.CharField(max_length=255, unique=True)
     ilosc_w_sklepie = models.BigIntegerField()
-    cena_sklepowa = models.BigIntegerField()
+    cena_sklepowa = models.DecimalField(max_digits=126, decimal_places=2)
     minimum_towar = models.BigIntegerField()
     opis = models.CharField(max_length=1000, blank=True)
     zdjecie = models.CharField(max_length=255, blank=True)
@@ -151,23 +152,38 @@ class Dostawy(models.Model):
 		verbose_name_plural = 'Dostawy'
 		ordering = ('iddostawy',)
 
+
 class OpisyDostaw(models.Model):
     iddostawy = models.ForeignKey(Dostawy, unique=True, db_column='iddostawy')
     idtowaru = models.ForeignKey(Towary, unique=True, db_column='idtowaru')
     ilosc = models.BigIntegerField()
-    cena_producenta = models.BigIntegerField()
+    cena_producenta = models.DecimalField(max_digits=126, decimal_places=2)
     class Meta:
 		verbose_name='Opis dostawy'
 		db_table = u'opisy_dostaw'
 		verbose_name_plural = 'Opisy dostaw'
 		ordering = ('iddostawy','idtowaru',)
+		
+class Wysylka(models.Model):
+    identyfikator = models.BigIntegerField(primary_key=True)
+    rodzaj = models.CharField(max_length=100, unique=True, blank=True)
+    cena = models.DecimalField(max_digits=126, decimal_places=2)
+    class Meta:
+		verbose_name='Wysylka'
+		db_table = u'wysylka'
+		verbose_name_plural = 'Wysylki'
+		ordering = ('identyfikator',)
 
+    def __unicode__(self):
+        return self.rodzaj+ ' - ' + unicode(self.cena) + ' zl'
+		
 class Zamowienia(models.Model):
     idzamowienia = models.BigIntegerField(primary_key=True)
     nik = models.ForeignKey(Klienci, db_column='nik')
     np = models.ForeignKey(Pracownicy, db_column='np')
     data_zamowienia = models.DateField()
     status = models.CharField(max_length=20)
+    wysylka = models.ForeignKey(Wysylka, null=True, db_column='wysylka', blank=True)
     class Meta:
 		verbose_name='Zamowienie'
 		db_table = u'zamowienia'
@@ -184,17 +200,17 @@ class OpisyZamowien(models.Model):
 		verbose_name_plural = 'Opisy zamowien'
 		ordering = ('idzamowienia','idtowaru',)
 
-
 class Ksiegowosc(models.Model):
     idtransakcji = models.BigIntegerField(primary_key=True)
-    data_wykonania = models.DateField()
-    kwota = models.BigIntegerField()
-    np = models.ForeignKey(Pracownicy, db_column='np')
+    kwota = models.DecimalField(null=True, max_digits=126, decimal_places=2, blank=True)
     idzamowienia = models.ForeignKey(Zamowienia, null=True, db_column='idzamowienia', blank=True)
     iddostawy = models.ForeignKey(Dostawy, null=True, db_column='iddostawy', blank=True)
+    data_transakcji = models.DateField(null=True, blank=True)
     class Meta:
 		verbose_name='Ksiegowosc'
 		db_table = u'ksiegowosc'
 		verbose_name_plural = 'Ksiegowosc'
 		ordering = ('idtransakcji',)
+
+
 
