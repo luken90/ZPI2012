@@ -14,12 +14,83 @@
     {% endif %}
   
   <form action="" method="post">{% csrf_token %}
-      <table>{{ form.as_table }}</table>
+      <table>{{ formA.as_table }}</table>
 	  <!--<label for="first_name">Imię:</label>
 	  <input type="text" name="first_name" value="" id="first_name">
 	  <label for="last_name">Nazwisko:</label>
       <input type="text" name="last_name" value="" id="last_name">
 	  <label for="email">E-mail:</label>-->
-      <input type="submit" value="Zatwierdź">
+      <!--<input type="submit" value="Zatwierdź">
   </form>
+  
+   <form action="." name="klienci" method="post" >{% csrf_token %}-->
+	{{ formB.non_field_errors }}
+	<table>
+		<tr>
+			<td>{{ formB.nik.label_tag }}</td>
+			<td>{{ formB.nik }}</td>
+			<td>{{ formB.nik.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.nip.label_tag }}</td>
+			<td>{{ formB.nip }}</td>
+			<td>{{ formB.nip.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.nazwa_firmy.label_tag }}</td>
+			<td>{{ formB.nazwa_firmy }}</td>
+			<td>{{ formB.nazwa_firmy.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.nazwisko.label_tag }}</td>
+			<td>{{ formB.nazwisko }}</td>
+			<td>{{ formB.nazwisko.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.imie.label_tag }}</td>
+			<td>{{ formB.imie }}</td>
+			<td>{{ formB.imie.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.miasto.label_tag }}</td>
+			<td>{{ formB.miasto }}</td>
+			<td>{{ formB.miasto.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.ulica.label_tag }}</td>
+			<td>{{ formB.ulica }}</td>
+			<td>{{ formB.ulica.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.numer.label_tag }}</td>
+			<td>{{ formB.numer }}</td>
+			<td>{{ formB.numer.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.kod_pocztowy.label_tag }}</td>
+			<td>{{ formB.kod_pocztowy }}</td>
+			<td>{{ formB.kod_pocztowy.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.poczta.label_tag }}</td>
+			<td>{{ formB.poczta }}</td>
+			<td>{{ formB.poczta.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.telefon.label_tag }}</td>
+			<td>{{ formB.telefon }}</td>
+			<td>{{ formB.telefon.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.login.label_tag }}</td>
+			<td>{{ formB.login}}</td>
+			<td>{{ formB.login.errors }}</td>
+		</tr>
+	</table>
+      <!--{{ form.as_p }}-->
+
+
+        <input type="submit" value="Wyślij">
+		<input type="hidden" name="next" value="{{ next }}" />
+    </form>
 {% endblock %}

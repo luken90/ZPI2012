@@ -1,0 +1,67 @@
+﻿
+
+
+
+
+<head>
+
+</head>
+
+{% extends "base.html" %}
+{% load kategorie_sidebar %}
+{% load url from future %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+{% block main_box %}
+
+<!--{% if form.errors %}
+<p class="error">Niepoprawne dane lub hasło</p>
+{% endif %}-->
+
+    <h1>Koszyk obsluga</h1>
+
+<form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
+
+    <form action="." name="zamowienia" method="post" >{% csrf_token %}
+	{{ form.non_field_errors }}
+	<table>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value="-1"></td>
+			<td>{{ form.idzamowienia.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ form.nik.label_tag }}</td>
+			<td>{{ form.nik }}</td>
+			<td>{{ form.nik.errors }}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="np" id="id_np" value="183"></td>
+			<td>{{ form.np.errors }}</td>
+			
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="data_zamowienia" id="id_data_zamowienia" value="2012-12-12"></td>
+			<td>{{ form.data_zamowienia.errors }}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="status" id="status" value="Niezrealizowana"></td>
+			<td>{{ form.status.errors }}</td>
+		</tr>
+	</table>
+      <!--{{ form.as_p }}-->
+
+
+        <input type="submit" value="Wyślij">
+		<input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+
+{% endblock %}

@@ -7,12 +7,13 @@ from django.core.urlresolvers import reverse
 from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 from django.template import Context, loader
+from datetime import date
 from django.conf import settings
-from sklep.models import Towary, Kategorie, Klienci, Stanowiska
+from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, OpisyZamowien
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
-from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm
+from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm
 from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
@@ -29,6 +30,25 @@ def index(request):
         new_stanowiska = form.save()
     return render_to_response('sklep/index.html', context_instance=RequestContext(request))	
 
+def koszykobsluga(request, id):
+    if request.method == 'POST': # If the form has been submitted...
+	klient = Klienci.objects.get(login=id)
+    #klient = get_object_or_404(Klienci, login=id)
+        form = ZamowieniaForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            new_zamowienia = form.save(commit=False)
+            #new_zamowienia.idzamowienia = form.idzamowienia
+            new_zamowienia.nik = klient
+            #new_zamowienia.np = form.np
+            new_zamowienia.data_zamowienia = date.today()
+            #new_zamowienia.status = form.status
+            new_zamowienia.save()
+            return HttpResponseRedirect('/sklep/') # Redirect after POST
+    else:
+        form = ZamowieniaForm() # An unbound form
+
+    return render_to_response('sklep/koszykobsluga.html',{'form': form,}, context_instance=RequestContext(request))	
+	
 def dodaj_klienta(request):
     if request.method == 'POST': # If the form has been submitted...
         form = KlienciForm(request.POST) # A form bound to the POST data
@@ -190,15 +210,20 @@ def produkty_z_kategorii(request, id_kategorii):
 	
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            new_user = form.save()
+        formA = UserCreationForm(request.POST)
+        formB = KlienciForm(request.POST)
+        if formA.is_valid() and formB.is_valid():
+            new_user = formA.save()
             new_user = authenticate(username=request.POST['username'],
             password=request.POST['password1'])
             login(request, new_user)
+            new_klienci = formB.save(commit=False)
+            new_klienci.login = new_user
+            new_klienci.save()
             return HttpResponseRedirect("/sklep/")
     else:
-        form = UserCreationForm()
+        formA = UserCreationForm()
+        formB = KlienciForm()
 	
     return render_to_response("registration/register.html", {
-		'form': form,}, context_instance=RequestContext(request))
+		'formA': formA,'formB': formB,}, context_instance=RequestContext(request))

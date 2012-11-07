@@ -4,7 +4,7 @@ from django import forms
 
 from django.contrib.localflavor.pl.forms import PLPostalCodeField
 
-from sklep.models import Towary, Klienci, Stanowiska
+from sklep.models import Towary, Klienci, Stanowiska, Zamowienia, OpisyZamowien
 
 
 class ZamowienieForm(forms.Form):
@@ -54,3 +54,11 @@ class KlienciForm(forms.ModelForm):
 class StanowiskaForm(forms.ModelForm):
     class Meta:
         model = Stanowiska	
+
+class ZamowieniaForm(forms.ModelForm):
+    class Meta:
+	    model = Zamowienia
+		
+class OpisyZamowienForm(forms.ModelForm):
+    class Meta:
+	    model = OpisyZamowien
