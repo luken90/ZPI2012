@@ -1,0 +1,41 @@
+﻿
+
+
+
+
+<head>
+
+</head>
+
+{% extends "base.html" %}
+{% load kategorie_sidebar %}
+{% load url from future %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>Kategorie</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+{% block main_box %}
+
+<!--{% if form.errors %}
+<p class="error">Niepoprawne dane lub hasło</p>
+{% endif %}-->
+
+    <h1>Menage</h1>
+
+<form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
+<form method="post" name="opiszamowienia" action=".">{% csrf_token %}
+    {{ formset.management_form }}
+    <table>
+        {% for form in formset %}
+        {{ form }}
+        {% endfor %}
+    </table>
+	    <input type="submit" value="Wyślij">
+		<input type="hidden" name="next" value="{{ next }}" />
+</form>
+<form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
+
+
+{% endblock %}

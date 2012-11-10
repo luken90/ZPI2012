@@ -5,6 +5,14 @@
 
 <head>
 
+
+<style type="text/css">
+.style1 {
+				text-align: center;
+}
+</style>
+
+
 </head>
 
 {% extends "base.html" %}
@@ -23,6 +31,8 @@
 {% endif %}-->
 
     <h1>Koszyk obsluga</h1>
+	
+{% if koszyk %}
 
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 
@@ -30,43 +40,114 @@
 	{{ form.non_field_errors }}
 	<table>
 		<tr>
-			<td></td>
-			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value="-1"></td>
+		    <td>{{ form.idzamowienia.label_tag }}</td>
+			<td>{{ form.idzamowienia }}</td>
 			<td>{{ form.idzamowienia.errors }}</td>
-		</tr>
-		<tr>
-			<td>{{ form.nik.label_tag }}</td>
-			<td>{{ form.nik }}</td>
-			<td>{{ form.nik.errors }}</td>
+			<!--<td></td>
+			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value="175"></td>
+			<td>{{ form.idzamowienia.errors }}</td>
+		--></tr>
+		<tr>		
+			<td></td>
+			<td><input type="hidden" name="nik" id="id_nik" value=""></td>
+			<td>{{ form.np.errors }}</td>
+		
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="np" id="id_np" value="183"></td>
+			<td><input type="hidden" name="np" id="id_np" value=""></td>
 			<td>{{ form.np.errors }}</td>
 			
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="data_zamowienia" id="id_data_zamowienia" value="2012-12-12"></td>
+			<td><input type="hidden" name="data_zamowienia" id="id_data_zamowienia" value=""></td>
 			<td>{{ form.data_zamowienia.errors }}</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="status" id="status" value="Niezrealizowana"></td>
+			<td><input type="hidden" name="status" id="status" value=""></td>
 			<td>{{ form.status.errors }}</td>
 		</tr>
-				<tr>
+		<tr>
 			<td>{{ form.wysylka.label_tag }}</td>
 			<td>{{ form.wysylka }}</td>
 			<td>{{ form.wysylka.errors }}</td>
 		</tr>
+		
+<!--		<tr>
+			<td></td>
+			<td><input type="hidden" name="ident" id="ident" value=""></td>
+			<td>{{ form.ident.errors }}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="idzamowienia1" id="idzamowienia1" value=""></td>
+			<td>{{ form.idzamowienia1.errors }}</td>
+		</tr>
+		{% for object in koszyk %}
+		<tr>
+			<td>{{ forA.idtowaru.label_tag }}</td>
+			<td><input type="text" name="idtowaru" id="idtowaru[{{ object.pk }}]" value="{{ object.pk }}" readonly="readonly"></td>
+			<td>{{ forA.idtowaru.errors }}</td>
+			
+			<!--<td><form><input type="text" name="ilosc-1[{{ object.pk }}]" id="ilosc-1[{{ object.pk }}]" value="{{ object.cena|floatformat:"2" }}" readonly="readonly"/></form></td>
+			--><!--</tr>
+		<tr>
+			<td>{{ forA.ilosc.label_tag }}</td>
+			<td><input type="text" name="ilosc" id="ilosc[{{ object.pk }}]" value="1"></td>
+			<td>{{ forA.ilosc.errors }}</td>
+		</tr>
+		{% endfor %}-->
 	</table>
-      <!--{{ form.as_p }}-->
+	{{ formset.management_form }}
+	
+	
+
+
+        			<br>
+					<table style="width: 100%; float: left" align="left">
+									<tr>
+													<td class="style1">		<strong>Nazwa</strong></td>
+													<td class="style1"><strong>Ilość</strong></td>
+													<td class="style1"><strong>Cena</strong></td>
+													<td class="style1"><strong>Razem</strong></td>
+													<td class="style1"><strong>Usuń</strong></td>
+									</tr>
+									<tr>
+													<td class="style1">		{% for object in koszyk %}
+			
+            {{ object.nazwa_towaru }}<br>
+													<br>
+													{% endfor %}</td>
+													<td class="style1">{% for form in formset %}{{ form.ident.as_hidden }}{{ form.idzamowienia1.as_hidden }}{{ form.idtowaru.as_hidden }}{{ form.ilosc }}<br>
+													<br>
+													{% endfor %}</td>
+													<td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}
+
+													<br>
+													<br>
+													{% endfor %}</td>
+													<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ object.pk }}]" id="wynik-[{{ object.pk }}]" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
+													<br>
+													<br>
+													{% endfor %}</td>
+													<td class="style1">{% for object in koszyk %} <a href=""><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
+													<br>
+													{% endfor %}</td>
+									</tr>
+					</table>
+					<br>
+					<br>
+	
+	
 
 
         <input type="submit" value="Wyślij">
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
 
-
+{% else %}
+    <p>Koszyk jest pusty!</p>
+{% endif %}
 {% endblock %}

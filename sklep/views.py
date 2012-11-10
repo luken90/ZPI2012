@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.template import Context, loader
 from datetime import date
 from django.conf import settings
-from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, OpisyZamowien
+from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, OpisyZamowien, Pracownicy
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
@@ -18,6 +18,8 @@ from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Max
+from django.forms.formsets import formset_factory
 
 #def create_user_profile(sender, instance, created, **kwargs):
 #    if created:
@@ -30,25 +32,87 @@ def index(request):
         new_stanowiska = form.save()
     return render_to_response('sklep/index.html', context_instance=RequestContext(request))	
 
-def koszykobsluga(request, id):
+def manage_articles(request):
+    koszyk = request.session.get('koszyk', [])
+    zmienna = 0
+    #print zmienna
+    produkty = list(Towary.objects.filter(pk__in=koszyk))
+    liczba = Towary.objects.filter(pk__in=koszyk).count()
+    OpisyZamowienFormSet = formset_factory(OpisyZamowienForm, extra = liczba)
+    if request.method == 'POST':
+        formset = OpisyZamowienFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            for forA in formset:
+                #print zmienna
+                wartosc= produkty.__getitem__(zmienna)
+                new_opis = forA.save(commit=False)
+                new_opis.ident = -1
+                #new_opis.ident = zam.idzamowienia
+                #new_opis.idzamowienia1 = new_zamowienia
+                new_opis.idtowaru = wartosc
+                #new_opis.ilosc = forA.ilosc['k']
+                #new_opis.ilosc = forA.ilosc
+                zmienna+=1
+                new_opis.save()
+               
+    else:
+        formset = OpisyZamowienFormSet()
+    return render_to_response('sklep/manage_articles.html', {'formset': formset}, context_instance=RequestContext(request))	
+	
+def koszykobsluga(request):
+    koszyk = request.session.get('koszyk', [])
+    produkty = list(Towary.objects.filter(pk__in=koszyk))
+    liczba = Towary.objects.filter(pk__in=koszyk).count()
+    #print liczba	
+    zmienna=0
+    OpisyZamowienFormSet = formset_factory(OpisyZamowienForm, extra = liczba)
+	
     if request.method == 'POST': # If the form has been submitted...
-	klient = Klienci.objects.get(login=id)
+	klient = Klienci.objects.get(login=request.user.pk)
+	pracownik = Pracownicy.objects.get(nazwisko='Sklep internetowy')
+	
     #klient = get_object_or_404(Klienci, login=id)
         form = ZamowieniaForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
+        #forA = formset_factory(OpisyZamowienForm, extra = 3)
+        formset = OpisyZamowienFormSet(request.POST, request.FILES)# , initial=[{'ident': u'Article #1', 'idzamowienia1': u'Article #2','idtowaru': u'Article #3','ilosc': u'Article #4'},]
+        #forA = OpisyZamowienForm(request.POST)
+        if form.is_valid() and formset.is_valid(): # All validation rules pass
+            zam=Zamowienia.objects.all().order_by('idzamowienia').reverse()[0]
+            #zam=Zamowienia.objects.aggregate(Max('idzamowienia'))
+            wynik=zam.idzamowienia
             new_zamowienia = form.save(commit=False)
-            #new_zamowienia.idzamowienia = form.idzamowienia
+            new_zamowienia.idzamowienia = wynik+1
             new_zamowienia.nik = klient
-            #new_zamowienia.np = form.np
+            new_zamowienia.np = pracownik
             new_zamowienia.data_zamowienia = date.today()
-            #new_zamowienia.status = form.status
+            new_zamowienia.status = 'Niezrealizowana'
             #new_zamowienia.wysylka = form.status
             new_zamowienia.save()
-            return HttpResponseRedirect('/sklep/') # Redirect after POST
+            for forA in formset:
+                #print zmienna
+                wartosc= produkty.__getitem__(zmienna)
+                new_opis = forA.save(commit=False)
+                new_opis.ident = -1
+                new_opis.idzamowienia1 = new_zamowienia
+                new_opis.idtowaru = wartosc
+                #new_opis.ilosc = forA.ilosc['k']
+                #new_opis.ilosc = forA.ilosc
+                zmienna+=1
+                new_opis.save()
+            del request.session['koszyk']
+            
+            return HttpResponseRedirect(reverse('koszykobsluga'))
+            #return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:
-        form = ZamowieniaForm() # An unbound form
-
-    return render_to_response('sklep/koszykobsluga.html',{'form': form,}, context_instance=RequestContext(request))	
+        form = ZamowieniaForm()		# An unbound form
+        formset = OpisyZamowienFormSet()
+		
+    if koszyk:
+        kontekst = {'koszyk': produkty, 'form': form, 'formset': formset}
+    else:
+        kontekst = {'koszyk': []}
+    #return render_to_response('sklep/koszykobsluga.html',kontekst, context_instance=RequestContext(request))	
+    return direct_to_template(request, 'sklep/koszykobsluga.html', extra_context = kontekst)
 	
 def dodaj_klienta(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -191,14 +255,14 @@ def koszyk_dodaj(request, id_produktu):
     if int(id_produktu) not in koszyk:
         koszyk.append(int(id_produktu))
     request.session['koszyk'] = koszyk
-    return HttpResponseRedirect(reverse('sklep_koszyk'))
+    return HttpResponseRedirect(reverse('sklep_produkty'))
 	
 def koszyk_usun(request, id_produktu):
     koszyk = request.session.get('koszyk', [])
     if int(id_produktu) in koszyk:
         koszyk.remove(int(id_produktu))
     request.session['koszyk'] = koszyk
-    return HttpResponseRedirect(reverse('sklep_koszyk'))
+    return HttpResponseRedirect(reverse('koszykobsluga'))
 	
 def produkty_z_kategorii(request, id_kategorii):
     kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))

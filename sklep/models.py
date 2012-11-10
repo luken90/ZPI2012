@@ -178,27 +178,31 @@ class Wysylka(models.Model):
         return self.rodzaj+ ' - ' + unicode(self.cena) + ' zl'
 		
 class Zamowienia(models.Model):
-    idzamowienia = models.BigIntegerField(primary_key=True)
-    nik = models.ForeignKey(Klienci, db_column='nik')
-    np = models.ForeignKey(Pracownicy, db_column='np')
-    data_zamowienia = models.DateField()
-    status = models.CharField(max_length=20)
+    idzamowienia = models.BigIntegerField(primary_key=True, null=True, blank=True)
+    nik = models.ForeignKey(Klienci, null=True, db_column='nik', blank=True)
+    np = models.ForeignKey(Pracownicy, null=True, db_column='np', blank=True)
+    data_zamowienia = models.DateField(blank=True)
+    status = models.CharField(max_length=20, null=True, blank=True)
     wysylka = models.ForeignKey(Wysylka, null=True, db_column='wysylka', blank=True)
     class Meta:
 		verbose_name='Zamowienie'
 		db_table = u'zamowienia'
 		verbose_name_plural = 'Zamowienia'
 		ordering = ('idzamowienia',)
+		
+    def __unicode__(self):
+        return unicode(self.idzamowienia)
 
 class OpisyZamowien(models.Model):
-    idzamowienia = models.ForeignKey(Zamowienia, unique=True, db_column='idzamowienia')
-    idtowaru = models.ForeignKey(Towary, unique=True, db_column='idtowaru')
+    ident = models.BigIntegerField(primary_key=True, null=True, blank=True)
+    idzamowienia1 = models.ForeignKey(Zamowienia, db_column='idzamowienia1', null=True, blank=True)
+    idtowaru = models.ForeignKey(Towary, db_column='idtowaru', null=True, blank=True)
     ilosc = models.BigIntegerField()
     class Meta:
 		verbose_name='Opis zamowienia'
 		db_table = u'opisy_zamowien'
 		verbose_name_plural = 'Opisy zamowien'
-		ordering = ('idzamowienia','idtowaru',)
+		ordering = ('idzamowienia1','idtowaru',)
 
 class Ksiegowosc(models.Model):
     idtransakcji = models.BigIntegerField(primary_key=True)
