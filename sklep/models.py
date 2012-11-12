@@ -16,8 +16,8 @@ from django.db.models.signals import post_save
 from django.contrib.localflavor.pl.forms import PLPostalCodeField
 
 class Klienci(models.Model):
-    nik = models.BigIntegerField(primary_key=True)
-    nip = models.CharField(max_length=15, unique=True, blank=True)
+    nik = models.BigIntegerField(primary_key=True, null=True, blank=True)
+    nip = models.CharField(max_length=15, unique=True, blank=True, null=True)
     nazwa_firmy = models.CharField(max_length=50, blank=True)
     nazwisko = models.CharField(max_length=30, blank=True)
     imie = models.CharField(max_length=30, blank=True)
@@ -27,7 +27,7 @@ class Klienci(models.Model):
     kod_pocztowy = models.CharField(max_length=6)
     poczta = models.CharField(max_length=30)
     telefon = models.CharField(max_length=13, blank=True)
-    login = models.ForeignKey(User, unique=True, max_length=20)
+    login = models.ForeignKey(User, unique=True, max_length=20, null=True, blank=True)
     class Meta:
 		verbose_name='Klient'
 		db_table = u'klienci'

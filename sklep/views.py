@@ -62,8 +62,7 @@ def manage_articles(request):
 def koszykobsluga(request):
     koszyk = request.session.get('koszyk', [])
     produkty = list(Towary.objects.filter(pk__in=koszyk))
-    liczba = Towary.objects.filter(pk__in=koszyk).count()
-    #print liczba	
+    liczba = Towary.objects.filter(pk__in=koszyk).count()	
     zmienna=0
     OpisyZamowienFormSet = formset_factory(OpisyZamowienForm, extra = liczba)
 	
@@ -71,14 +70,10 @@ def koszykobsluga(request):
 	klient = Klienci.objects.get(login=request.user.pk)
 	pracownik = Pracownicy.objects.get(nazwisko='Sklep internetowy')
 	
-    #klient = get_object_or_404(Klienci, login=id)
         form = ZamowieniaForm(request.POST) # A form bound to the POST data
-        #forA = formset_factory(OpisyZamowienForm, extra = 3)
         formset = OpisyZamowienFormSet(request.POST, request.FILES)# , initial=[{'ident': u'Article #1', 'idzamowienia1': u'Article #2','idtowaru': u'Article #3','ilosc': u'Article #4'},]
-        #forA = OpisyZamowienForm(request.POST)
         if form.is_valid() and formset.is_valid(): # All validation rules pass
             zam=Zamowienia.objects.all().order_by('idzamowienia').reverse()[0]
-            #zam=Zamowienia.objects.aggregate(Max('idzamowienia'))
             wynik=zam.idzamowienia
             new_zamowienia = form.save(commit=False)
             new_zamowienia.idzamowienia = wynik+1
@@ -86,17 +81,13 @@ def koszykobsluga(request):
             new_zamowienia.np = pracownik
             new_zamowienia.data_zamowienia = date.today()
             new_zamowienia.status = 'Niezrealizowane'
-            #new_zamowienia.wysylka = form.status
             new_zamowienia.save()
             for forA in formset:
-                #print zmienna
                 wartosc= produkty.__getitem__(zmienna)
                 new_opis = forA.save(commit=False)
                 new_opis.ident = -1
                 new_opis.idzamowienia1 = new_zamowienia
                 new_opis.idtowaru = wartosc
-                #new_opis.ilosc = forA.ilosc['k']
-                #new_opis.ilosc = forA.ilosc
                 zmienna+=1
                 new_opis.save()
             del request.session['koszyk']
@@ -104,15 +95,15 @@ def koszykobsluga(request):
             return HttpResponseRedirect(reverse('koszykobsluga'))
             #return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:
-        form = ZamowieniaForm()		# An unbound form
+        form = ZamowieniaForm()		
         formset = OpisyZamowienFormSet()
 		
     if koszyk:
         kontekst = {'koszyk': produkty, 'form': form, 'formset': formset}
     else:
         kontekst = {'koszyk': []}
-    #return render_to_response('sklep/koszykobsluga.html',kontekst, context_instance=RequestContext(request))	
-    return direct_to_template(request, 'sklep/koszykobsluga.html', extra_context = kontekst)
+    return render_to_response('sklep/koszykobsluga.html',kontekst, context_instance=RequestContext(request))	
+    #return direct_to_template(request, 'sklep/koszykobsluga.html', extra_context = kontekst)
 	
 def dodaj_klienta(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -198,30 +189,15 @@ def strona_glowna(request):
     
     return direct_to_template(request, 'sklep/glowna.html', extra_context = kontekst)
 	
-#def strona_kontakt(request):
-#    koszyk = request.session.get('koszyk', [])
-#    #if koszyk:
-#    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
-#    #else:
-#    kontekst = {'koszyk': []}
-#    
-#    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
 def strona_kontakt(request):
-    produkty = Towary.objects.get(name="Pingwiny")
-    if request.method == 'POST': # If the form has been submitted...
-        form = TowarForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            # Process the data in form.cleaned_data
-            # ...
-            return HttpResponseRedirect('/') # Redirect after POST
-    else:
-        form = TowarForm(instance=produkty) # An unbound form
+    koszyk = request.session.get('koszyk', [])
+    #if koszyk:
+    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+    #else:
+    kontekst = {'koszyk': []}
+    
+    return direct_to_template(request, 'sklep/kontakt.html', extra_context = kontekst)
 
-    return TemplateResponse(request, 'sklep/kontakt.html', {'form': form})
-	
-    #return render(request, 'sklep/towary_list.html', {
-    #    'form': form,
-    #})
 	
 def koszyk(request):
     koszyk = request.session.get('koszyk', [])
@@ -269,7 +245,7 @@ def produkty_z_kategorii(request, id_kategorii):
     return object_list(
         request,
         queryset=Towary.objects.filter(kategoria=kategoria1).select_related('kategoria'),
-        paginate_by=1,
+        paginate_by=3,
         extra_context={'kategoria1': kategoria1}
     )
 	
@@ -283,6 +259,7 @@ def register(request):
             password=request.POST['password1'])
             login(request, new_user)
             new_klienci = formB.save(commit=False)
+            new_klienci.nik = -1
             new_klienci.login = new_user
             new_klienci.save()
             return HttpResponseRedirect("/sklep/")

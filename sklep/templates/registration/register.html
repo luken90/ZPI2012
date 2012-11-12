@@ -1,4 +1,6 @@
-﻿{% extends "base.html" %}
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+{% extends "base.html" %}
 {% load kategorie_sidebar %}
 {% block side_box %}
 <div id="sidebox">
@@ -8,6 +10,10 @@
 {% endblock %}
 {% block main_box %}
   <h1>Stwórz konto</h1>
+  
+<input type="radio" name="group2" id="r1" value="Water"> Firma
+<input type="radio" name="group2" id="r2" value="Beer" checked> Osoba prywatna<br>
+
   
 {% if form.errors %}
         <p class="error">Popraw błędy:</p>
@@ -27,8 +33,8 @@
 	{{ formB.non_field_errors }}
 	<table>
 		<tr>
-			<td>{{ formB.nik.label_tag }}</td>
-			<td>{{ formB.nik }}</td>
+			<td></td>
+			<td><input type="hidden" name="nik" id="id_nik" value=""></td>
 			<td>{{ formB.nik.errors }}</td>
 		</tr>
 		<tr>
@@ -37,17 +43,17 @@
 			<td>{{ formB.nip.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ formB.nazwa_firmy.label_tag }}</td>
+			<td><label id="nazwa_firmy" for="id_nazwa_firmy">Nazwa firmy</label></td>
 			<td>{{ formB.nazwa_firmy }}</td>
 			<td>{{ formB.nazwa_firmy.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ formB.nazwisko.label_tag }}</td>
+			<td><label id="nazwisko" for="id_nazwisko">Nazwisko</label></td>
 			<td>{{ formB.nazwisko }}</td>
 			<td>{{ formB.nazwisko.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ formB.imie.label_tag }}</td>
+			<td><label id="imie" for="id_imie">Imię</label></td>
 			<td>{{ formB.imie }}</td>
 			<td>{{ formB.imie.errors }}</td>
 		</tr>
@@ -82,8 +88,8 @@
 			<td>{{ formB.telefon.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ formB.login.label_tag }}</td>
-			<td>{{ formB.login}}</td>
+			<td></td>
+			<td><input type="hidden" name="login" id="id_login" value=""></td>
 			<td>{{ formB.login.errors }}</td>
 		</tr>
 	</table>
@@ -93,4 +99,45 @@
         <input type="submit" value="Wyślij">
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
+	
+	<script>
+	$("input[name=group2]").change(function () {
+	if ($("#r1").attr("checked")) {
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+        }
+        else {
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+			$("#imie").show();
+        }
+                    });
+</script>
+	<script>
+	$(document).ready(function() {
+	if ($("#r1").prop("checked", true)) {
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+        }
+        else {
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+			$("#imie").show();
+        }
+                    });
+</script>
 {% endblock %}

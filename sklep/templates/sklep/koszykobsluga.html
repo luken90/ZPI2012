@@ -105,7 +105,7 @@
 													<br>
 													<br>
 													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} <a href=""><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
+													<td class="style1">{% for object in koszyk %} <a href="{% url 'sklep_koszyk_usun' object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
 													<br>
 													{% endfor %}</td>
 									</tr>
@@ -116,9 +116,16 @@
 		<h4>Razem: </h4> 
 <div id="razem"></div>
 
+	                    {% if user.is_authenticated %}
+						
+						
+						<input type="submit" value="Wyślij">
+						<input type="hidden" name="next" value="{{ next }}" />
+						{% else %}
+						<INPUT TYPE="BUTTON" VALUE="Zaloguj" ONCLICK="window.location.href='/sklep/logowanie/'"> 
+						
+						{% endif %}
 
-        <input type="submit" value="Wyślij">
-		<input type="hidden" name="next" value="{{ next }}" />
     </form>
 
 <script>
