@@ -30,7 +30,7 @@
 <p class="error">Niepoprawne dane lub hasło</p>
 {% endif %}-->
 
-    <h1>Koszyk obsluga</h1>
+    <h1>Koszyk</h1>
 	
 {% if koszyk %}
 
@@ -40,13 +40,10 @@
 	{{ form.non_field_errors }}
 	<table>
 		<tr>
-		    <td>{{ form.idzamowienia.label_tag }}</td>
-			<td>{{ form.idzamowienia }}</td>
-			<td>{{ form.idzamowienia.errors }}</td>
-			<!--<td></td>
+			<td></td>
 			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value="175"></td>
 			<td>{{ form.idzamowienia.errors }}</td>
-		--></tr>
+		</tr>
 		<tr>		
 			<td></td>
 			<td><input type="hidden" name="nik" id="id_nik" value=""></td>
@@ -75,30 +72,6 @@
 			<td>{{ form.wysylka.errors }}</td>
 		</tr>
 		
-<!--		<tr>
-			<td></td>
-			<td><input type="hidden" name="ident" id="ident" value=""></td>
-			<td>{{ form.ident.errors }}</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="hidden" name="idzamowienia1" id="idzamowienia1" value=""></td>
-			<td>{{ form.idzamowienia1.errors }}</td>
-		</tr>
-		{% for object in koszyk %}
-		<tr>
-			<td>{{ forA.idtowaru.label_tag }}</td>
-			<td><input type="text" name="idtowaru" id="idtowaru[{{ object.pk }}]" value="{{ object.pk }}" readonly="readonly"></td>
-			<td>{{ forA.idtowaru.errors }}</td>
-			
-			<!--<td><form><input type="text" name="ilosc-1[{{ object.pk }}]" id="ilosc-1[{{ object.pk }}]" value="{{ object.cena|floatformat:"2" }}" readonly="readonly"/></form></td>
-			--><!--</tr>
-		<tr>
-			<td>{{ forA.ilosc.label_tag }}</td>
-			<td><input type="text" name="ilosc" id="ilosc[{{ object.pk }}]" value="1"></td>
-			<td>{{ forA.ilosc.errors }}</td>
-		</tr>
-		{% endfor %}-->
 	</table>
 	{{ formset.management_form }}
 	
@@ -123,12 +96,12 @@
 													<td class="style1">{% for form in formset %}{{ form.ident.as_hidden }}{{ form.idzamowienia1.as_hidden }}{{ form.idtowaru.as_hidden }}{{ form.ilosc }}<br>
 													<br>
 													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}
+													<td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}<input type="hidden" name="form-1[{{ forloop.counter0}}" id="form-1[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
 
 													<br>
 													<br>
 													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ object.pk }}]" id="wynik-[{{ object.pk }}]" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
+													<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ forloop.counter0 }}" id="wynik-[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
 													<br>
 													<br>
 													{% endfor %}</td>
@@ -140,12 +113,47 @@
 					<br>
 					<br>
 	
-	
+		<h4>Razem: </h4> 
+<div id="razem"></div>
 
 
         <input type="submit" value="Wyślij">
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
+
+<script>
+    $('input[name|="form"]').change( function() {
+  index =  $(this).attr('name').substr(5);
+  index1 = index.substr(0, index.indexOf("-"));
+  //alert(index1);
+  val = (parseFloat($('input[name="form-1[' + index1 +'"]').val().replace(",","."), 10) || 0).toFixed(2)* (parseFloat($('input[name="form-' + index1 + '-ilosc"]').val(), 10) || 0);
+  $('input[name="wynik-[' + index1 + '"]').val(val.toFixed(2));
+ });
+</script>
+
+<script>
+$('input[name|="form"]').change( function(){
+   suma=0;
+ $('input[name|="wynik"]').each(function(index) {
+  (suma+=parseFloat($(this).val(),10) || 0);
+  //alert(index + ': ' + $(this).val());
+ });
+ $('div#razem').text(suma.toFixed(2));
+});
+</script> 
+
+<script>
+$(document).ready(function() {
+     suma=0;
+ $('input[name|="wynik"]').each(function(index) {
+  (suma+=parseFloat($(this).val().replace(",","."),10) || 0);
+  //alert(index + ': ' + $(this).val());
+ });
+ $('div#razem').text(suma.toFixed(2));
+});
+</script>
+
+
 
 {% else %}
     <p>Koszyk jest pusty!</p>

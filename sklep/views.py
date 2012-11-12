@@ -85,7 +85,7 @@ def koszykobsluga(request):
             new_zamowienia.nik = klient
             new_zamowienia.np = pracownik
             new_zamowienia.data_zamowienia = date.today()
-            new_zamowienia.status = 'Niezrealizowana'
+            new_zamowienia.status = 'Niezrealizowane'
             #new_zamowienia.wysylka = form.status
             new_zamowienia.save()
             for forA in formset:
