@@ -30,6 +30,11 @@ TIME_ZONE = 'Europe/Warsaw'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pl'
 
+LANGUAGES = (
+  ('pl', ('Polski')),
+  ('en', ('English')),
+)
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -102,6 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -182,3 +188,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 EMAIL_PORT = 1025
 EMAIL_SKLEPU = 'luken90@wp.pl'
 LOGIN_REDIRECT_URL = 'http://cytrynowypatrol.no-ip.org:8000/sklep/koszyk/'
+LOGIN_URL = 'http://cytrynowypatrol.no-ip.org:8000/sklep/logowanie/'

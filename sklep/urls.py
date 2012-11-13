@@ -1,6 +1,7 @@
 ﻿from django.conf.urls.defaults import *
 from sklep.models import Towary, Klienci
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import password_reset
 
 urlpatterns = patterns('',
     url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.all().select_related('kategorie'), 'paginate_by': 3}, "sklep_produkty"),
@@ -16,6 +17,14 @@ urlpatterns = patterns('',
     url(r'^koszyk/usun/(\d+)/$', 'sklep.views.koszyk_usun', name="sklep_koszyk_usun"),
     url(r'^produkty/(\d+)/$', 'sklep.views.produkty_z_kategorii', name="sklep_kategoria"),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/sklep/'} ),
+    url(r'^password/reset/$', 'sklep.views.password_reset', {'template_name': 'registration/password_reset_form1.html','post_reset_redirect' : '/sklep/password/reset/done/'}),
+    url(r'^password/reset/done/$', 'sklep.views.password_reset_done', {'template_name': 'registration/password_reset_done1.html'}),
+    #url(r'^accounts/password/reset/$', 'django.contrib.auth.views.password_reset', {'post_reset_redirect' : '/accounts/password/reset/done/'}),
+    #url(r'^accounts/password/reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+    url(r'^password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name': 'registration/password_reset_confirm1.html','post_reset_redirect' : '/sklep/password/done/'}),
+    url(r'^password/done/$', 'django.contrib.auth.views.password_reset_complete',{'template_name': 'registration/password_reset_complete1.html'}),
+    #url(r'^account/', include('django.contrib.auth.urls')),
+    url(r'^setlang/(?P<lang_code>.*)/$', 'sklep.views.set_language'),
     url(r'', 'sklep.views.strona_glowna', name="sklep_glowna"),
 
     )

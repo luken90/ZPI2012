@@ -21,15 +21,7 @@
   
   <form action="" method="post">{% csrf_token %}
       <table>{{ formA.as_table }}</table>
-	  <!--<label for="first_name">Imię:</label>
-	  <input type="text" name="first_name" value="" id="first_name">
-	  <label for="last_name">Nazwisko:</label>
-      <input type="text" name="last_name" value="" id="last_name">
-	  <label for="email">E-mail:</label>-->
-      <!--<input type="submit" value="Zatwierdź">
-  </form>
-  
-   <form action="." name="klienci" method="post" >{% csrf_token %}-->
+
 	{{ formB.non_field_errors }}
 	<table>
 		<tr>
@@ -104,14 +96,17 @@
 	$("input[name=group2]").change(function () {
 	if ($("#r1").attr("checked")) {
             $("#id_nazwisko").hide();
+			//$("#id_nazwisko").val("");
 			$("#imie").hide();
 			$("#nazwisko").hide();
 			$("#id_imie").hide();
+			//$("#id_imie").val("");
 			$("#id_nazwa_firmy").show();
 			$("#nazwa_firmy").show();
         }
         else {
             $("#id_nazwa_firmy").hide();
+			//$("#id_nazwa_firmy").val("");
 			$("#nazwa_firmy").hide();
 			$("#id_nazwisko").show();
 			$("#nazwisko").show();

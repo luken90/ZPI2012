@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-13 17:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: sklep/templates/sklep/koszyk.html:30
+msgid "Koszyk"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:34
+msgid "Nazwa"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:34
+msgid "Cena"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:34
+msgid "Ilość"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:34
+msgid "Razem"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:34
+msgid "Usuń"
+msgstr ""
+
+#: sklep/templates/sklep/koszyk.html:46
+msgid "Razem: "
+msgstr ""
+
+#: templates/base.html:26
+#, python-format
+msgid "Witaj, %(user.username)s "
+msgstr ""
+
+#: templates/base.html:31
+msgid "Wyloguj sie"
+msgstr ""
+
+#: templates/base.html:34
+msgid "Zmień dane"
+msgstr ""
+
+#: templates/base.html:40
+msgid "Jesteś niezalogowany"
+msgstr ""
+
+#: templates/base.html:44
+msgid "Zaloguj"
+msgstr ""
+
+#: templates/base.html:45
+msgid "Rejestracja"
+msgstr ""
+
+#: templates/base.html:50
+msgid "A"
+msgstr ""
+
+#: templates/base.html:50
+msgid "RTYKUŁY BIUROWE"
+msgstr ""
+
+#: templates/base.html:51
+msgid "Sklep internetowy"
+msgstr ""
+
+#: templates/base.html:53
+msgid "Strona Główna"
+msgstr ""
+
+#: templates/base.html:54
+msgid "Produkty"
+msgstr ""
+
+#: templates/base.html:55
+#, python-format
+msgid "Koszyk (%(stan_koszyka)s) "
+msgstr ""
+
+#: templates/base.html:56
+msgid "Kontakt"
+msgstr ""
