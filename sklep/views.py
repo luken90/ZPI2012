@@ -15,7 +15,7 @@ from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, Opi
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
-from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm
+from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm, UserCreateForm
 from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
@@ -416,7 +416,7 @@ def produkty_z_kategorii(request, id_kategorii):
 	
 def register(request):
     if request.method == 'POST':
-        formA = UserCreationForm(request.POST)
+        formA = UserCreateForm(request.POST)
         formB = KlienciForm(request.POST)
         if formA.is_valid() and formB.is_valid():
             new_user = formA.save()
@@ -427,9 +427,10 @@ def register(request):
             new_klienci.nik = -1
             new_klienci.login = new_user
             new_klienci.save()
+			
             return HttpResponseRedirect("/sklep/")
     else:
-        formA = UserCreationForm()
+        formA = UserCreateForm()
         formB = KlienciForm()
 	
     return render_to_response("registration/register.html", {

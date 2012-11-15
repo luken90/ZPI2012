@@ -15,7 +15,7 @@
 <input type="radio" name="group2" id="r2" value="Beer" checked> Osoba prywatna<br>
 
   
-{% if form.errors %}
+{% if formA.errors or formB.errors %}
         <p class="error">Popraw błędy:</p>
     {% endif %}
   

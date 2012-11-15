@@ -5,6 +5,22 @@ from django import forms
 from django.contrib.localflavor.pl.forms import PLPostalCodeField
 
 from sklep.models import Towary, Klienci, Stanowiska, Zamowienia, OpisyZamowien
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+ 
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")
+ 
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user
 
 
 class ZamowienieForm(forms.Form):
@@ -32,25 +48,19 @@ class TowarForm(forms.Form):
 	zdjecie = forms.CharField(max_length=1000)
 	kategoria = forms.CharField(max_length=10, required=True)
 	
-#class KlienciForm(forms.Form):
-    
-#	nik = forms.CharField(max_length=255, required=True)
-#	nip = forms.CharField(max_length=255, required=True)
-#	nazwa_firmy = forms.CharField(max_length=255, required=True)
-#	nazwisko= forms.CharField(max_length=255, required=True)
-#	imie = forms.CharField(max_length=255, required=True)
-#	miasto = forms.CharField(max_length=255, required=True)
-#	ulica = forms.CharField(max_length=1000)
-#	numer = forms.CharField(max_length=1000)
-#	kod_pocztowy = forms.CharField(max_length=255, required=True)
-#	poczta = forms.CharField(max_length=255, required=True)
-#	telefon = forms.CharField(max_length=255, required=True)
-#	login = forms.CharField(max_length=255, required=True)
-	
-class KlienciForm(forms.ModelForm):
-	class Meta:
-		model = Klienci
 
+		
+class KlienciForm(forms.ModelForm):
+    class Meta:
+        model = Klienci
+
+    def clean_nip(self):
+        nip = self.cleaned_data.get('nip')
+        if not nip:
+            nip = None
+        return nip
+
+		
 class StanowiskaForm(forms.ModelForm):
     class Meta:
         model = Stanowiska	

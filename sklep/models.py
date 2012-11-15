@@ -17,7 +17,7 @@ from django.contrib.localflavor.pl.forms import PLPostalCodeField
 
 class Klienci(models.Model):
     nik = models.BigIntegerField(primary_key=True, null=True, blank=True)
-    nip = models.CharField(max_length=15, unique=True, blank=True, null=True)
+    nip = models.CharField(max_length=11, unique=True, blank=True, null=True)
     nazwa_firmy = models.CharField(max_length=50, blank=True)
     nazwisko = models.CharField(max_length=30, blank=True)
     imie = models.CharField(max_length=30, blank=True)
@@ -52,7 +52,7 @@ class Stanowiska(models.Model):
 class Dostawcy(models.Model):
     nid = models.BigIntegerField(primary_key=True)
     regon = models.BigIntegerField(unique=True, null=True, blank=True)
-    nip = models.CharField(max_length=15, unique=True)
+    nip = models.CharField(max_length=11, unique=True)
     nazwa_dostawcy = models.CharField(max_length=30)
     miasto = models.CharField(max_length=30)
     ulica = models.CharField(max_length=40, blank=True)
@@ -75,7 +75,7 @@ class Pracownicy(models.Model):
     nazwisko = models.CharField(max_length=30)
     imie = models.CharField(max_length=30)
     pesel = models.CharField(max_length=15, unique=True)
-    nip = models.CharField(max_length=15, unique=True)
+    nip = models.CharField(max_length=11, unique=True)
     miasto = models.CharField(max_length=30)
     ulica = models.CharField(max_length=40, blank=True)
     numer = models.CharField(max_length=7)
@@ -216,6 +216,4 @@ class Ksiegowosc(models.Model):
 		db_table = u'ksiegowosc'
 		verbose_name_plural = 'Ksiegowosc'
 		ordering = ('idtransakcji',)
-
-
 
