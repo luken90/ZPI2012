@@ -1,4 +1,4 @@
-{% load i18n %}
+﻿{% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>{% trans "ZPI" %}</title>
@@ -23,15 +23,15 @@
 <form id="form" runat=server>
 <div class="external">
  <a> {% if request.user.is_authenticated %}
-						<a class="style6">{% blocktrans %}Witaj, {{ user.username }} {% endblocktrans %}</a>
+						<a class="style6">{% blocktrans with name=user.username context "greeting" %}Witaj, {{ name }}{% endblocktrans %}</a>
 						<!--<
 						a href="/sklep/accounts/logout/">   Wyloguj sie</a>
 						-->
 						
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
-						<!--<INPUT TYPE="BUTTON" VALUE="Zmień dane" ONCLICK="window.location.href='/sklep/klient/'">
+						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
+						<!--<INPUT TYPE="BUTTON" VALUE="ZmieĹ„ dane" ONCLICK="window.location.href='/sklep/klient/'">
 						-->
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
+						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
 						<!--
 						<INPUT TYPE="BUTTON" VALUE="Obsluga" ONCLICK="window.location.href='/sklep/index/'">-->
 					
@@ -41,9 +41,10 @@
 						<form method="post" action="/accounts/login/" accept-charset="">{%csrf_token%}
 						<input type="hidden" name="next" value="{{ NEXT }}" />
 						</form>
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Rejestracja"%}' ONCLICK="window.location.href='/sklep/rejestracja/'">
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Zapomniales hasla"%}' ONCLICK="window.location.href='/sklep/password/reset/'">
+						
+						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
+						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Rejestracja"%}' ONCLICK="window.location.href='/sklep/rejestracja/'">
+						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Zapomniales hasła"%}' ONCLICK="window.location.href='/sklep/password/reset/'">
 						
 						{% endif %} </a>
 						
@@ -59,16 +60,17 @@
   </div>
 
   <div id="main">
+  <br>
     <table style="width: 100%">
 					<tr>
-									<td style="width: 230px; vertical-align: top; text-align: center; background-color: #C0C0C0;" class="style6">{% block side_box %}{% endblock %} </td>
+									<td style="width: 190px; height:50px; vertical-align: top; text-align: center; background-color: #C0C0C0;" class="style6">{% block side_box %}{% endblock %} </td>
 									<td style="width: 30px">&nbsp;</td>
 									<td><div class="style5">
 {% block main_box %}{% endblock %} </div>
   </div></td>
 					</tr>
 					<tr>
-									<td style="width: 230px; background-color: #C0C0C0;">&nbsp;</td>
+									<td style="width: 190px; height:25px background-color: #C0C0C0;">&nbsp;</td>
 									<td style="width: 30px">&nbsp;</td>
 									<td>{% block main_class %}{% endblock %}</td>
 					</tr>
@@ -78,9 +80,12 @@
     
 </div>
 <div id="footer">				<ul class="language_holder"> 
-				{% for lang in LANGUAGES %} 
-				<a href="/sklep/setlang/{{ lang.0 }}/">{{ lang.1 }}</a>&nbsp;&nbsp; 
-				{% endfor %} 
+				<a href="/sklep/setlang/pl/"> 
+				<img src="/files/Pictures/polski.jpg"></a>
+				 
+				<a href="/sklep/setlang/en/"> 
+				<img src="/files/Pictures/english.jpg"></a>
+
 				</ul> 
                                     <br />
     </td>

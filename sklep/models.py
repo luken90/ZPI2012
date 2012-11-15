@@ -37,6 +37,7 @@ class Klienci(models.Model):
     def __unicode__(self):
         return self.nazwisko
 
+
 class Stanowiska(models.Model):
     identyfikator = models.BigIntegerField(primary_key=True)
     stanowisko = models.CharField(max_length=50, unique=True)

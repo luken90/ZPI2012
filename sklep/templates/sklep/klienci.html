@@ -89,8 +89,12 @@
 			<td><input type="hidden" name="login" id="login" value="{{user.pk}}"></td>
 			<td>{{ form.login.errors }}</td>
 		</tr>
+		<tr>
+			<td>{{ forms.email.label_tag }}</td>
+			<td>{{ forms.email }}</td>
+			<td>{{ forms.email.errors }}</td>
+		</tr>
 	</table>
-      <!--{{ form.as_p }}-->
 
 
         <input type="submit" value="Wyślij">

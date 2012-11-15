@@ -15,7 +15,7 @@ from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, Opi
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
-from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm, UserCreateForm
+from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm, UserCreateForm, UserInfoForm
 from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
@@ -299,8 +299,10 @@ def zmien_klienta(request, id):
     klient = get_object_or_404(Klienci, login=id)
     #klient = Klienci.object.get(login=id)
     if request.method == 'POST': # If the form has been submitted...
-        form = KlienciForm(request.POST or None, instance=klient) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
+        form = KlienciForm(request.POST or None, instance=klient) 
+        forms = UserInfoForm(request.POST or None, instance=request.user)
+        #forms = UserCreateForm(request.POST or None, instance=request.user)# A form bound to the POST data
+        if form.is_valid() and forms.is_valid(): # All validation rules pass
             new_klienci = form.save(commit=False)
             #new_klienci.nik = form.nik
             #new_klienci.nip = form.nip
@@ -315,11 +317,15 @@ def zmien_klienta(request, id):
             #new_klienci.telefon = form.telefon
             new_klienci.login = request.user
             new_klienci.save()
+            #new_user = form.save(commit=False)
+            forms.save()
             return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:
-        form = KlienciForm(instance=klient) # An unbound form
+        form = KlienciForm(instance=klient)
+        forms = UserInfoForm(instance=request.user)
+        #forms = UserCreateForm(instance=request.user)		# An unbound form
 
-    return render_to_response('sklep/klienci.html',{'form': form,}, context_instance=RequestContext(request))
+    return render_to_response('sklep/klienci.html',{'form': form, 'forms':forms}, context_instance=RequestContext(request))
 
 def logowanie1(request):
     koszyk = request.session.get('koszyk', [])

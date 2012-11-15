@@ -21,6 +21,12 @@ class UserCreateForm(UserCreationForm):
         if commit:
             user.save()
         return user
+		
+class UserInfoForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+    class Meta:
+        model = User
+        fields = ('email',)
 
 
 class ZamowienieForm(forms.Form):
@@ -48,7 +54,32 @@ class TowarForm(forms.Form):
 	zdjecie = forms.CharField(max_length=1000)
 	kategoria = forms.CharField(max_length=10, required=True)
 	
-
+#class KlienciForm(forms.Form):
+    
+#	nik = forms.CharField(max_length=255, required=True)
+#	nip = forms.CharField(max_length=255, required=True)
+#	nazwa_firmy = forms.CharField(max_length=255, required=True)
+#	nazwisko= forms.CharField(max_length=255, required=True)
+#	imie = forms.CharField(max_length=255, required=True)
+#	miasto = forms.CharField(max_length=255, required=True)
+#	ulica = forms.CharField(max_length=1000)
+#	numer = forms.CharField(max_length=1000)
+#	kod_pocztowy = forms.CharField(max_length=255, required=True)
+#	poczta = forms.CharField(max_length=255, required=True)
+#	telefon = forms.CharField(max_length=255, required=True)
+#	login = forms.CharField(max_length=255, required=True)
+	
+#class KlienciForm(forms.ModelForm):
+#	class Meta:
+#		model = Klienci
+    
+    		
+#    def save(self, commit=True):
+#        user = super(KlienciForm, self).save(commit=False)
+#        user.nip = self.cleaned_data['nip']
+#        if user.nip == '':
+#            user.nip = None
+#        return user
 		
 class KlienciForm(forms.ModelForm):
     class Meta:
