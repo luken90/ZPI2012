@@ -8,11 +8,12 @@
 </head>
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% load url from future %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
@@ -22,7 +23,7 @@
 <p class="error">Niepoprawne dane lub hasło</p>
 {% endif %}-->
 
-    <h1>Menage</h1>
+    <h1>{% trans "Zarządaj" %}</h1>
 
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 <form method="post" name="opiszamowienia" action=".">{% csrf_token %}

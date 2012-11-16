@@ -4,18 +4,19 @@
 </head>
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% load url from future %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
 {% block main_box %}
 
 {% if form.errors %}
-<p class="error">Niepoprawne dane lub hasło</p>
+<p class="error">{% trans "Niepoprawne dane lub hasło" %}</p>
 {% endif %}
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
@@ -31,7 +32,7 @@
 </tr>
 </table>
 
-<input type="submit" value="Zaloguj" />
+<input type="submit" value='{% trans "Zaloguj"%}' />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 

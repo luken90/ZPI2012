@@ -299,7 +299,7 @@ def zmien_klienta(request, id):
     klient = get_object_or_404(Klienci, login=id)
     #klient = Klienci.object.get(login=id)
     if request.method == 'POST': # If the form has been submitted...
-        form = KlienciForm(request.POST or None, instance=klient) 
+        form = KlForm(request.POST or None, instance=klient) 
         forms = UserInfoForm(request.POST or None, instance=request.user)
         #forms = UserCreateForm(request.POST or None, instance=request.user)# A form bound to the POST data
         if form.is_valid() and forms.is_valid(): # All validation rules pass
@@ -321,7 +321,7 @@ def zmien_klienta(request, id):
             forms.save()
             return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:
-        form = KlienciForm(instance=klient)
+        form = KlForm(instance=klient)
         forms = UserInfoForm(instance=request.user)
         #forms = UserCreateForm(instance=request.user)		# An unbound form
 

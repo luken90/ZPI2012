@@ -16,11 +16,12 @@
 </head>
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% load url from future %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
@@ -30,7 +31,7 @@
 <p class="error">Niepoprawne dane lub hasło</p>
 {% endif %}-->
 
-    <h1>Koszyk</h1>
+    <h1>{% trans "Koszyk" %}</h1>
 	
 {% if koszyk %}
 
@@ -81,11 +82,11 @@
         			<br>
 					<table style="width: 100%; float: left" align="left">
 									<tr>
-													<td class="style1">		<strong>Nazwa</strong></td>
-													<td class="style1"><strong>Ilość</strong></td>
-													<td class="style1"><strong>Cena</strong></td>
-													<td class="style1"><strong>Razem</strong></td>
-													<td class="style1"><strong>Usuń</strong></td>
+													<td class="style1">		<strong>{% trans "Nazwa" %}</strong></td>
+													<td class="style1"><strong>{% trans "Ilość" %}</strong></td>
+													<td class="style1"><strong>{% trans "Cena" %}</strong></td>
+													<td class="style1"><strong>{% trans "Razem" %}</strong></td>
+													<td class="style1"><strong>{% trans "Usuń" %}</strong></td>
 									</tr>
 									<tr>
 													<td class="style1">		{% for object in koszyk %}
@@ -113,16 +114,16 @@
 					<br>
 					<br>
 	
-		<h4>Razem: </h4> 
+		<h4>{% trans "Razem: " %}</h4> 
 <div id="razem"></div>
 
 	                    {% if user.is_authenticated %}
 						
 						
-						<input type="submit" value="Wyślij">
+						<input type="submit" value='{% trans "Wyślij"%}'>
 						<input type="hidden" name="next" value="{{ next }}" />
 						{% else %}
-						<INPUT TYPE="BUTTON" VALUE="Zaloguj" ONCLICK="window.location.href='/sklep/logowanie/'"> 
+						<INPUT TYPE="BUTTON" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
 						
 						{% endif %}
 
@@ -163,6 +164,6 @@ $(document).ready(function() {
 
 
 {% else %}
-    <p>Koszyk jest pusty!</p>
+    <p>{% trans "Koszyk jest pusty!" %}</p>
 {% endif %}
 {% endblock %}

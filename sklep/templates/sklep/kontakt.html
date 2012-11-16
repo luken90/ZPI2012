@@ -1,18 +1,20 @@
-﻿{% extends "base.html" %}
+﻿
+{% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 
 {% block main_box %}
-<h2>Kontakt</h2>
-<p>Dane firmy: ZPI 2012 Sp. z o.o.</p>
-<p>Adres: Wrocław, ul. Politechnicka 1</p>
-<p>Telefon: (11) 111-11-11</p>
-<p>nr konta: PL 11 1111 1111 1111 1111 1111 1111</p>
+<h2>{% trans "Kontakt" %}</h2>
+<p>{% trans "Dane firmy: ZPI 2012 Sp. z o.o." %}</p>
+<p>{% trans "Adres: Wrocław, ul. Politechnicka 1" %}</p>
+<p>{% trans "Telefon: (11) 111-11-11" %}</p>
+<p>{% trans "nr konta: PL 11 1111 1111 1111 1111 1111 1111" %}</p>
 
 {% endblock %}
 
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}

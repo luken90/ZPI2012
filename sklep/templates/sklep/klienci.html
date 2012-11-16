@@ -8,11 +8,12 @@
 </head>
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% load url from future %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
@@ -22,7 +23,7 @@
 <p class="error">Niepoprawne dane lub hasło</p>
 {% endif %}-->
 
-    <h1>Twój profil</h1>
+    <h1>{% trans "Twój profil" %}</h1>
 
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 
@@ -30,9 +31,9 @@
 	{{ form.non_field_errors }}
 	<table>
 		<tr>
-			<td>{{ form.nik.label_tag }}</td>
-			<td>{{ form.nik }}</td>
-			<td>{{ form.nik.errors }}</td>
+			<td>{{ form.nik.label_tag.as_hidden }}</td>
+			<td>{{ form.nik.as_hidden }}</td>
+			<td>{{ form.nik.errors.as_hidden }}</td>
 		</tr>
 		<tr>
 			<td>{{ form.nip.label_tag }}</td>
@@ -97,9 +98,34 @@
 	</table>
 
 
-        <input type="submit" value="Wyślij">
+        <input id="target" type="submit" value='{% trans "Wyślij"%}'>
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
 
+<script>
+$("#target").click(function() {
+  if ($('#id_nip').val() == ''){
+  $("#id_nip").val(" ")}
+});
 
+</script>
+<script>
+$(document).ready(function() {
+//$('#id_nik').attr("disabled",true); 
+if ($('#id_nip').val() != " "){
+    var wartosc = $("#id_nip").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  parseInt(wartosc.substr(1));
+    if (index1 == " "){
+		$("#id_nip").val(index2)
+    }
+    else{
+		$("#id_nip").val(wartosc)
+   }
+}
+else{
+$("#id_nip").val("")
+}
+});
+</script>
 {% endblock %}

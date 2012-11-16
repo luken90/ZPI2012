@@ -8,21 +8,22 @@
 </head>
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% load url from future %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie" %}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
 {% block main_box %}
 <form><input type="text" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 {% if form.errors %}
-<p class="error">Niepoprawne dane lub hasło</p>
+<p class="error">{% trans "Niepoprawne dane lub hasło" %}</p>
 {% endif %}
 
-    <h1>Dodaj stanowisko</h1>
+    <h1>{% trans "Dodaj stanowisko" %}</h1>
 
 
 
@@ -30,14 +31,14 @@
     {% csrf_token %}
 
         <label>
-            <div>identyfikator</div> <input type="text" name="identyfikator" id="identyfikator" value="{{identyfikator}}">
+            <div>{% trans "identyfikator" %}</div> <input type="text" name="identyfikator" id="identyfikator" value="{{identyfikator}}">
         </label>
         <label>
-            <div>stanowisko</div> <input type="text" name="stanowisko" id="stanowisko" value="{{stanowisko}}">
+            <div>{% trans "stanowisko" %}</div> <input type="text" name="stanowisko" id="stanowisko" value="{{stanowisko}}">
         </label>
 
         <div class="error">{{error}}</div>
-        <input type="submit" value="Wyślij">
+        <input type="submit" value='{% trans "Wyślij"%}'>
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
 

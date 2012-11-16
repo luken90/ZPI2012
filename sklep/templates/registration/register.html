@@ -1,22 +1,24 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load kategorie_sidebar %}
 {% block side_box %}
 <div id="sidebox">
-    <h3><center>Kategorie</center></h3>
+    <h3><center>{% trans "Kategorie"%}</center></h3>
     {% kategorie_sidebar %}
 </div>
 {% endblock %}
 {% block main_box %}
-  <h1>Stwórz konto</h1>
+  <h1>{% trans "Stwórz konto"%}</h1>
   
-<input type="radio" name="group2" id="r1" value="Water"> Firma
-<input type="radio" name="group2" id="r2" value="Beer" checked> Osoba prywatna<br>
+<input type="radio" name="group2" id="r1" value="Water"> {% trans "Firma"%}
+<input type="radio" name="group2" id="r2" value="Beer" checked> {% trans "Osoba prywatna"%}<br>
 
   
 {% if formA.errors or formB.errors %}
-        <p class="error">Popraw błędy:</p>
+        <p class="error">{% trans "Popraw błędy"%}</p>
     {% endif %}
   
   <form action="" method="post">{% csrf_token %}
@@ -54,17 +56,17 @@
 			<td>{{ formB.nip.errors }}</td>
 		</tr>
 		<tr>
-			<td><label id="nazwa_firmy" for="id_nazwa_firmy">Nazwa firmy</label></td>
+			<td><label id="nazwa_firmy" for="id_nazwa_firmy">{% trans "Nazwa firmy"%}</label></td>
 			<td>{{ formB.nazwa_firmy }}</td>
 			<td>{{ formB.nazwa_firmy.errors }}</td>
 		</tr>
 		<tr>
-			<td><label id="nazwisko" for="id_nazwisko">Nazwisko</label></td>
+			<td><label id="nazwisko" for="id_nazwisko">{% trans "Nazwisko"%}</label></td>
 			<td>{{ formB.nazwisko }}</td>
 			<td>{{ formB.nazwisko.errors }}</td>
 		</tr>
 		<tr>
-			<td><label id="imie" for="id_imie">Imię</label></td>
+			<td><label id="imie" for="id_imie">{% trans "Imię"%}</label></td>
 			<td>{{ formB.imie }}</td>
 			<td>{{ formB.imie.errors }}</td>
 		</tr>
@@ -109,7 +111,7 @@
       <!--{{ form.as_p }}-->
 
 
-        <input id="target" type="submit" value="Wyślij">
+        <input id="target" type="submit" value='{% trans "Wyślij"%}'>
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
 <script>
