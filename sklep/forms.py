@@ -90,6 +90,19 @@ class KlienciForm(forms.ModelForm):
         if not nip:
             nip = None
         return nip
+		
+class KlForm(forms.ModelForm):
+    kod_pocztowy = forms.RegexField(regex =r'^\d{2}-\d{3}$',error_message = ("Podaj kod w postaci XX-XXX"))
+    nip = forms.RegexField(regex =r'^\d{10}$|^\d{11}$|\s$',error_message = ("Podaj kod z 10 lub 11 cyfr"))
+    class Meta:
+        model = Klienci
+		
+    def clean_nip(self):
+        nip = self.cleaned_data.get('nip')
+        if not nip or nip == " ":
+            nip = None
+        return nip
+
 
 		
 class StanowiskaForm(forms.ModelForm):

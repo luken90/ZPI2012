@@ -109,25 +109,49 @@
       <!--{{ form.as_p }}-->
 
 
-        <input type="submit" value="Wyślij">
+        <input id="target" type="submit" value="Wyślij">
 		<input type="hidden" name="next" value="{{ next }}" />
     </form>
-	
+<script>
+$("#target").click(function() {
+  if ($('#id_nip').val() == ''){
+  $("#id_nip").val(" ")}
+});
+
+</script>
+<script>
+$(document).ready(function() {
+if ($('#id_nip').val() != " "){
+    var wartosc = $("#id_nip").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  parseInt(wartosc.substr(1));
+    if (index1 == " "){
+		$("#id_nip").val(index2)
+    }
+    else{
+		$("#id_nip").val(wartosc)
+   }
+}
+else{
+$("#id_nip").val("")
+}
+});
+</script>
 	<script>
 	$("input[name=group2]").change(function () {
 	if ($("#r1").attr("checked")) {
             $("#id_nazwisko").hide();
-			//$("#id_nazwisko").val("");
+			$("#id_nazwisko").val("");
 			$("#imie").hide();
 			$("#nazwisko").hide();
 			$("#id_imie").hide();
-			//$("#id_imie").val("");
+			$("#id_imie").val("");
 			$("#id_nazwa_firmy").show();
 			$("#nazwa_firmy").show();
         }
         else {
             $("#id_nazwa_firmy").hide();
-			//$("#id_nazwa_firmy").val("");
+			$("#id_nazwa_firmy").val("");
 			$("#nazwa_firmy").hide();
 			$("#id_nazwisko").show();
 			$("#nazwisko").show();
