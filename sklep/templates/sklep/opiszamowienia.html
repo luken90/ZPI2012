@@ -31,17 +31,17 @@
 	{{ forms.non_field_errors }}
 	<table>
 		<tr>
-			<td>{{ forms.idzamowienia1.label_tag }}</td>
+			<td><label id="idzamowienia1" for="id_idzamowienia1">{% trans "Zamówienie"%}</label></td>
 			<td>{{ forms.idzamowienia1 }}</td>
 			<td>{{ forms.idzamowienia1.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ forms.idtowaru.label_tag }}</td>
+			<td><label id="idtowaru" for="id_idtowaru">{% trans "Towar"%}</label></td>
 			<td>{{ forms.idtowaru }}</td>
 			<td>{{ forms.idtowaru.errors }}</td>
 		</tr>
 		<tr>
-			<td>{{ forms.ilosc.label_tag }}</td>
+			<td><label id="ilosc" for="id_ilosc">{% trans "Ilość"%}</label></td>
 			<td>{{ forms.ilosc }}</td>
 			<td>{{ forms.ilosc.errors }}</td>
 		</tr>

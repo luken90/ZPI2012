@@ -31,10 +31,10 @@
 								<td class="style1"><h4 class="style1">{{ object.nazwa_towaru }}</h4>
         						<div class="style1">
         {{ object.opis|linebreaks }} </div>
-		<p class="style1">{% blocktrans %}Kategoria: ({ object.kategoria }} {% endblocktrans %}</p>
-        <p class="style1">{% blocktrans %}Ilość w sklepie: {{ object.ilosc_w_sklepie|floatformat:"2" }} {% endblocktrans %}</p>
+		<p class="style1">{% trans "Kategorie:" %} {{ object.kategoria }} </p>
+        <p class="style1">{% trans "Ilość w sklepie:" %} {{ object.ilosc_w_sklepie|floatformat:"2" }}</p>
 	 <!--<p>Minimum: {{ object.minimum_towar|floatformat:"2" }} </p>-->
-	 <p class="style1">{% blocktrans %}Cena: {{ object.cena_sklepowa|floatformat:"2" }} zł  {% endblocktrans %}- <a href="{% url sklep_koszyk_dodaj object.pk %}">{% trans "Dodaj do koszyka" %}</a></p>
+	 <p class="style1">{% trans "Cena:" %} {{ object.cena_sklepowa|floatformat:"2" }} zł  - <a href="{% url sklep_koszyk_dodaj object.pk %}">{% trans "Dodaj do koszyka" %}</a></p>
     							</td>
 				</tr>
 				<tr>

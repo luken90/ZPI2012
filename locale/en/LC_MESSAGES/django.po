@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 19:47+0100\n"
+"POT-Creation-Date: 2012-11-17 18:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,16 @@ msgstr ""
 #: sklep/templates/registration/login.html:35
 #: sklep/templates/registration/password_reset_complete1.html:19
 #: sklep/templates/sklep/koszyk.html:88
-#: sklep/templates/sklep/koszykobsluga.html:126 templates/base.html:45
+#: sklep/templates/sklep/koszykobsluga.html:126 templates/base.html:58
 msgid "Zaloguj"
+msgstr ""
+
+#: sklep/templates/registration/login.html:39 templates/base.html:59
+msgid "Rejestracja"
+msgstr ""
+
+#: sklep/templates/registration/login.html:40
+msgid "Zapomniales hasła"
 msgstr ""
 
 #: sklep/templates/registration/password_reset_complete1.html:18
@@ -126,15 +134,48 @@ msgid "Popraw błędy"
 msgstr ""
 
 #: sklep/templates/registration/register.html:59
+#: sklep/templates/sklep/klienci.html:44
 msgid "Nazwa firmy"
 msgstr ""
 
 #: sklep/templates/registration/register.html:64
+#: sklep/templates/sklep/klienci.html:49
 msgid "Nazwisko"
 msgstr ""
 
 #: sklep/templates/registration/register.html:69
+#: sklep/templates/sklep/klienci.html:54
 msgid "Imię"
+msgstr ""
+
+#: sklep/templates/registration/register.html:74
+#: sklep/templates/sklep/klienci.html:59
+msgid "Miasto"
+msgstr ""
+
+#: sklep/templates/registration/register.html:79
+#: sklep/templates/sklep/klienci.html:64
+msgid "Ulica"
+msgstr ""
+
+#: sklep/templates/registration/register.html:84
+#: sklep/templates/sklep/klienci.html:69
+msgid "Numer"
+msgstr ""
+
+#: sklep/templates/registration/register.html:89
+#: sklep/templates/sklep/klienci.html:74
+msgid "Kod pocztowy"
+msgstr ""
+
+#: sklep/templates/registration/register.html:94
+#: sklep/templates/sklep/klienci.html:79
+msgid "Poczta"
+msgstr ""
+
+#: sklep/templates/registration/register.html:99
+#: sklep/templates/sklep/klienci.html:84
+msgid "Telefon"
 msgstr ""
 
 #: sklep/templates/registration/register.html:114
@@ -142,7 +183,7 @@ msgstr ""
 #: sklep/templates/sklep/koszykobsluga.html:123
 #: sklep/templates/sklep/opiszamowienia.html:51
 msgid "Wyślij"
-msgstr ""
+msgstr "Send"
 
 #: sklep/templates/sklep/glowna.html:7
 msgid "Witaj na stronie głównej"
@@ -164,7 +205,7 @@ msgstr ""
 msgid "Twój profil"
 msgstr ""
 
-#: sklep/templates/sklep/kontakt.html:7 templates/base.html:58
+#: sklep/templates/sklep/kontakt.html:7 templates/base.html:80
 msgid "Kontakt"
 msgstr ""
 
@@ -201,6 +242,7 @@ msgstr ""
 
 #: sklep/templates/sklep/koszyk.html:35
 #: sklep/templates/sklep/koszykobsluga.html:86
+#: sklep/templates/sklep/opiszamowienia.html:44
 msgid "Ilość"
 msgstr ""
 
@@ -228,6 +270,10 @@ msgstr ""
 msgid "Koszyk jest pusty!"
 msgstr ""
 
+#: sklep/templates/sklep/koszykobsluga.html:71
+msgid "Wysylka"
+msgstr ""
+
 #: sklep/templates/sklep/manage_articles.html:26
 msgid "Zarządaj"
 msgstr ""
@@ -236,7 +282,15 @@ msgstr ""
 msgid "Opis"
 msgstr ""
 
-#: sklep/templates/sklep/towary_list.html:24 templates/base.html:56
+#: sklep/templates/sklep/opiszamowienia.html:34
+msgid "Zamówienie"
+msgstr ""
+
+#: sklep/templates/sklep/opiszamowienia.html:39
+msgid "Towar"
+msgstr ""
+
+#: sklep/templates/sklep/towary_list.html:24 templates/base.html:78
 msgid "Produkty"
 msgstr ""
 
@@ -245,17 +299,15 @@ msgid "z kategorii"
 msgstr ""
 
 #: sklep/templates/sklep/towary_list.html:34
-msgid "Kategoria: ({ object.kategoria }} "
+msgid "Kategorie:"
 msgstr ""
 
 #: sklep/templates/sklep/towary_list.html:35
-#, python-format
-msgid "Ilość w sklepie: %(object.ilosc_w_sklepie|floatformat:\"2\")s "
+msgid "Ilość w sklepie:"
 msgstr ""
 
 #: sklep/templates/sklep/towary_list.html:37
-#, python-format
-msgid "Cena: %(object.cena_sklepowa|floatformat:\"2\")s zł  "
+msgid "Cena:"
 msgstr ""
 
 #: sklep/templates/sklep/towary_list.html:37
@@ -286,49 +338,41 @@ msgstr ""
 msgid "ZPI"
 msgstr ""
 
-#: templates/base.html:26
+#: templates/base.html:39
 #, python-format
 msgctxt "greeting"
 msgid "Witaj, %(name)s"
 msgstr ""
 
-#: templates/base.html:31
+#: templates/base.html:44
 msgid "Wyloguj sie"
 msgstr ""
 
-#: templates/base.html:34
+#: templates/base.html:47
 msgid "Zmień dane"
 msgstr ""
 
-#: templates/base.html:40
+#: templates/base.html:53
 msgid "Jesteś niezalogowany"
 msgstr ""
 
-#: templates/base.html:46
-msgid "Rejestracja"
-msgstr ""
-
-#: templates/base.html:47
-msgid "Zapomniales hasła"
-msgstr ""
-
-#: templates/base.html:52
+#: templates/base.html:74
 msgid "A"
 msgstr ""
 
-#: templates/base.html:52
+#: templates/base.html:74
 msgid "RTYKUŁY BIUROWE"
 msgstr ""
 
-#: templates/base.html:53
+#: templates/base.html:75
 msgid "Sklep internetowy"
 msgstr ""
 
-#: templates/base.html:55
+#: templates/base.html:77
 msgid "Strona Główna"
 msgstr ""
 
-#: templates/base.html:57
+#: templates/base.html:79
 #, python-format
 msgid "Koszyk (%(stan_koszyka)s) "
 msgstr ""
