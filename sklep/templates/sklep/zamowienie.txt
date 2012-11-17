@@ -1,13 +1,24 @@
 ﻿Zamówienie:
-{% for produkt in produkty %}
-  {{ produkt.nazwa}} - {{ produkt.cena|floatformat:"2" }}zł
+========
+{% for pro in formset %}
+  {{ pro.idtowaru}} - {{ pro.ilosc }} sztuk
 {% endfor %}
+Razem: {{suma}} zł
+Wysyłka: {{dane.wysylka}}
 
+========
 Dane do wysyłki:
-Email: {{ dane.email }}
-Imię i nazwisko: {{ dane.imie_nazwisko }}
-Adres: {{ dane.adres }}
-Kod pocztowy: {{ dane.kod_pocztowy }}
-Miasto: {{ dane.miasto }}
-Uwagi:
-{{ dane.uwagi }}
+Email: {{ ema.email }}
+Imię i nazwisko: {{ klient.nazwisko }} {{ klient.imie }} {{ klient.nazwa_firmy }} 
+Adres: {{ klient.miasto }}, {{ klient.ulica }} {{ klient.numer }}
+Kod pocztowy: {{ klient.kod_pocztowy }}
+
+Dokonaj wpłaty w kwocie: {{suma1}} zł na numer konta: 
+Dane firmy: ZPI 2012 Sp. z o.o.
+Adres: Wrocław, ul. Politechnicka 1
+Telefon: (11) 111-11-11
+nr konta: PL 11 1111 1111 1111 1111 1111 1111
+
+w tytule podaj: "Zamówienie numer: {{dane.idzamowienia}}"
+
+Dziękujemy za zakup. Sklep cytrynowypatrol;)

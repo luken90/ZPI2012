@@ -11,12 +11,13 @@ from django.core.mail import send_mail
 from django.template import Context, loader
 from datetime import date
 from django.conf import settings
-from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, OpisyZamowien, Pracownicy
+from sklep.models import Towary, Kategorie, Klienci, Stanowiska, Zamowienia, OpisyZamowien, Pracownicy, Wysylka
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from sklep.forms import ZamowienieForm, TowarForm, KlienciForm, StanowiskaForm, ZamowieniaForm, OpisyZamowienForm, UserCreateForm, UserInfoForm, KlForm
 from django.views.generic.list_detail import object_list
+from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.core.urlresolvers import reverse
 from django.contrib.auth import REDIRECT_FIELD_NAME, authenticate, login, logout
@@ -105,14 +106,33 @@ def koszykobsluga(request):
             new_zamowienia.data_zamowienia = date.today()
             new_zamowienia.status = 'Niezrealizowane'
             new_zamowienia.save()
+            suma=0;
             for forA in formset:
                 wartosc= produkty.__getitem__(zmienna)
                 new_opis = forA.save(commit=False)
                 new_opis.ident = -1
                 new_opis.idzamowienia1 = new_zamowienia
                 new_opis.idtowaru = wartosc
+                #new_opis.ilosc = forA.ilosc
                 zmienna+=1
                 new_opis.save()
+                opisek = OpisyZamowien.objects.all().order_by('ident').reverse()[0]
+                towarek = Towary.objects.get(idtowaru=opisek.idtowaru.idtowaru)
+                suma+=opisek.ilosc*towarek.cena_sklepowa
+            #dane = formset.cleaned_data
+            zam1=Zamowienia.objects.all().order_by('idzamowienia').reverse()[0]
+            dane = Zamowienia.objects.get(idzamowienia=zam1.idzamowienia)
+            wysyleczka = Wysylka.objects.get(identyfikator=dane.wysylka.identyfikator)
+            suma1=0
+            suma1=suma+wysyleczka.cena
+
+            ema = User.objects.get(id=klient.login_id)
+            formset = list(OpisyZamowien.objects.filter(idzamowienia1=zam1.idzamowienia))
+            tresc = loader.get_template('sklep/zamowienie.txt').render(Context({'produkty': produkty, 'klient':klient, 'dane':dane, 'ema':ema,'formset':formset,'suma':suma,'suma1':suma1}))
+            tresc1 = loader.get_template('sklep/zamowieniesprzedawca.txt').render(Context({'produkty': produkty, 'klient':klient, 'dane':dane, 'ema':ema,'formset':formset,'suma':suma,'suma1':suma1}))
+            send_mail('Potwierdzenie zakupu', tresc, settings.EMAIL_SKLEPU, [request.user.email])
+            send_mail(u'Zamowienie', tresc1, request.user.email, [settings.EMAIL_SKLEPU])
+
             del request.session['koszyk']
             
             return HttpResponseRedirect(reverse('koszykobsluga'))

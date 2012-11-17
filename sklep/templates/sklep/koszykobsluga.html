@@ -187,7 +187,7 @@ $('input[name|="form"]').change( function(){
 <script>
 $(document).ready(function() {
 $('input[name="cena"]').val(0);
-
+$('input[name$="-ilosc"]').val(1);
      suma=0;
  $('input[name|="wynik"]').each(function(index) {
   (suma+=parseFloat($(this).val().replace(",","."),10) || 0);

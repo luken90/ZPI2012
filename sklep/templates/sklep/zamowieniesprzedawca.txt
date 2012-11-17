@@ -1,0 +1,14 @@
+﻿Zamówienie numer: {{dane.idzamowienia}}
+Zamówienie:
+========
+{% for pro in formset %}
+  {{ pro.idtowaru}} - {{ pro.ilosc }} sztuk
+{% endfor %}
+Wysyłka: {{dane.wysylka}}
+Wartość zamówienia: {{suma1}}zł
+========
+Dane do wysyłki:
+Email: {{ ema.email }}
+Imię i nazwisko: {{ klient.nazwisko }} {{ klient.imie }} {{ klient.nazwa_firmy }} 
+Adres: {{ klient.miasto }}, {{ klient.ulica }} {{ klient.numer }}
+Kod pocztowy: {{ klient.kod_pocztowy }}

@@ -190,6 +190,6 @@ EMAIL_HOST_PASSWORD = 'johnywalker'
 EMAIL_HOST_USER ='cytrynowypatrol@gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_SKLEPU = 'luken90@wp.pl'
+EMAIL_SKLEPU = 'cytrynowypatrol@gmail.com'
 LOGIN_REDIRECT_URL = 'http://cytrynowypatrol.no-ip.org:8000/sklep/koszyk/'
 LOGIN_URL = 'http://cytrynowypatrol.no-ip.org:8000/sklep/logowanie/'
