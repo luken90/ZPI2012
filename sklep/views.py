@@ -431,6 +431,11 @@ def koszyk_usun(request, id_produktu):
     request.session['koszyk'] = koszyk
     return HttpResponseRedirect(reverse('koszykobsluga'))
 	
+def koszyk_usunwszystko(request):
+    koszyk = request.session.get('koszyk', [])
+    del request.session['koszyk']
+    return HttpResponseRedirect(reverse('koszykobsluga'))
+	
 def produkty_z_kategorii(request, id_kategorii):
     kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
     return object_list(

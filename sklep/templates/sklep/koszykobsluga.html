@@ -34,7 +34,7 @@
     <h1>{% trans "Koszyk" %}</h1>
 	
 {% if koszyk %}
-
+<INPUT TYPE="BUTTON" VALUE='{% trans "Usuń wszystko"%}' ONCLICK="window.location.href='/sklep/koszyk/usun/'">
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 <form><input type="hidden" name="cena" id="cena" readonly="readonly"/></form>
     <form action="." name="zamowienia" method="post" >{% csrf_token %}

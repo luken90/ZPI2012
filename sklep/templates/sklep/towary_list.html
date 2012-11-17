@@ -32,7 +32,8 @@
         						<div class="style1">
         {{ object.opis|linebreaks }} </div>
 		<p class="style1">{% trans "Kategorie:" %} {{ object.kategoria }} </p>
-        <p class="style1">{% trans "Ilość w sklepie:" %} {{ object.ilosc_w_sklepie|floatformat:"2" }}</p>
+         <!--<p class="style1">{% trans "Ilość w sklepie:" %} {{ object.ilosc_w_sklepie }}</p>-->
+		<p class="style1">{% if object.ilosc_w_sklepie > object.minimum_towar %}{% trans "Wysyłka w ciągu 24 godzin" %} {% else %} {% trans "Wysyłka w ciągu 7 dni" %} {% endif %} </p>
 	 <!--<p>Minimum: {{ object.minimum_towar|floatformat:"2" }} </p>-->
 	 <p class="style1">{% trans "Cena:" %} {{ object.cena_sklepowa|floatformat:"2" }} zł  - <a href="{% url sklep_koszyk_dodaj object.pk %}">{% trans "Dodaj do koszyka" %}</a></p>
     							</td>
