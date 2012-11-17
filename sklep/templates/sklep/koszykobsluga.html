@@ -36,13 +36,13 @@
 {% if koszyk %}
 
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
-
+<form><input type="hidden" name="cena" id="cena" readonly="readonly"/></form>
     <form action="." name="zamowienia" method="post" >{% csrf_token %}
 	{{ form.non_field_errors }}
 	<table>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value="175"></td>
+			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value=""></td>
 			<td>{{ form.idzamowienia.errors }}</td>
 		</tr>
 		<tr>		
@@ -130,6 +130,37 @@
     </form>
 
 <script>
+    $("select").change( function() {
+	var str = "";
+	$("select option:selected").each(function () {
+                str = $(this).text();
+				str1 = str.substr(0, (str.length-3))
+				//str2 = str1.substr(str1.indexOf(" "));
+				str2=str1.substr(str1.indexOf(":"))
+				str3=str2.substr(2)
+				a = parseFloat(str3,10);
+				//alert(str3);
+				$('input[name="cena"]').val(a.toFixed(2));
+              });
+	});
+		
+</script>
+
+<script>
+$("select").change( function(){
+   //suma=0;
+   tal = (parseFloat($('input[name="cena"]').val(), 10) || 0);
+   //alert(tal);
+   suma=(parseFloat($('input[name="cena"]').val(), 10) || 0);
+ $('input[name|="wynik"]').each(function(index) {
+  (suma+=parseFloat($(this).val(),10) || 0);
+  //alert(index + ': ' + $(this).val());
+ });
+ $('div#razem').text(suma.toFixed(2));
+});
+</script> 
+
+<script>
     $('input[name|="form"]').change( function() {
   index =  $(this).attr('name').substr(5);
   index1 = index.substr(0, index.indexOf("-"));
@@ -141,7 +172,10 @@
 
 <script>
 $('input[name|="form"]').change( function(){
-   suma=0;
+   //suma=0;
+   tal = (parseFloat($('input[name="cena"]').val(), 10) || 0);
+   //alert(tal);
+   suma=(parseFloat($('input[name="cena"]').val(), 10) || 0);
  $('input[name|="wynik"]').each(function(index) {
   (suma+=parseFloat($(this).val(),10) || 0);
   //alert(index + ': ' + $(this).val());
@@ -152,6 +186,8 @@ $('input[name|="form"]').change( function(){
 
 <script>
 $(document).ready(function() {
+$('input[name="cena"]').val(0);
+
      suma=0;
  $('input[name|="wynik"]').each(function(index) {
   (suma+=parseFloat($(this).val().replace(",","."),10) || 0);

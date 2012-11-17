@@ -177,7 +177,7 @@ class Wysylka(models.Model):
 		ordering = ('identyfikator',)
 
     def __unicode__(self):
-        return self.rodzaj+ ' - ' + unicode(self.cena) + ' zl'
+        return self.rodzaj+ ' : ' + unicode(self.cena) + ' zl'
 		
 class Zamowienia(models.Model):
     idzamowienia = models.BigIntegerField(primary_key=True, null=True, blank=True)
@@ -185,7 +185,7 @@ class Zamowienia(models.Model):
     np = models.ForeignKey(Pracownicy, null=True, db_column='np', blank=True)
     data_zamowienia = models.DateField(blank=True)
     status = models.CharField(max_length=20, null=True, blank=True)
-    wysylka = models.ForeignKey(Wysylka, null=True, db_column='wysylka', blank=True)
+    wysylka = models.ForeignKey(Wysylka, db_column='wysylka')
     class Meta:
 		verbose_name='Zamowienie'
 		db_table = u'zamowienia'
