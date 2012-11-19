@@ -1,0 +1,1 @@
+{{ object.nazwa_towaru }}

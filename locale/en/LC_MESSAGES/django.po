@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-17 23:34+0100\n"
+"POT-Creation-Date: 2012-11-19 23:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,9 +27,9 @@ msgstr ""
 #: sklep/templates/registration/password_reset_done1.html:12
 #: sklep/templates/registration/password_reset_form1.html:12
 #: sklep/templates/registration/register.html:9
-#: sklep/templates/sklep/glowna.html:13 sklep/templates/sklep/index.html:16
-#: sklep/templates/sklep/klienci.html:16 sklep/templates/sklep/kontakt.html:17
-#: sklep/templates/sklep/koszyk.html:24
+#: sklep/templates/search/search.html:12 sklep/templates/sklep/glowna.html:13
+#: sklep/templates/sklep/index.html:16 sklep/templates/sklep/klienci.html:16
+#: sklep/templates/sklep/kontakt.html:17 sklep/templates/sklep/koszyk.html:24
 #: sklep/templates/sklep/koszykobsluga.html:24
 #: sklep/templates/sklep/manage_articles.html:16
 #: sklep/templates/sklep/opiszamowienia.html:16
@@ -185,6 +185,39 @@ msgstr ""
 msgid "Wyślij"
 msgstr "Send"
 
+#: sklep/templates/search/search.html:28
+msgid "Szukaj"
+msgstr ""
+
+#: sklep/templates/search/search.html:30
+msgid "Wynik"
+msgstr ""
+
+#: sklep/templates/search/search.html:41
+#: sklep/templates/sklep/towary_list.html:34
+msgid "Kategorie:"
+msgstr ""
+
+#: sklep/templates/search/search.html:42
+#: sklep/templates/sklep/towary_list.html:36
+msgid "Wysyłka w ciągu 24 godzin"
+msgstr ""
+
+#: sklep/templates/search/search.html:42
+#: sklep/templates/sklep/towary_list.html:36
+msgid "Wysyłka w ciągu 7 dni"
+msgstr ""
+
+#: sklep/templates/search/search.html:44
+#: sklep/templates/sklep/towary_list.html:38
+msgid "Cena:"
+msgstr ""
+
+#: sklep/templates/search/search.html:44
+#: sklep/templates/sklep/towary_list.html:38
+msgid "Dodaj do koszyka"
+msgstr ""
+
 #: sklep/templates/sklep/glowna.html:7
 msgid "Witaj na stronie głównej"
 msgstr ""
@@ -302,28 +335,8 @@ msgstr ""
 msgid "z kategorii"
 msgstr ""
 
-#: sklep/templates/sklep/towary_list.html:34
-msgid "Kategorie:"
-msgstr ""
-
 #: sklep/templates/sklep/towary_list.html:35
 msgid "Ilość w sklepie:"
-msgstr ""
-
-#: sklep/templates/sklep/towary_list.html:36
-msgid "Wysyłka w ciągu 24 godzin"
-msgstr ""
-
-#: sklep/templates/sklep/towary_list.html:36
-msgid "Wysyłka w ciągu 7 dni"
-msgstr ""
-
-#: sklep/templates/sklep/towary_list.html:38
-msgid "Cena:"
-msgstr ""
-
-#: sklep/templates/sklep/towary_list.html:38
-msgid "Dodaj do koszyka"
 msgstr ""
 
 #: sklep/templates/sklep/towary_list.html:51

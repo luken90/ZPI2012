@@ -20,6 +20,11 @@ DATABASES = {
     }
 }
 
+
+HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = '/strona/mysite/sklep_index'
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -137,8 +142,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-	'sklep',
-	'gunicorn'
+    'sklep',
+    'gunicorn',
+    'haystack',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -185,6 +191,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'sklep.context_processors.klient'
 
 )
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = 'johnywalker'
 EMAIL_HOST_USER ='cytrynowypatrol@gmail.com'

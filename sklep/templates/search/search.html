@@ -1,0 +1,68 @@
+﻿
+<head>
+
+</head>
+
+{% extends "base.html" %}
+{% load i18n %}
+{% load kategorie_sidebar %}
+{% load url from future %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>{% trans "Kategorie"%}</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+{% block main_box %}
+
+<h2>Szukaj</h2>
+<form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
+    <form method="get" action=".">
+        <table>
+                
+            <tr>
+                                <td colspan="2">
+                                <input type="text" id="id_q" name="q" value="{{ query|default_if_none:"" }}" />&nbsp;&nbsp;&nbsp;
+                    			<br>
+								<br>
+                    <input type="submit" value='{% trans "Szukaj"%}'> <br>
+        {% if query %}
+            <h2>{% trans "Wynik" %}</h2>
+
+            
+                </td>
+            </tr>
+            {% for result in page.object_list %}
+            <tr>
+			<td style="width: 200px" class="style1">
+		<img src="{{ result.object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: inherit"/></td><td class="style1"><h4 class="style1">{{ result.object.nazwa_towaru }}</h4>
+        						<div class="style1">
+        {{ result.object.opis|linebreaks }} </div>
+		<p class="style1">{% trans "Kategorie:" %} {{ result.object.kategoria }} </p>
+		<p class="style1">{% if result.object.ilosc_w_sklepie > result.object.minimum_towar %}{% trans "Wysyłka w ciągu 24 godzin" %} {% else %} {% trans "Wysyłka w ciągu 7 dni" %} {% endif %} </p>
+	 <!--<p>Minimum: {{ object.minimum_towar|floatformat:"2" }} </p>-->
+	 <p class="style1">{% trans "Cena:" %} {{ result.object.cena_sklepowa|floatformat:"2" }} zł - <a href="{% url 'sklep_koszyk_dodaj' result.object.pk %}">{% trans "Dodaj do koszyka" %}</a></p></td>
+            </tr>
+            {% empty %}
+            <td></td>
+                <td>No results found.</td>
+            {% endfor %}
+            </table>
+		
+
+
+
+                
+            
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}    </form>
+{% endblock %}
