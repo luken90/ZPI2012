@@ -177,7 +177,9 @@ $("#id_nip").val("")
 </script>
 	<script>
 	$(document).ready(function() {
-	if ($("#r1").prop("checked", true)) {
+	if ($("#id_nazwa_firmy").val()!=""){
+	$("#r1").attr('checked', true);}
+	if ($("#r1").prop("checked")) {
             $("#id_nazwisko").hide();
 			$("#imie").hide();
 			$("#nazwisko").hide();
