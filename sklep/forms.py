@@ -94,6 +94,15 @@ class KlienciForm(forms.ModelForm):
 class KlForm(forms.ModelForm):
     kod_pocztowy = forms.RegexField(regex =r'^\d{2}-\d{3}$',error_message = ("Podaj kod w postaci XX-XXX"))
     nip = forms.RegexField(regex =r'^\d{10}$|^\d{11}$|\s$',error_message = ("Podaj kod z 10 lub 11 cyfr"))
+    #imie = forms.RegexField(regex =r'^[A-Z£¯a-z³¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s[A-Z£¯][a-z¹æê³ñóœŸ¿]*){1,30}$',error_message = ("Tylko litery"))
+    #nazwisko = forms.RegexField(regex =r'^[A-Z¥ÆÊ£ÑÓŒ¯a-z¹æê³ñóœŸ¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s*-*[A-Z¥ÆÊ£ÑÓŒ¯][a-z¹æê³ñóœŸ¿]){1,30}$',error_message = ("Tylko litery"))
+    #miasto = forms.RegexField(regex =r'^[A-Z¥ÆÊ£ÑÓŒ¯a-z¹æê³ñóœŸ¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s*-*[A-Z¥ÆÊ£ÑÓŒ¯][a-z¹æê³ñóœŸ¿]){1,30}$',error_message = ("Tylko litery"))
+    #poczta = forms.RegexField(regex =r'^[A-Z¥ÆÊ£ÑÓŒ¯a-z¹æê³ñóœŸ¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s*-*[A-Z¥ÆÊ£ÑÓŒ¯][a-z¹æê³ñóœŸ¿]){1,30}$',error_message = ("Tylko litery"))
+    
+	
+	#"[A-Z£¯a-z³¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s[A-Z£¯][a-z¹æê³ñóœŸ¿]*){1,30}";
+	#"[A-Z¥ÆÊ£ÑÓŒ¯a-z¹æê³ñóœŸ¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s*-*[A-Z¥ÆÊ£ÑÓŒ¯][a-z¹æê³ñóœŸ¿]){1,30}"
+	#"[A-Z¥ÆÊ£ÑÓŒ¯a-z¹æê³ñóœŸ¿]{1}([a-z¹æê³ñóœŸ¿]+|\\s*-*[A-Z¥ÆÊ£ÑÓŒ¯][a-z¹æê³ñóœŸ¿]){1,30}";
     class Meta:
         model = Klienci
 		
@@ -102,6 +111,24 @@ class KlForm(forms.ModelForm):
         if not nip or nip == " ":
             nip = None
         return nip
+		
+ #   def clean_nazwa_firmy(self):
+ #       nazwa_firmy = self.cleaned_data.get('nazwa_firmy')
+ #       if not nazwa_firmy or nazwa_firmy == " ":
+ #           nazwa_firmy = None
+ #       return nazwa_firmy
+		
+ #   def clean_imie(self):
+ #       imie = self.cleaned_data.get('imie')
+ #       if not imie or imie == " ":
+ #           imie = None
+ #       return imie
+		
+ #   def clean_nazwisko(self):
+ #       nazwisko = self.cleaned_data.get('nazwisko')
+ #       if not nazwisko or nazwisko == " ":
+ #           nazwisko = None
+ #       return nazwisko
 
 
 		

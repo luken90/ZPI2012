@@ -18,9 +18,9 @@ from django.contrib.localflavor.pl.forms import PLPostalCodeField
 class Klienci(models.Model):
     nik = models.BigIntegerField(primary_key=True, null=True, blank=True)
     nip = models.CharField(max_length=11, unique=True, blank=True, null=True)
-    nazwa_firmy = models.CharField(max_length=50, blank=True)
-    nazwisko = models.CharField(max_length=30, blank=True)
-    imie = models.CharField(max_length=30, blank=True)
+    nazwa_firmy = models.CharField(max_length=50)
+    nazwisko = models.CharField(max_length=30)
+    imie = models.CharField(max_length=30)
     miasto = models.CharField(max_length=30)
     ulica = models.CharField(max_length=40, blank=True)
     numer = models.CharField(max_length=7)
