@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import password_reset
 
 urlpatterns = patterns('',
-    url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.all().select_related('kategorie'), 'paginate_by': 3}, "sklep_produkty"),
+    url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.all().select_related('kategorie'), 'paginate_by': 8}, "sklep_produkty"),
     url(r'^kontakt/$', 'sklep.views.strona_kontakt', name="sklep_kontakt"),
     url(r'^index/$', 'sklep.views.koszyk', name="sklep_koszyk"),
     url(r'^menage/$', 'sklep.views.manage_articles', name="sklep_manage_articles"),

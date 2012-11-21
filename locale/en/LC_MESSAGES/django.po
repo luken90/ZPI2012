@@ -192,11 +192,11 @@ msgstr "Send"
 
 #: sklep/templates/search/search.html:28
 msgid "Szukaj"
-msgstr ""
+msgstr "Search"
 
 #: sklep/templates/search/search.html:30
 msgid "Wynik"
-msgstr ""
+msgstr "Result"
 
 #: sklep/templates/search/search.html:41
 #: sklep/templates/sklep/towary_list.html:34
@@ -225,7 +225,7 @@ msgstr "Add to basket"
 
 #: sklep/templates/search/search.html:48
 msgid "Nic nie znaleziono"
-msgstr ""
+msgstr "Product not found"
 
 #: sklep/templates/sklep/glowna.html:7
 msgid "Witaj na stronie głównej"
@@ -396,7 +396,7 @@ msgstr "O"
 
 #: templates/base.html:71
 msgid "RTYKUŁY BIUROWE"
-msgstr "ffice supplies"
+msgstr "FFICE SUPPLIES"
 
 #: templates/base.html:72
 msgid "Sklep internetowy"

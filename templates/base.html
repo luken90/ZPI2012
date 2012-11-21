@@ -5,6 +5,8 @@
   <meta name="description" content="" /> 
   <link rel="stylesheet" href="/files/style.css" type="text/css" />
   	<script type="text/javascript" src="/files/js/jquery.js"></script>
+	<script type="text/javascript" src="/files/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/files/js/jquery.cookie1.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<style type="text/css">
     .style3 {
@@ -38,10 +40,10 @@
 						a href="/sklep/accounts/logout/">   Wyloguj sie</a>
 						-->
 						
-						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
+						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
 						<!--<INPUT TYPE="BUTTON" VALUE="ZmieĹ„ dane" ONCLICK="window.location.href='/sklep/klient/'">
 						-->
-						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
+						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
 						<!--
 						<INPUT TYPE="BUTTON" VALUE="Obsluga" ONCLICK="window.location.href='/sklep/index/'">-->
 					
@@ -52,8 +54,8 @@
 						<input type="hidden" name="next" value="{{ NEXT }}" />
 						</form>
 						
-						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
-						<INPUT TYPE="BUTTON" style="background:blue" VALUE='{% trans "Rejestracja"%}' ONCLICK="window.location.href='/sklep/rejestracja/'">
+						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
+						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Rejestracja"%}' ONCLICK="window.location.href='/sklep/rejestracja/'">
 						
 						{% endif %} 				<a href="/sklep/setlang/pl/"> 
 				<img src="/files/Pictures/polski.jpg" width="30" height="20"></a>

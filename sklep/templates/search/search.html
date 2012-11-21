@@ -15,7 +15,7 @@
 {% endblock %}
 {% block main_box %}
 
-<h2>Szukaj</h2>
+<h2>{% trans "Szukaj" %}</h2>
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
     <form method="get" action=".">
         <table>
@@ -45,7 +45,7 @@
             </tr>
             {% empty %}
             <td></td>
-                <td>No results found.</td>
+                <td>{% trans "Nic nie znaleziono" %}</td>
             {% endfor %}
             </table>
 		

@@ -2,13 +2,12 @@
 
 
 
-
 <head>
 
 
 <style type="text/css">
 .style1 {
-				text-align: center;
+text-align: center;
 }
 </style>
 
@@ -32,118 +31,118 @@
 {% endif %}-->
 
     <h1>{% trans "Koszyk" %}</h1>
-	
+
 {% if koszyk %}
 <INPUT TYPE="BUTTON" VALUE='{% trans "Usuń wszystko"%}' ONCLICK="window.location.href='/sklep/koszyk/usun/'">
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
 <form><input type="hidden" name="cena" id="cena" readonly="readonly"/></form>
     <form action="." name="zamowienia" method="post" >{% csrf_token %}
-	{{ form.non_field_errors }}
-	<table>
-		<tr>
-			<td></td>
-			<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value=""></td>
-			<td>{{ form.idzamowienia.errors }}</td>
-		</tr>
-		<tr>		
-			<td></td>
-			<td><input type="hidden" name="nik" id="id_nik" value=""></td>
-			<td>{{ form.np.errors }}</td>
-		
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="hidden" name="np" id="id_np" value=""></td>
-			<td>{{ form.np.errors }}</td>
-			
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="hidden" name="data_zamowienia" id="id_data_zamowienia" value=""></td>
-			<td>{{ form.data_zamowienia.errors }}</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="hidden" name="status" id="status" value=""></td>
-			<td>{{ form.status.errors }}</td>
-		</tr>
-		<tr>
-			<td><label id="wysylka" for="id_wysylka">{% trans "Wysylka"%}</td>
-			<td>{{ form.wysylka }}</td>
-			<td>{{ form.wysylka.errors }}</td>
-		</tr>
-		
-	</table>
-	{{ formset.management_form }}
-	
-	
+{{ form.non_field_errors }}
+<table>
+<tr>
+<td></td>
+<td><input type="hidden" name="idzamowienia" id="id_idzamowienia" value=""></td>
+<td>{{ form.idzamowienia.errors }}</td>
+</tr>
+<tr>	
+<td></td>
+<td><input type="hidden" name="nik" id="id_nik" value=""></td>
+<td>{{ form.np.errors }}</td>
+
+</tr>
+<tr>
+<td></td>
+<td><input type="hidden" name="np" id="id_np" value=""></td>
+<td>{{ form.np.errors }}</td>
+
+</tr>
+<tr>
+<td></td>
+<td><input type="hidden" name="data_zamowienia" id="id_data_zamowienia" value=""></td>
+<td>{{ form.data_zamowienia.errors }}</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="hidden" name="status" id="status" value=""></td>
+<td>{{ form.status.errors }}</td>
+</tr>
+<tr>
+<td><label id="wysylka" for="id_wysylka">{% trans "Wysylka"%}</td>
+<td>{{ form.wysylka }}</td>
+<td>{{ form.wysylka.errors }}</td>
+</tr>
+
+</table>
+{{ formset.management_form }}
 
 
-        			<br>
-					<table style="width: 100%; float: left" align="left">
-									<tr>
-													<td class="style1">		<strong>{% trans "Nazwa" %}</strong></td>
-													<td class="style1"><strong>{% trans "Ilość" %}</strong></td>
-													<td class="style1"><strong>{% trans "Cena" %}</strong></td>
-													<td class="style1"><strong>{% trans "Razem" %}</strong></td>
-													<td class="style1"><strong>{% trans "Usuń" %}</strong></td>
-									</tr>
-									<tr>
-													<td class="style1">		{% for object in koszyk %}
-			
+
+
+         <br>
+<table style="width: 100%; float: left" align="left">
+<tr>
+<td class="style1">	<strong>{% trans "Nazwa" %}</strong></td>
+<td class="style1"><strong>{% trans "Ilość" %}</strong></td>
+<td class="style1"><strong>{% trans "Cena" %}</strong></td>
+<td class="style1"><strong>{% trans "Razem" %}</strong></td>
+<td class="style1"><strong>{% trans "Usuń" %}</strong></td>
+</tr>
+<tr>
+<td class="style1">	{% for object in koszyk %}
+
             {{ object.nazwa_towaru }}<br>
-													<br>
-													{% endfor %}</td>
-													<td class="style1">{% for form in formset %}{{ form.ident.as_hidden }}{{ form.idzamowienia1.as_hidden }}{{ form.idtowaru.as_hidden }}{{ form.ilosc }}<br>
-													<br>
-													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}<input type="hidden" name="form-1[{{ forloop.counter0}}" id="form-1[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
+<br>
+{% endfor %}</td>
+<td class="style1">{% for form in formset %}{{ form.ident.as_hidden }}{{ form.idzamowienia1.as_hidden }}{{ form.idtowaru.as_hidden }}{{ form.ilosc }}<br>
+<br>
+{% endfor %}</td>
+<td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}<input type="hidden" name="form-1[{{ forloop.counter0}}" id="form-1[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
 
-													<br>
-													<br>
-													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ forloop.counter0 }}" id="wynik-[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
-													<br>
-													<br>
-													{% endfor %}</td>
-													<td class="style1">{% for object in koszyk %} <a href="{% url 'sklep_koszyk_usun' object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
-													<br>
-													{% endfor %}</td>
-									</tr>
-					</table>
-					<br>
-					<br>
-	
-		<h4>{% trans "Razem: " %}</h4> 
+<br>
+<br>
+{% endfor %}</td>
+<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ forloop.counter0 }}" id="wynik-[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
+<br>
+<br>
+{% endfor %}</td>
+<td class="style1">{% for object in koszyk %} <a href="{% url 'sklep_koszyk_usun' object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
+<br>
+{% endfor %}</td>
+</tr>
+</table>
+<br>
+<br>
+
+<h4>{% trans "Razem: " %}</h4>
 <div id="razem"></div>
 
-	                    {% if user.is_authenticated %}
-						
-						
-						<input type="submit" value='{% trans "Wyślij"%}'>
-						<input type="hidden" name="next" value="{{ next }}" />
-						{% else %}
-						<INPUT TYPE="BUTTON" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
-						
-						{% endif %}
+{% if user.is_authenticated %}
+
+
+<input type="submit" value='{% trans "Wyślij"%}'>
+<input type="hidden" name="next" value="{{ next }}" />
+{% else %}
+<INPUT TYPE="BUTTON" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'">
+
+{% endif %}
 
     </form>
 
 <script>
     $("select").change( function() {
-	var str = "";
-	$("select option:selected").each(function () {
+var str = "";
+$("select option:selected").each(function () {
                 str = $(this).text();
-				str1 = str.substr(0, (str.length-3))
-				//str2 = str1.substr(str1.indexOf(" "));
-				str2=str1.substr(str1.indexOf(":"))
-				str3=str2.substr(2)
-				a = parseFloat(str3,10);
-				//alert(str3);
-				$('input[name="cena"]').val(a.toFixed(2));
+str1 = str.substr(0, (str.length-3))
+//str2 = str1.substr(str1.indexOf(" "));
+str2=str1.substr(str1.indexOf(":"))
+str3=str2.substr(2)
+a = parseFloat(str3,10);
+//alert(str3);
+$('input[name="cena"]').val(a.toFixed(2));
               });
-	});
-		
+});
+
 </script>
 
 <script>
@@ -158,11 +157,11 @@ $("select").change( function(){
  });
  $('div#razem').text(suma.toFixed(2));
 });
-</script> 
+</script>
 
 <script>
     $('input[name|="form"]').change( function() {
-  index =  $(this).attr('name').substr(5);
+  index = $(this).attr('name').substr(5);
   index1 = index.substr(0, index.indexOf("-"));
   //alert(index1);
   val = (parseFloat($('input[name="form-1[' + index1 +'"]').val().replace(",","."), 10) || 0).toFixed(2)* (parseFloat($('input[name="form-' + index1 + '-ilosc"]').val(), 10) || 0);
@@ -182,12 +181,14 @@ $('input[name|="form"]').change( function(){
  });
  $('div#razem').text(suma.toFixed(2));
 });
-</script> 
+</script>
 
 <script>
 $(document).ready(function() {
 $('input[name="cena"]').val(0);
-$('input[name$="-ilosc"]').val(1);
+
+if ($('input[name$="-ilosc"]').val()== ""){
+$('input[name$="-ilosc"]').val(1);}
      suma=0;
  $('input[name|="wynik"]').each(function(index) {
   (suma+=parseFloat($(this).val().replace(",","."),10) || 0);

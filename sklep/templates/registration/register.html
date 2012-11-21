@@ -17,6 +17,15 @@
 <input type="radio" name="group2" id="r2" value="Beer" checked> {% trans "Osoba prywatna"%}<br>
 
   
+<table style="width: 100%">
+				<tr>
+								<td><hr></td>
+								<td>&nbsp;</td>
+				</tr>
+</table>
+<br>
+
+  
 {% if formA.errors or formB.errors %}
         <p class="error">{% trans "Popraw błędy"%}</p>
     {% endif %}
@@ -44,6 +53,10 @@
 			<td>{{ formA.password2.label_tag }}</td>
 			<td>{{ formA.password2 }}</td>
 			<td>{{ formA.password2.errors }}</td>
+		
+		</tr>
+		<tr>
+			<td colspan="3"><hr></td>
 		</tr>
 		<tr>
 			<td></td>

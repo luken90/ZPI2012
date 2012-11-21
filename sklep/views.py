@@ -441,7 +441,7 @@ def produkty_z_kategorii(request, id_kategorii):
     return object_list(
         request,
         queryset=Towary.objects.filter(kategoria=kategoria1).select_related('kategoria'),
-        paginate_by=3,
+        paginate_by=8,
         extra_context={'kategoria1': kategoria1}
     )
 	
