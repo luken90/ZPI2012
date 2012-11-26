@@ -54,7 +54,7 @@ div {
     display:block; 
     background:url(button5.jpg) center top; 
     height:40px;
-    width:180px; 
+    width:144px; 
     text-align:center;
     text-decoration:none;
     }
@@ -65,7 +65,7 @@ div {
 	
 	.button {
     display:block; 
-    background:url(button1.jpg) center center; 
+    background:url(button3.jpg) center center; 
     height:25px;
     width:90px; 
     text-align:center;
@@ -74,7 +74,7 @@ div {
 	border-style:none;
     }
     .button:hover {
-    background:url(button2.jpg) center center;
+    background:url(button4.jpg) center center;
 	border-style:none;
     }
 	
@@ -90,6 +90,8 @@ margin-top: 1;
 
 .style6 {
 color: white;
+background-image: url('button3.jpg');
+background-repeat:repeat-y;
 font-size: 15px;
 }
 

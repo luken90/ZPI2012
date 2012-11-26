@@ -46,6 +46,8 @@
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
 						<!--
 						<INPUT TYPE="BUTTON" VALUE="Obsluga" ONCLICK="window.location.href='/sklep/index/'">-->
+						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zmień hasło"%}' ONCLICK="window.location.href='/sklep/password_change/'"> 
+						
 					
 						
 						{% else %}
@@ -77,6 +79,7 @@
 	  <li><a href="/sklep/produkty/" class="links"><center>{% trans "Produkty"%}</center></a></li>
       <li><a href="/sklep/koszyk/" class="links"><center>{% blocktrans %}Koszyk ({{ stan_koszyka }}) {% endblocktrans %}</center></a></li>
 	  <li><a href="/sklep/kontakt/" class="links"><center>{% trans "Kontakt"%}</center></a></li>
+	  <li><a href="/sklep/search/" class="links"><center>{% trans "Szukaj"%}</center></a></li>
     </ul>
   </div>
 

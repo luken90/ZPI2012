@@ -3,9 +3,12 @@
 <style type="text/css">
 .style11111 {
 				color: #FFFFFF;
-				font-size: large;
+				font-size: 14px;
+				text-decoration: none;
 				text-align: center;
 				width: 190px;
+				font-family: georgia;
+				font-weight: bold;
 }
 
 </style>
@@ -14,7 +17,7 @@
 <div>
 {% for kategoria2 in kategoria1 %}
 
-<a href="{{ kategoria2.get_absolute_url }}" style= "width:190px;"class="links">
+<a href="{{ kategoria2.get_absolute_url }}" style= "width:190px;"class="button">
 <center class="style11111">{{ kategoria2.nazwa }}</center></a>{% endfor %}</br>
 <!--<li><a href="{{ kategoria2.get_absolute_url }}">
 <img id="imga[{{ kategoria2.identyfikator }}]" src="/files/button5.jpg" alt="{{ kategoria2.nazwa }}"  fp-style="fp-btn: Corporate 2" fp-title="{{ kategoria2.nazwa }}" style= "margin:5; line-height:2; left: 576px; top: -3px; width: 190px; height: 40px;" onmouseover="FP_swapImg(1,0,/*id*/'imga[{{ kategoria2.identyfikator }}]',/*url*/'../../../../../../files/button6.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'imga[{{ kategoria2.identyfikator }}]',/*url*/'../../../../../../files/button5.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'imga[{{ kategoria2.identyfikator }}]',/*url*/'../../../../../../files/button7.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'imga[{{ kategoria2.identyfikator }}]',/*url*/'../../../../../../files/button6.jpg')"><center>{{ kategoria2.nazwa }}</center></a></li>

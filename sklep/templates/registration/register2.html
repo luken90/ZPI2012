@@ -1,0 +1,246 @@
+﻿
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+{% extends "base.html" %}
+{% load i18n %}
+{% load kategorie_sidebar %}
+{% block side_box %}
+<div id="sidebox">
+    <h3><center>{% trans "Kategorie"%}</center></h3>
+    {% kategorie_sidebar %}
+</div>
+{% endblock %}
+{% block main_box %}
+  <h1>{% trans "Stwórz konto"%}</h1>
+  
+<input type="radio" name="group2" id="r1" value="Water"> {% trans "Firma"%}
+<input type="radio" name="group2" id="r2" value="Beer" checked> {% trans "Osoba prywatna"%}<br>
+
+  
+<table style="width: 100%">
+				<tr>
+								<td><hr></td>
+								<td>&nbsp;</td>
+				</tr>
+</table>
+<br>
+
+  
+{% if formA.errors or formB.errors %}
+        <p class="error">{% trans "Popraw błędy"%}</p>
+    {% endif %}
+  
+  <form action="" method="post">{% csrf_token %}
+
+	{{ formB.non_field_errors }}
+	<table>
+		<tr>
+			<td>{{ formA.username.label_tag }}</td>
+			<td>{{ formA.username }}</td>
+			<td>{{ formA.username.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formA.email.label_tag }}</td>
+			<td>{{ formA.email }}</td>
+			<td>{{ formA.email.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formA.password1.label_tag }}</td>
+			<td>{{ formA.password1 }}</td>
+			<td>{{ formA.password1.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formA.password2.label_tag }}</td>
+			<td>{{ formA.password2 }}</td>
+			<td>{{ formA.password2.errors }}</td>
+
+		</tr>
+		<tr>
+			<td colspan="3"><hr></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="nik" id="id_nik" value=""></td>
+			<td>{{ formB.nik.errors }}</td>
+		</tr>
+		<tr>
+			<td>{{ formB.nip.label_tag }}</td>
+			<td>{{ formB.nip }}</td>
+			<td>{{ formB.nip.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="nazwa_firmy" for="id_nazwa_firmy">{% trans "Nazwa firmy"%}</label></td>
+			<td>{{ formB.nazwa_firmy }}</td>
+			<td>{{ formB.nazwa_firmy.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="nazwisko" for="id_nazwisko">{% trans "Nazwisko"%}</label></td>
+			<td>{{ formB.nazwisko }}</td>
+			<td>{{ formB.nazwisko.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="imie" for="id_imie">{% trans "Imię"%}</label></td>
+			<td>{{ formB.imie }}</td>
+			<td>{{ formB.imie.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="miasto" for="id_miasto">{% trans "Miasto"%}</label></td>
+			<td>{{ formB.miasto }}</td>
+			<td>{{ formB.miasto.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="ulica" for="id_ulica">{% trans "Ulica"%}</label></td>
+			<td>{{ formB.ulica }}</td>
+			<td>{{ formB.ulica.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="numer" for="id_numer">{% trans "Numer"%}</label></td>
+			<td>{{ formB.numer }}</td>
+			<td>{{ formB.numer.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="kod_pocztowy" for="id_kod_pocztowy">{% trans "Kod pocztowy"%}</label></td>
+			<td>{{ formB.kod_pocztowy }}</td>
+			<td>{{ formB.kod_pocztowy.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="poczta" for="id_poczta">{% trans "Poczta"%}</label></td>
+			<td>{{ formB.poczta }}</td>
+			<td>{{ formB.poczta.errors }}</td>
+		</tr>
+		<tr>
+			<td><label id="telefon" for="id_telefon">{% trans "Telefon"%}</label></td>
+			<td>{{ formB.telefon }}</td>
+			<td>{{ formB.telefon.errors }}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="login" id="id_login" value=""></td>
+			<td>{{ formB.login.errors }}</td>
+		</tr>
+
+	</table>
+
+      <!--{{ form.as_p }}-->
+
+
+        <input id="target" type="submit" value='{% trans "Wyślij"%}'>
+		<input type="hidden" name="next" value="{{ next }}" />
+    </form>
+<script>
+$("#target").click(function() {
+  if ($('#id_nip').val() == ''){
+  $("#id_nip").val(" ")}
+});
+
+</script>
+<script>
+$(document).ready(function() {
+if($('#id_nazwa_firmy').val() == " "){
+if ($('#id_nazwa_firmy').val() != " "){
+    var wartosc = $("#id_nazwa_firmy").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  wartosc.substr(1);
+    if (index1 == " "){
+		$("#id_nazwa_firmy").val(index2)
+    }
+    else{
+		$("#id_nazwa_firmy").val(wartosc)
+   }
+}
+else{
+$("#id_nazwa_firmy").val("")
+}}
+if ($("#id_nazwa_firmy").val()!=""){
+	$("#r1").attr('checked', true);}
+	if ($("#r1").prop("checked")) {
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+        }
+        else {
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+			$("#imie").show();
+        }
+                    
+
+if ($('#id_nip').val() != " "){
+    var wartosc = $("#id_nip").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  parseInt(wartosc.substr(1));
+    if (index1 == " "){
+		$("#id_nip").val(index2)
+    }
+    else{
+		$("#id_nip").val(wartosc)
+   }
+}
+else{
+$("#id_nip").val("")
+}
+if ($('#id_nazwisko').val() != " "){
+    var wartosc = $("#id_nazwisko").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  wartosc.substr(1);
+    if (index1 == " "){
+		$("#id_nazwisko").val(index2)
+    }
+    else{
+		$("#id_nazwisko").val(wartosc)
+   }
+}
+else{
+$("#id_nazwisko").val("")
+}
+if ($('#id_imie').val() != " "){
+    var wartosc = $("#id_imie").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  wartosc.substr(1);
+    if (index1 == " "){
+		$("#id_imie").val(index2)
+    }
+    else{
+		$("#id_imie").val(wartosc)
+   }
+}
+else{
+$("#id_imie").val("")
+}
+
+});
+</script>
+	<script>
+	$("input[name=group2]").change(function () {
+	if ($("#r1").attr("checked")) {
+            $("#id_nazwisko").hide();
+			$("#id_nazwisko").val("");
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_imie").val("");
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+        }
+        else {
+            $("#id_nazwa_firmy").hide();
+			$("#id_nazwa_firmy").val("");
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+			$("#imie").show();
+        }
+                    });
+</script>
+	<script>
+	$(document).ready(function() {
+	});
+</script>
+{% endblock %}

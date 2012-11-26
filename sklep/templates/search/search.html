@@ -15,7 +15,7 @@
 {% endblock %}
 {% block main_box %}
 
-<h2>{% trans "Szukaj" %}</h2>
+<h2>{% trans "Szukaj towar" %}</h2>
 <form><input type="hidden" name="ilosc-1[1]" id="ilosc-1[1]" value="3,00" readonly="readonly"/></form>
     <form method="get" action=".">
         <table>
@@ -57,9 +57,9 @@
 
             {% if page.has_previous or page.has_next %}
                 <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Poprzedni{% if page.has_previous %}</a>{% endif %}
                     |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Następny &raquo;{% if page.has_next %}</a>{% endif %}
                 </div>
             {% endif %}
         {% else %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-19 23:57+0100\n"
+"POT-Creation-Date: 2012-11-26 17:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,15 +22,18 @@ msgid "Zostales wylogowany"
 msgstr "You have been log out"
 
 #: sklep/templates/registration/login.html:12
+#: sklep/templates/registration/password_change_done1.html:12
+#: sklep/templates/registration/password_change_form1.html:12
 #: sklep/templates/registration/password_reset_complete1.html:12
 #: sklep/templates/registration/password_reset_confirm1.html:12
 #: sklep/templates/registration/password_reset_done1.html:12
 #: sklep/templates/registration/password_reset_form1.html:12
 #: sklep/templates/registration/register.html:9
+#: sklep/templates/registration/register2.html:9
 #: sklep/templates/search/search.html:12 sklep/templates/sklep/glowna.html:13
 #: sklep/templates/sklep/index.html:16 sklep/templates/sklep/klienci.html:16
 #: sklep/templates/sklep/kontakt.html:17 sklep/templates/sklep/koszyk.html:24
-#: sklep/templates/sklep/koszykobsluga.html:24
+#: sklep/templates/sklep/koszykobsluga.html:23
 #: sklep/templates/sklep/manage_articles.html:16
 #: sklep/templates/sklep/opiszamowienia.html:16
 #: sklep/templates/sklep/towary_list.html:18
@@ -45,17 +48,67 @@ msgstr "Inappropriate details or password"
 #: sklep/templates/registration/login.html:35
 #: sklep/templates/registration/password_reset_complete1.html:19
 #: sklep/templates/sklep/koszyk.html:88
-#: sklep/templates/sklep/koszykobsluga.html:126 templates/base.html:55
+#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:59
 msgid "Zaloguj"
 msgstr "Log in"
 
-#: sklep/templates/registration/login.html:39 templates/base.html:56
+#: sklep/templates/registration/login.html:39 templates/base.html:60
 msgid "Rejestracja"
 msgstr "Register"
 
 #: sklep/templates/registration/login.html:40
 msgid "Zapomniales hasła"
 msgstr "Forgot password"
+
+#: sklep/templates/registration/password_change_done1.html:17
+#, fuzzy
+msgid "Zmieniono hasło"
+msgstr "Change password"
+
+#: sklep/templates/registration/password_change_done1.html:19
+#, fuzzy
+msgid "Twoje hasło zostało zmienione."
+msgstr "Your password has been changed. Now you can log in."
+
+#: sklep/templates/registration/password_change_form1.html:22
+#, fuzzy
+msgid "Popraw błąd."
+msgid_plural "Popraw błędy."
+msgstr[0] "Correct mistakes"
+msgstr[1] "Correct mistakes"
+
+#: sklep/templates/registration/password_change_form1.html:26
+#, fuzzy
+msgid "Zmiana hasła"
+msgstr "Password change"
+
+#: sklep/templates/registration/password_change_form1.html:28
+msgid ""
+"Proszę podaj stare hasło dla bezpieczeństwa i wprowadź dwukrotnie nowe hasło"
+msgstr ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+
+#: sklep/templates/registration/password_change_form1.html:34
+#, fuzzy
+msgid "Stare hasło"
+msgstr "Old password"
+
+#: sklep/templates/registration/password_change_form1.html:39
+#: sklep/templates/registration/password_reset_confirm1.html:24
+msgid "Nowe hasło"
+msgstr "New password"
+
+#: sklep/templates/registration/password_change_form1.html:44
+#, fuzzy
+msgid "Powtórz nowe hasło"
+msgstr "Repeat password"
+
+#: sklep/templates/registration/password_change_form1.html:49
+#: sklep/templates/registration/password_reset_confirm1.html:33
+#: templates/base.html:49
+msgid "Zmień hasło"
+msgstr "Change password"
 
 #: sklep/templates/registration/password_reset_complete1.html:18
 msgid "Twoje hasło zostało zmienione. Możesz się zalogować"
@@ -65,17 +118,9 @@ msgstr "Your password has been changed. Now you can log in."
 msgid "Proszę podaj nowe hasło"
 msgstr "Please write new password"
 
-#: sklep/templates/registration/password_reset_confirm1.html:24
-msgid "Nowe hasło"
-msgstr "New password"
-
 #: sklep/templates/registration/password_reset_confirm1.html:28
 msgid "Powtórz hasło"
 msgstr "Repeat password"
-
-#: sklep/templates/registration/password_reset_confirm1.html:33
-msgid "Zmień hasło"
-msgstr "Change password"
 
 #: sklep/templates/registration/password_reset_confirm1.html:38
 msgid "Nie udało się zresetować hasła"
@@ -123,74 +168,93 @@ msgid "Zresetowano haslo cytrynowypatrol.no-ip.org"
 msgstr "Password cytrynowypatrol.no-ip.org has been reset"
 
 #: sklep/templates/registration/register.html:14
+#: sklep/templates/registration/register2.html:14
 msgid "Stwórz konto"
 msgstr "Create an account"
 
 #: sklep/templates/registration/register.html:16
+#: sklep/templates/registration/register2.html:16
 msgid "Firma"
 msgstr "Company"
 
 #: sklep/templates/registration/register.html:17
+#: sklep/templates/registration/register2.html:17
 msgid "Osoba prywatna"
 msgstr "An individual"
 
-#: sklep/templates/registration/register.html:21
+#: sklep/templates/registration/register.html:30
+#: sklep/templates/registration/register2.html:30
 msgid "Popraw błędy"
 msgstr "Correct mistakes"
 
-#: sklep/templates/registration/register.html:59
+#: sklep/templates/registration/register.html:72
+#: sklep/templates/registration/register2.html:72
 #: sklep/templates/sklep/klienci.html:44
 msgid "Nazwa firmy"
 msgstr "Company name"
 
-#: sklep/templates/registration/register.html:64
+#: sklep/templates/registration/register.html:77
+#: sklep/templates/registration/register2.html:77
 #: sklep/templates/sklep/klienci.html:49
 msgid "Nazwisko"
 msgstr "Surname"
 
-#: sklep/templates/registration/register.html:69
+#: sklep/templates/registration/register.html:82
+#: sklep/templates/registration/register2.html:82
 #: sklep/templates/sklep/klienci.html:54
 msgid "Imię"
 msgstr "Name"
 
-#: sklep/templates/registration/register.html:74
+#: sklep/templates/registration/register.html:87
+#: sklep/templates/registration/register2.html:87
 #: sklep/templates/sklep/klienci.html:59
 msgid "Miasto"
 msgstr "City"
 
-#: sklep/templates/registration/register.html:79
+#: sklep/templates/registration/register.html:92
+#: sklep/templates/registration/register2.html:92
 #: sklep/templates/sklep/klienci.html:64
 msgid "Ulica"
 msgstr "Street"
 
-#: sklep/templates/registration/register.html:84
+#: sklep/templates/registration/register.html:97
+#: sklep/templates/registration/register2.html:97
 #: sklep/templates/sklep/klienci.html:69
 msgid "Numer"
 msgstr "Number"
 
-#: sklep/templates/registration/register.html:89
+#: sklep/templates/registration/register.html:102
+#: sklep/templates/registration/register2.html:102
 #: sklep/templates/sklep/klienci.html:74
 msgid "Kod pocztowy"
 msgstr "Zip code"
 
-#: sklep/templates/registration/register.html:94
+#: sklep/templates/registration/register.html:107
+#: sklep/templates/registration/register2.html:107
 #: sklep/templates/sklep/klienci.html:79
 msgid "Poczta"
 msgstr "Post office"
 
-#: sklep/templates/registration/register.html:99
+#: sklep/templates/registration/register.html:112
+#: sklep/templates/registration/register2.html:112
 #: sklep/templates/sklep/klienci.html:84
 msgid "Telefon"
 msgstr "Phone number"
 
-#: sklep/templates/registration/register.html:114
+#: sklep/templates/registration/register.html:127
+#: sklep/templates/registration/register2.html:127
 #: sklep/templates/sklep/index.html:41 sklep/templates/sklep/klienci.html:101
-#: sklep/templates/sklep/koszykobsluga.html:123
+#: sklep/templates/sklep/koszykobsluga.html:122
 #: sklep/templates/sklep/opiszamowienia.html:51
 msgid "Wyślij"
 msgstr "Send"
 
-#: sklep/templates/search/search.html:28
+#: sklep/templates/search/search.html:18
+#, fuzzy
+msgid "Szukaj towar"
+msgstr "Search"
+
+#: sklep/templates/search/search.html:28 templates/base.html:82
 msgid "Szukaj"
 msgstr "Search"
 
@@ -247,7 +311,7 @@ msgstr "possition"
 msgid "Twój profil"
 msgstr "Your profile"
 
-#: sklep/templates/sklep/kontakt.html:7 templates/base.html:77
+#: sklep/templates/sklep/kontakt.html:7 templates/base.html:81
 msgid "Kontakt"
 msgstr "Contact"
 
@@ -268,38 +332,38 @@ msgid "nr konta: PL 11 1111 1111 1111 1111 1111 1111"
 msgstr "account number: PL 11 1111 1111 1111 1111 1111 1111"
 
 #: sklep/templates/sklep/koszyk.html:31
-#: sklep/templates/sklep/koszykobsluga.html:34
+#: sklep/templates/sklep/koszykobsluga.html:33
 msgid "Koszyk"
 msgstr "Basket"
 
 #: sklep/templates/sklep/koszyk.html:35
-#: sklep/templates/sklep/koszykobsluga.html:85
+#: sklep/templates/sklep/koszykobsluga.html:84
 msgid "Nazwa"
 msgstr "Name"
 
 #: sklep/templates/sklep/koszyk.html:35
-#: sklep/templates/sklep/koszykobsluga.html:87
+#: sklep/templates/sklep/koszykobsluga.html:86
 msgid "Cena"
 msgstr "Price"
 
 #: sklep/templates/sklep/koszyk.html:35
-#: sklep/templates/sklep/koszykobsluga.html:86
+#: sklep/templates/sklep/koszykobsluga.html:85
 #: sklep/templates/sklep/opiszamowienia.html:44
 msgid "Ilość"
 msgstr "Quantity"
 
 #: sklep/templates/sklep/koszyk.html:35
-#: sklep/templates/sklep/koszykobsluga.html:88
+#: sklep/templates/sklep/koszykobsluga.html:87
 msgid "Razem"
 msgstr "Sum"
 
 #: sklep/templates/sklep/koszyk.html:35
-#: sklep/templates/sklep/koszykobsluga.html:89
+#: sklep/templates/sklep/koszykobsluga.html:88
 msgid "Usuń"
 msgstr "Remove"
 
 #: sklep/templates/sklep/koszyk.html:47
-#: sklep/templates/sklep/koszykobsluga.html:117
+#: sklep/templates/sklep/koszykobsluga.html:116
 msgid "Razem: "
 msgstr "Sum: "
 
@@ -308,15 +372,15 @@ msgid "Finalizuj"
 msgstr "Finalize"
 
 #: sklep/templates/sklep/koszyk.html:95
-#: sklep/templates/sklep/koszykobsluga.html:203
+#: sklep/templates/sklep/koszykobsluga.html:204
 msgid "Koszyk jest pusty!"
 msgstr "The basket is empty!"
 
-#: sklep/templates/sklep/koszykobsluga.html:37
+#: sklep/templates/sklep/koszykobsluga.html:36
 msgid "Usuń wszystko"
 msgstr "Remove all"
 
-#: sklep/templates/sklep/koszykobsluga.html:71
+#: sklep/templates/sklep/koszykobsluga.html:70
 msgid "Wysylka"
 msgstr "Shipment"
 
@@ -336,7 +400,7 @@ msgstr "Order"
 msgid "Towar"
 msgstr "Article"
 
-#: sklep/templates/sklep/towary_list.html:24 templates/base.html:75
+#: sklep/templates/sklep/towary_list.html:24 templates/base.html:79
 msgid "Produkty"
 msgstr "Products"
 
@@ -372,41 +436,41 @@ msgstr "Error 500"
 msgid "ZPI"
 msgstr "ZPI"
 
-#: templates/base.html:36
+#: templates/base.html:38
 #, python-format
 msgctxt "greeting"
 msgid "Witaj, %(name)s"
 msgstr "Greetings, %(name)s"
 
-#: templates/base.html:41
+#: templates/base.html:43
 msgid "Wyloguj sie"
 msgstr "Log out"
 
-#: templates/base.html:44
+#: templates/base.html:46
 msgid "Zmień dane"
 msgstr "Change personal details"
 
-#: templates/base.html:50
+#: templates/base.html:54
 msgid "Jesteś niezalogowany"
 msgstr "You are not logged in"
 
-#: templates/base.html:71
+#: templates/base.html:75
 msgid "A"
 msgstr "O"
 
-#: templates/base.html:71
+#: templates/base.html:75
 msgid "RTYKUŁY BIUROWE"
 msgstr "FFICE SUPPLIES"
 
-#: templates/base.html:72
+#: templates/base.html:76
 msgid "Sklep internetowy"
 msgstr "Online shop"
 
-#: templates/base.html:74
+#: templates/base.html:78
 msgid "Strona Główna"
 msgstr "Main Page"
 
-#: templates/base.html:76
+#: templates/base.html:80
 #, python-format
 msgid "Koszyk (%(stan_koszyka)s) "
 msgstr "Basket (%(stan_koszyka)s) "
