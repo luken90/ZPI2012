@@ -287,6 +287,7 @@ def password_change_done(request,
     context = {}
     if extra_context is not None:
         context.update(extra_context)
+    #logout(request)
     return TemplateResponse(request, template_name, context,
                             current_app=current_app)
 	
