@@ -170,7 +170,7 @@ font-size: 15px;
   list-style:none; }
 
 #logo ul li {
-	width: 180px;
+	width: 144px;
 	height: 40px;
 	display: block;
 	float: left;
@@ -182,7 +182,7 @@ font-size: 15px;
 } 
 #logo ul li a {
 	height:40px;
-	width:180px;
+	width:144px;
 	line-height:2.5;
 	font-size: 14px;
 	text-decoration: none;

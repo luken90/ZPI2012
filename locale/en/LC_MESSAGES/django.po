@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-26 17:02+0100\n"
+"POT-Creation-Date: 2012-11-27 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,11 +48,11 @@ msgstr "Inappropriate details or password"
 #: sklep/templates/registration/login.html:35
 #: sklep/templates/registration/password_reset_complete1.html:19
 #: sklep/templates/sklep/koszyk.html:88
-#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:59
+#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:58
 msgid "Zaloguj"
 msgstr "Log in"
 
-#: sklep/templates/registration/login.html:39 templates/base.html:60
+#: sklep/templates/registration/login.html:39 templates/base.html:59
 msgid "Rejestracja"
 msgstr "Register"
 
@@ -61,24 +61,20 @@ msgid "Zapomniales hasła"
 msgstr "Forgot password"
 
 #: sklep/templates/registration/password_change_done1.html:17
-#, fuzzy
 msgid "Zmieniono hasło"
 msgstr "Change password"
 
 #: sklep/templates/registration/password_change_done1.html:19
-#, fuzzy
 msgid "Twoje hasło zostało zmienione."
 msgstr "Your password has been changed. Now you can log in."
 
 #: sklep/templates/registration/password_change_form1.html:22
-#, fuzzy
 msgid "Popraw błąd."
 msgid_plural "Popraw błędy."
 msgstr[0] "Correct mistakes"
 msgstr[1] "Correct mistakes"
 
 #: sklep/templates/registration/password_change_form1.html:26
-#, fuzzy
 msgid "Zmiana hasła"
 msgstr "Password change"
 
@@ -90,7 +86,6 @@ msgstr ""
 "password twice so we can verify you typed it in correctly."
 
 #: sklep/templates/registration/password_change_form1.html:34
-#, fuzzy
 msgid "Stare hasło"
 msgstr "Old password"
 
@@ -100,7 +95,6 @@ msgid "Nowe hasło"
 msgstr "New password"
 
 #: sklep/templates/registration/password_change_form1.html:44
-#, fuzzy
 msgid "Powtórz nowe hasło"
 msgstr "Repeat password"
 
@@ -250,11 +244,10 @@ msgid "Wyślij"
 msgstr "Send"
 
 #: sklep/templates/search/search.html:18
-#, fuzzy
 msgid "Szukaj towar"
-msgstr "Search"
+msgstr "Search a product"
 
-#: sklep/templates/search/search.html:28 templates/base.html:82
+#: sklep/templates/search/search.html:28 templates/base.html:81
 msgid "Szukaj"
 msgstr "Search"
 
@@ -280,7 +273,7 @@ msgstr "Shipment within 7 days"
 #: sklep/templates/search/search.html:44
 #: sklep/templates/sklep/towary_list.html:38
 msgid "Cena:"
-msgstr "Price: "
+msgstr "Price:"
 
 #: sklep/templates/search/search.html:44
 #: sklep/templates/sklep/towary_list.html:38
@@ -311,7 +304,7 @@ msgstr "possition"
 msgid "Twój profil"
 msgstr "Your profile"
 
-#: sklep/templates/sklep/kontakt.html:7 templates/base.html:81
+#: sklep/templates/sklep/kontakt.html:7 templates/base.html:80
 msgid "Kontakt"
 msgstr "Contact"
 
@@ -372,7 +365,7 @@ msgid "Finalizuj"
 msgstr "Finalize"
 
 #: sklep/templates/sklep/koszyk.html:95
-#: sklep/templates/sklep/koszykobsluga.html:204
+#: sklep/templates/sklep/koszykobsluga.html:217
 msgid "Koszyk jest pusty!"
 msgstr "The basket is empty!"
 
@@ -381,7 +374,7 @@ msgid "Usuń wszystko"
 msgstr "Remove all"
 
 #: sklep/templates/sklep/koszykobsluga.html:70
-msgid "Wysylka"
+msgid "Wysyłka"
 msgstr "Shipment"
 
 #: sklep/templates/sklep/manage_articles.html:26
@@ -400,7 +393,7 @@ msgstr "Order"
 msgid "Towar"
 msgstr "Article"
 
-#: sklep/templates/sklep/towary_list.html:24 templates/base.html:79
+#: sklep/templates/sklep/towary_list.html:24 templates/base.html:78
 msgid "Produkty"
 msgstr "Products"
 
@@ -450,27 +443,27 @@ msgstr "Log out"
 msgid "Zmień dane"
 msgstr "Change personal details"
 
-#: templates/base.html:54
+#: templates/base.html:53
 msgid "Jesteś niezalogowany"
 msgstr "You are not logged in"
 
-#: templates/base.html:75
+#: templates/base.html:74
 msgid "A"
 msgstr "O"
 
-#: templates/base.html:75
+#: templates/base.html:74
 msgid "RTYKUŁY BIUROWE"
 msgstr "FFICE SUPPLIES"
 
-#: templates/base.html:76
+#: templates/base.html:75
 msgid "Sklep internetowy"
 msgstr "Online shop"
 
-#: templates/base.html:78
+#: templates/base.html:77
 msgid "Strona Główna"
 msgstr "Main Page"
 
-#: templates/base.html:80
+#: templates/base.html:79
 #, python-format
 msgid "Koszyk (%(stan_koszyka)s) "
 msgstr "Basket (%(stan_koszyka)s) "

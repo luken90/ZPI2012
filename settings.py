@@ -1,4 +1,4 @@
-# Django settings for zpi project.
+﻿# Django settings for zpi project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

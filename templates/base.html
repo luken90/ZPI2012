@@ -1,4 +1,4 @@
-﻿{% load i18n %}
+{% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>{% trans "ZPI" %}</title>
@@ -35,11 +35,11 @@
 <table align="center" style="width:960px; height: 22px;">
 				<tr>
 								<td class="stylepolozenia" valign="bottom"><a> {% if request.user.is_authenticated %}
-						<a class="style6">{% blocktrans with name=user.username context "greeting" %}Witaj, {{ name }}{% endblocktrans %}</a>
+						<a style="color: white; font-size: 15px;">{% blocktrans with name=user.username context "greeting" %}Witaj, {{ name }}{% endblocktrans %}</a>
 						<!--<
 						a href="/sklep/accounts/logout/">   Wyloguj sie</a>
 						-->
-						
+
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
 						<!--<INPUT TYPE="BUTTON" VALUE="ZmieĹ„ dane" ONCLICK="window.location.href='/sklep/klient/'">
 						-->
@@ -47,21 +47,20 @@
 						<!--
 						<INPUT TYPE="BUTTON" VALUE="Obsluga" ONCLICK="window.location.href='/sklep/index/'">-->
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zmień hasło"%}' ONCLICK="window.location.href='/sklep/password_change/'"> 
-						
-					
-						
+
+
 						{% else %}
-						<a class="style6">{% trans "Jesteś niezalogowany" %}</a>
+						<a style="color: white; font-size: 15px;">{% trans "Jesteś niezalogowany" %}</a>
 						<form method="post" action="/accounts/login/" accept-charset="">{%csrf_token%}
 						<input type="hidden" name="next" value="{{ NEXT }}" />
 						</form>
-						
+
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zaloguj"%}' ONCLICK="window.location.href='/sklep/logowanie/'"> 
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Rejestracja"%}' ONCLICK="window.location.href='/sklep/rejestracja/'">
-						
+
 						{% endif %} 				<a href="/sklep/setlang/pl/"> 
 				<img src="/files/Pictures/polski.jpg" width="30" height="20"></a>
-				 
+
 				<a href="/sklep/setlang/en/"> 
 				<img src="/files/Pictures/english.jpg" width="30" height="20"></a>
 
@@ -70,7 +69,7 @@
 </table>
 <div class="external">
  
-						
+
   <div id="logo">
     <h1 style="left: 205px; top: 5px; width: 535px"><span class="style3">{% trans "A"%}</span><span class="style4">{% trans "RTYKUŁY BIUROWE"%}</span></h1>
 	<h2 style="left: 214px; top: 71px; width: 200px">{% trans "Sklep internetowy"%}</h2>
@@ -79,7 +78,7 @@
 	  <li><a href="/sklep/produkty/" class="links"><center>{% trans "Produkty"%}</center></a></li>
       <li><a href="/sklep/koszyk/" class="links"><center>{% blocktrans %}Koszyk ({{ stan_koszyka }}) {% endblocktrans %}</center></a></li>
 	  <li><a href="/sklep/kontakt/" class="links"><center>{% trans "Kontakt"%}</center></a></li>
-	  <li><a href="/sklep/search/" class="links"><center>{% trans "Szukaj"%}</center></a></li>
+<li><a href="/sklep/search/" class="links"><center>{% trans "Szukaj"%}</center></a></li>
     </ul>
   </div>
 
@@ -106,7 +105,7 @@
 <div id="footer" class="polozenie">				<br><a><span class="stylerozmiar">Copyright © 2012 ZPI. Wszelkie prawa zastrzeżone.</span></a><br><br>
                                     
     </td>
-				  
+
     </form>
 </body>
 </html>

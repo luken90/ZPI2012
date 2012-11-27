@@ -1,4 +1,4 @@
-import datetime
+﻿import datetime
 from haystack.indexes import *
 from sklep.models import Towary
 from haystack import site

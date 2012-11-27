@@ -1,4 +1,4 @@
-# Create your views here.
+﻿# Create your views here.
 # coding: utf-8
 from django.http import Http404
 from django import http 
@@ -446,6 +446,7 @@ def produkty_z_kategorii(request, id_kategorii):
     )
 	
 def register(request):
+    request.encoding = 'utf-8'
     if request.method == 'POST':
         formA = UserCreateForm(request.POST)
         formB = KlForm(request.POST)

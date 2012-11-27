@@ -106,11 +106,100 @@
 $("#target").click(function() {
   if ($('#id_nip').val() == ''){
   $("#id_nip").val(" ")}
+  
+    if (($('#id_nazwa_firmy').is(':hidden'))&&(($('#id_imie').val() != '')&&($('#id_nazwisko').val() != '')))
+	{
+	   alert("ukryta nazwa firmy");
+		$("#id_nazwa_firmy").val(" ")
+	}
+	if (($('#id_nazwa_firmy').is(':hidden'))&&(($('#id_imie').val() == '')||($('#id_nazwisko').val() == '')))
+	{
+	alert("Nazwa firmy na 2 spacje");
+	$("#id_nazwa_firmy").val("  ");
+	}
+	if ((($('#id_nazwisko').is(':hidden'))||($('#id_imie').is(':hidden')))&&($('#id_nazwa_firmy').val() != ''))
+	{
+	   alert("ukryta nazwisko i imie");
+		$("#id_nazwisko").val(" ");
+		$("#id_imie").val(" ");
+	}
+	if ((($('#id_nazwisko').is(':hidden'))||($('#id_imie').is(':hidden')))&&($('#id_nazwa_firmy').val() == ''))
+	{
+	   alert("ukryta nazwisko i imie na 2 spacje");
+		$("#id_nazwisko").val("  ");
+		$("#id_imie").val("  ");
+	}
+  
+  
+  
+  
 });
 
 </script>
 <script>
 $(document).ready(function() {
+
+
+if (($('#id_nazwa_firmy').val() == '')){
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#imie").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+}
+if (($('#id_nazwisko').val() == '')||($('#id_imie').val() == '')){
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+}
+if (($('#id_nazwa_firmy').val() == ' ')){
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#imie").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+}
+if (($('#id_nazwisko').val() == ' ')||($('#id_imie').val() == ' ')){
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+}
+if (($('#id_nazwa_firmy').val() == '  ')){
+            $("#id_nazwa_firmy").hide();
+			$("#nazwa_firmy").hide();
+			$("#id_nazwisko").show();
+			$("#imie").show();
+			$("#nazwisko").show();
+			$("#id_imie").show();
+}
+if (($('#id_nazwisko').val() == '  ')||($('#id_imie').val() == '  ')){
+            $("#id_nazwisko").hide();
+			$("#imie").hide();
+			$("#nazwisko").hide();
+			$("#id_imie").hide();
+			$("#id_nazwa_firmy").show();
+			$("#nazwa_firmy").show();
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //$('#id_nik').attr("disabled",true); 
 if ($('#id_nip').val() != " "){
     var wartosc = $("#id_nip").val();

@@ -27,7 +27,7 @@ text-align: center;
 {% block main_box %}
 
 <!--{% if form.errors %}
-<p class="error">Niepoprawne dane lub hasło</p>
+<p class="error">Niepoprawne dane lub hasĹ‚o</p>
 {% endif %}-->
 
     <h1>{% trans "Koszyk" %}</h1>
@@ -67,7 +67,7 @@ text-align: center;
 <td>{{ form.status.errors }}</td>
 </tr>
 <tr>
-<td><label id="wysylka" for="id_wysylka">{% trans "Wysylka"%}</td>
+<td><label id="wysylka" for="id_wysylka">{% trans "Wysyłka"%}</td>
 <td>{{ form.wysylka }}</td>
 <td>{{ form.wysylka.errors }}</td>
 </tr>
@@ -81,10 +81,10 @@ text-align: center;
          <br>
 <table style="width: 100%; float: left" align="left">
 <tr>
-<td class="style1">	<strong>{% trans "Nazwa" %}</strong></td>
-<td class="style1"><strong>{% trans "Ilość" %}</strong></td>
-<td class="style1"><strong>{% trans "Cena" %}</strong></td>
-<td class="style1"><strong>{% trans "Razem" %}</strong></td>
+<td class="style1">	<strong>{% trans "Nazwa" %}:</strong></td>
+<td class="style1"><strong>{% trans "Ilość" %}:</strong></td>
+<td class="style1"><strong>{% trans "Cena" %}:</strong></td>
+<td class="style1" style="width: 233px"><strong>{% trans "Razem" %}:</strong></td>
 <td class="style1"><strong>{% trans "Usuń" %}</strong></td>
 </tr>
 <tr>
@@ -101,8 +101,8 @@ text-align: center;
 <br>
 <br>
 {% endfor %}</td>
-<td class="style1">{% for object in koszyk %} <input type="text" name="wynik-[{{ forloop.counter0 }}" id="wynik-[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
-<br>
+<td class="style1" style="width: 100px">{% for object in koszyk %} 
+<div id="cenusia{{ forloop.counter0 }}" class="style1">{{ object.cena_sklepowa|floatformat:"2" }} zł</div><input type="hidden" name="wynik-[{{ forloop.counter0 }}" id="wynik-[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }} zł" readonly="readonly"/>
 <br>
 {% endfor %}</td>
 <td class="style1">{% for object in koszyk %} <a href="{% url 'sklep_koszyk_usun' object.pk %}"><img alt="Usuń" longdesc="Usuń" src="/files/usun.png" width="30" height="30"></a><br>
@@ -155,7 +155,9 @@ $("select").change( function(){
   (suma+=parseFloat($(this).val(),10) || 0);
   //alert(index + ': ' + $(this).val());
  });
- $('div#razem').text(suma.toFixed(2));
+ a=suma.toFixed(2);
+ b=a.replace( ".", "," );
+ $('div#razem').text(b+" zł");
 });
 </script>
 
@@ -165,7 +167,12 @@ $("select").change( function(){
   index1 = index.substr(0, index.indexOf("-"));
   //alert(index1);
   val = (parseFloat($('input[name="form-1[' + index1 +'"]').val().replace(",","."), 10) || 0).toFixed(2)* (parseFloat($('input[name="form-' + index1 + '-ilosc"]').val(), 10) || 0);
+  //ola = val.val().replace(".","/");
   $('input[name="wynik-[' + index1 + '"]').val(val.toFixed(2));
+  a= $('input[name="wynik-[' + index1 + '"]').val();
+  b=a.replace( ".", "," )
+  //alert(b);
+  $('#cenusia'+index1).text(b+" zł");
  });
 </script>
 
@@ -179,7 +186,10 @@ $('input[name|="form"]').change( function(){
   (suma+=parseFloat($(this).val(),10) || 0);
   //alert(index + ': ' + $(this).val());
  });
- $('div#razem').text(suma.toFixed(2));
+  a=suma.toFixed(2);
+ b=a.replace( ".", "," );
+ $('div#razem').text(b+" zł");
+   //$('"#razem'+index1'"').val(val.toFixed(2));
 });
 </script>
 
@@ -194,7 +204,10 @@ $('input[name$="-ilosc"]').val(1);}
   (suma+=parseFloat($(this).val().replace(",","."),10) || 0);
   //alert(index + ': ' + $(this).val());
  });
- $('div#razem').text(suma.toFixed(2));
+ 
+  a=suma.toFixed(2);
+ b=a.replace( ".", "," );
+ $('div#razem').text(b+" zł");
 });
 </script>
 

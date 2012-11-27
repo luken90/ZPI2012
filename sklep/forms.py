@@ -1,5 +1,6 @@
-﻿# coding: utf-8
-
+﻿
+# -*- coding: utf-8 -*-
+import re
 from django import forms
 
 from django.contrib.localflavor.pl.forms import PLPostalCodeField
@@ -7,6 +8,7 @@ from django.contrib.localflavor.pl.forms import PLPostalCodeField
 from sklep.models import Towary, Klienci, Stanowiska, Zamowienia, OpisyZamowien
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core import validators
 
 class UserCreateForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -95,19 +97,12 @@ class KlienciForm(forms.ModelForm):
 class KlForm(forms.ModelForm):
     kod_pocztowy = forms.RegexField(regex =r'^\d{2}-\d{3}$',error_message = ("Podaj kod w postaci XX-XXX"))
     nip = forms.RegexField(regex =r'^\d{10}$|^\d{11}$|\s$',error_message = ("Podaj kod z 10 lub 11 cyfr"))
-    #imie = forms.RegexField(regex =r'^[A-ZŁŻa-złż]{1}([a-ząćęłńóśźż]+|\s[A-ZŁŻ][a-ząćęłńóśźż]*){1,30}$',error_message = ("Tylko litery"))
-    #nazwisko = forms.RegexField(regex =r'^[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]{1}([a-ząćęłńóśźż]+|\s*-*[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]){1,30}$',error_message = ("Tylko litery"))
-    #miasto = forms.RegexField(regex =r'^[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]{1}([a-ząćęłńóśźż]+|\s*-*[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]){1,30}$',error_message = ("Tylko litery"))
-    #poczta = forms.RegexField(regex =r'^[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]{1}([a-ząćęłńóśźż]+|\s*-*[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]){1,30}$',error_message = ("Tylko litery"))
-    #imie = forms.RegexField(regex =r'^[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ\s]{1,30}$',error_message = ("Tylko litery"))
-    #nazwisko = forms.RegexField(regex =r'^[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ\s]{1,30}$',error_message = ("Tylko litery"))
-    #miasto = forms.RegexField(regex =r'^[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ\s]{1,30}$',error_message = ("Tylko litery"))
-    #poczta = forms.RegexField(regex =r'^[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ\s]{1,30}$',error_message = ("Tylko litery"))
-    
+    #imie = forms.RegexField(regex =r'^[A-Zia-z?]{1}([a-z????]+|\s[A-Zi][a-z????]*){1,30}$',error_message = ("Tylko litery"))
+    #nazwisko = forms.RegexField(regex =r'^[A-Z?????-z????]{1}([a-z????]+|\s*-*[A-Z?????[a-z????]){1,30}$',error_message = ("Tylko litery"))
+    #miasto = forms.RegexField(regex =r'^[śżźŚŻŹ]{1,30}$',error_message = ("Tylko litery"))
+    #miasto = forms.RegexField(regex =r'^(?L)/$'',error_message = ("Tylko litery")
+    #telefon = forms.RegexField(regex =r'^\d{7,9}$',error_message = ("Podaj tylko cyfry"))
 	
-	#"[A-Z��a-z��]{1}([a-z����󜟿]+|\\s[A-Z��][a-z����󜟿]*){1,30}";
-	#"[A-Z��ʣ�ӌ��a-z����󜟿]{1}([a-z����󜟿]+|\\s*-*[A-Z��ʣ�ӌ��][a-z����󜟿]){1,30}"
-	#"[A-Z��ʣ�ӌ��a-z����󜟿]{1}([a-z����󜟿]+|\\s*-*[A-Z��ʣ�ӌ��][a-z����󜟿]){1,30}";
     class Meta:
         model = Klienci
 		
