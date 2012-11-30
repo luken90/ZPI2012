@@ -439,12 +439,38 @@ def koszyk_usunwszystko(request):
 	
 def produkty_z_kategorii(request, id_kategorii):
     kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
+	
     return object_list(
         request,
-        queryset=Towary.objects.filter(kategoria=kategoria1).select_related('kategoria'),
+        queryset=Towary.objects.filter(kategoria=kategoria1, ilosc_w_sklepie__gt=0).select_related('kategoria'),
+        #queryset=queryset.filter
         paginate_by=8,
         extra_context={'kategoria1': kategoria1}
     )
+	
+def produkty_z_kategoriirosnace(request, id_kategorii):
+    kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
+	
+    return object_list(
+        request,
+        queryset=Towary.objects.filter(kategoria=kategoria1, ilosc_w_sklepie__gt=0).select_related('kategoria').order_by('cena_sklepowa'),
+        #queryset=queryset.filter
+        paginate_by=8,
+        extra_context={'kategoria1': kategoria1}
+    )	
+
+def produkty_z_kategoriimalejace(request, id_kategorii):
+    kategoria1 = get_object_or_404(Kategorie, pk=int(id_kategorii))
+	
+    return object_list(
+        request,
+        queryset=Towary.objects.filter(kategoria=kategoria1, ilosc_w_sklepie__gt=0).select_related('kategoria').order_by('-cena_sklepowa'),
+        #queryset=queryset.filter
+        paginate_by=8,
+        extra_context={'kategoria1': kategoria1}
+    )		
+	
+	
 	
 def register(request):
     request.encoding = 'utf-8'

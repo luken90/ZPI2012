@@ -21,7 +21,7 @@
 {% endblock %}
 {% block main_box %}
 
-    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}{% endif %}</h2>
+    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  <a href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">rosnące </a> <a href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">malejaco </a>  {% else %}  <a href="{% url sklep_produkty_rosnace %}">rosnące </a> <a href="{% url sklep_produkty_malejace %}">malejaco </a> {% endif %}</h2>
 
     {% for object in object_list %} <br>
 <table style="width: 100%">

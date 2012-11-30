@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-27 21:36+0100\n"
+"POT-Creation-Date: 2012-11-27 22:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,20 +85,20 @@ msgstr ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
 
-#: sklep/templates/registration/password_change_form1.html:34
+#: sklep/templates/registration/password_change_form1.html:33
 msgid "Stare hasło"
 msgstr "Old password"
 
-#: sklep/templates/registration/password_change_form1.html:39
+#: sklep/templates/registration/password_change_form1.html:38
 #: sklep/templates/registration/password_reset_confirm1.html:24
 msgid "Nowe hasło"
 msgstr "New password"
 
-#: sklep/templates/registration/password_change_form1.html:44
+#: sklep/templates/registration/password_change_form1.html:43
 msgid "Powtórz nowe hasło"
 msgstr "Repeat password"
 
-#: sklep/templates/registration/password_change_form1.html:49
+#: sklep/templates/registration/password_change_form1.html:51
 #: sklep/templates/registration/password_reset_confirm1.html:33
 #: templates/base.html:49
 msgid "Zmień hasło"
