@@ -21,7 +21,41 @@
 {% endblock %}
 {% block main_box %}
 
-    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  <a href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">rosnące cena</a> <a href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">malejaco cena</a> <a href="{% url sklep_kategoria_rosnacenazwa kategoria1.identyfikator %}">rosnące nazwa</a> <a href="{% url sklep_kategoria_malejacenazwa kategoria1.identyfikator %}">malejaco nazwa</a> {% else %}  <a href="{% url sklep_produkty_rosnace %}">rosnące cena</a> <a href="{% url sklep_produkty_malejace %}">malejaco cena</a><a href="{% url sklep_produkty_rosnacenazwa %}">rosnące nazwa</a> <a href="{% url sklep_produkty_malejacenazwa %}">malejaco nazwa</a> {% endif %}</h2>
+    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  <br>
+	
+	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie1" for="id_sortowanie1"></label>
+<select name="sortowaniekategoria" id="id_sortowaniekategoria">
+<option value="0" selected="selected">--------</option>
+<option value="1">Nazwa towaru</option>
+<option value="2">Cena towaru</option>
+</select>
+<img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
+<img id="dolstrzalka" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />
+<a id="kategoriarosnacacena" href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">
+<img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="kategoriarosnacacena" href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">rosnące cena</a>--> <a id="kategoriamalejacacena" href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">
+<img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="kategoriamalejacacena" href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">
+malejaco cena</a>--> <a id="kategoriarosnacanazwa" href="{% url sklep_kategoria_rosnacenazwa kategoria1.identyfikator %}">
+<img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="kategoriarosnacanazwa" href="{% url sklep_kategoria_rosnacenazwa kategoria1.identyfikator %}">
+rosnące nazwa</a>--> <a id="kategoriamalejacanazwa" href="{% url sklep_kategoria_malejacenazwa kategoria1.identyfikator %}">
+<img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="kategoriamalejacanazwa" href="{% url sklep_kategoria_malejacenazwa kategoria1.identyfikator %}">
+malejaco nazwa</a> -->
+	{% else %}<br>
+	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie2" for="id_sortowanie2"></label><select name="sortowanie" id="id_sortowanie">
+<option value="5" selected="selected">--------</option>
+<option value="3">Nazwa towaru</option>
+<option value="4">Cena towaru</option>
+</select>
+<img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
+<img id="dolstrzalka" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />
+	<a id="produktyrosnacacena" href="{% url sklep_produkty_rosnace %}">
+<img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="produktyrosnacacena" href="{% url sklep_produkty_rosnace %}">rosnące 
+cena</a>--> <a id="produktymalejacacena" href="{% url sklep_produkty_malejace %}">
+<img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="produktymalejacacena" href="{% url sklep_produkty_malejace %}">
+malejaco cena</a>--> <a id="produktyrosnacanazwa" href="{% url sklep_produkty_rosnacenazwa %}">
+<img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="produktyrosnacanazwa" href="{% url sklep_produkty_rosnacenazwa %}">
+rosnące nazwa</a>--> <a id="produktymalejacanazwa" href="{% url sklep_produkty_malejacenazwa %}">
+<img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="produktymalejacanazwa" href="{% url sklep_produkty_malejacenazwa %}">
+malejaco nazwa</a>--> {% endif %}</h2>
 
     {% for object in object_list %} <br>
 <table style="width: 100%">
@@ -52,4 +86,97 @@
             {% if has_next %}<a href="?page={{ next }}">{% trans "Następna" %}</a>{% endif %}
         </div>
     {% endif %}
+
+
+
+<script>
+$(document).ready(function() {
+          $("select option:selected").each(function () {
+                str = $(this).val();
+				//alert(str);
+				str1=parseInt(str);
+				//alert("str1"+str1);
+				if (str1==0){
+				//alert("pierwszy");
+				$("#kategoriarosnacacena").hide();
+				$("#kategoriamalejacacena").hide();
+				$("#kategoriarosnacanazwa").hide();
+				$("#kategoriamalejacanazwa").hide();
+				}
+				else if (str1==5){
+				//alert("trzeci");
+				$("#produktyrosnacacena").hide();
+				$("#produktymalejacacena").hide();
+				$("#produktyrosnacanazwa").hide();
+				$("#produktymalejacanazwa").hide();
+				//$("#kategoriarosnacacena").hide();
+				//$("#kategoriamalejacacena").hide();
+				}
+              });
+			
+});
+</script>
+
+<script>
+    $("select").change( function() {
+ var str = "";
+          $("select option:selected").each(function () {
+                str = $(this).val();
+				str1=parseInt(str);
+				if (str1==1){
+				//$("#sortowanie1").text("Nazwa");
+				$("#kategoriarosnacacena").hide();
+				$("#kategoriamalejacacena").hide();
+				$("#kategoriarosnacanazwa").show();
+				$("#kategoriamalejacanazwa").show();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
+				}
+				else if (str1==2){
+				//$("#sortowanie1").text("Cena");
+				$("#kategoriarosnacacena").show();
+				$("#kategoriamalejacacena").show();
+				$("#kategoriarosnacanazwa").hide();
+				$("#kategoriamalejacanazwa").hide();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
+				}
+				else if (str1==3){
+				//$("#sortowanie2").text("Nazwa");
+				$("#produktyrosnacacena").hide();
+				$("#produktymalejacacena").hide();
+				$("#produktyrosnacanazwa").show();
+				$("#produktymalejacanazwa").show();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
+				}
+				else if (str1==4){
+				//$("#sortowanie2").text("Cena");
+				$("#produktyrosnacacena").show();
+				$("#produktymalejacacena").show();
+				$("#produktyrosnacanazwa").hide();
+				$("#produktymalejacanazwa").hide();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
+				}
+				else if (str1==0){
+				$("#kategoriarosnacacena").hide();
+				$("#kategoriamalejacacena").hide();
+				$("#kategoriarosnacanazwa").hide();
+				$("#kategoriamalejacanazwa").hide();
+				$("#gorastrzalka").show();
+				$("#dolstrzalka").show();
+				}
+				else if (str1==5){
+				$("#produktyrosnacacena").hide();
+				$("#produktymalejacacena").hide();
+				$("#produktyrosnacanazwa").hide();
+				$("#produktymalejacanazwa").hide();
+				$("#gorastrzalka").show();
+				$("#dolstrzalka").show();
+				}
+              });
+});
+
+</script>
 {% endblock %}
