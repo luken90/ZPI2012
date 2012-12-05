@@ -94,6 +94,12 @@ background-image: url('button3.jpg');
 background-repeat:repeat-y;
 font-size: 15px;
 }
+.style6 {
+color: white;
+background-image: url('button8.jpg');
+background-repeat:repeat-y;
+font-size: 15px;
+}
 
 
 .error {
@@ -126,8 +132,8 @@ font-size: 15px;
 #logo {
   position:relative;
   width:960px;
-  height:155px;
-  background-size: 960px 155px;
+  height:150px;
+  background-size: 960px 150px;
   background-repeat:no-repeat;
   background-position: 50% 0;
   background-image:url('banner.png'); }

@@ -25,8 +25,7 @@
 	
 	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie1" for="id_sortowanie1"></label>
 <select name="sortowaniekategoria" id="id_sortowaniekategoria">
-<option value="0" selected="selected">--------</option>
-<option value="1">Nazwa towaru</option>
+<option value="1" selected="selected">Nazwa towaru</option>
 <option value="2">Cena towaru</option>
 </select>
 <img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
@@ -41,8 +40,7 @@ rosnące nazwa</a>--> <a id="kategoriamalejacanazwa" href="{% url sklep_kategori
 malejaco nazwa</a> -->
 	{% else %}<br>
 	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie2" for="id_sortowanie2"></label><select name="sortowanie" id="id_sortowanie">
-<option value="5" selected="selected">--------</option>
-<option value="3">Nazwa towaru</option>
+<option value="3" selected="selected">Nazwa towaru</option>
 <option value="4">Cena towaru</option>
 </select>
 <img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
@@ -61,7 +59,8 @@ malejaco nazwa</a>--> {% endif %}</h2>
 <table style="width: 100%">
 				<tr>
 								<td style="width: 200px" class="style1">
-		<img src="{{ object.zdjecie }}" HEIGHT="200" WIDTH="200" style="float: inherit"/></td>
+
+		<img src="{% if object.zdjecie  %}{{ object.zdjecie }}  {% else %} /files/Pictures/brakfotki.jpg {% endif %} " HEIGHT="200" WIDTH="200" style="float: inherit"/></td>
 								<td class="style1"><h4 class="style1">{{ object.nazwa_towaru }}</h4>
         						<div class="style1">
         {{ object.opis|linebreaks }} </div>
@@ -96,14 +95,14 @@ $(document).ready(function() {
 				//alert(str);
 				str1=parseInt(str);
 				//alert("str1"+str1);
-				if (str1==0){
+				/*if (str1==1){
 				//alert("pierwszy");
 				$("#kategoriarosnacacena").hide();
 				$("#kategoriamalejacacena").hide();
 				$("#kategoriarosnacanazwa").hide();
 				$("#kategoriamalejacanazwa").hide();
 				}
-				else if (str1==5){
+				else if (str1==3){
 				//alert("trzeci");
 				$("#produktyrosnacacena").hide();
 				$("#produktymalejacacena").hide();
@@ -111,7 +110,26 @@ $(document).ready(function() {
 				$("#produktymalejacanazwa").hide();
 				//$("#kategoriarosnacacena").hide();
 				//$("#kategoriamalejacacena").hide();
+				}*/
+				if (str1==1){
+				//$("#sortowanie1").text("Nazwa");
+				$("#kategoriarosnacacena").hide();
+				$("#kategoriamalejacacena").hide();
+				$("#kategoriarosnacanazwa").show();
+				$("#kategoriamalejacanazwa").show();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
 				}
+				else if (str1==3){
+				//$("#sortowanie2").text("Nazwa");
+				$("#produktyrosnacacena").hide();
+				$("#produktymalejacacena").hide();
+				$("#produktyrosnacanazwa").show();
+				$("#produktymalejacanazwa").show();
+				$("#gorastrzalka").hide();
+				$("#dolstrzalka").hide();
+				}
+				
               });
 			
 });
@@ -159,7 +177,7 @@ $(document).ready(function() {
 				$("#gorastrzalka").hide();
 				$("#dolstrzalka").hide();
 				}
-				else if (str1==0){
+				/*else if (str1==0){
 				$("#kategoriarosnacacena").hide();
 				$("#kategoriamalejacacena").hide();
 				$("#kategoriarosnacanazwa").hide();
@@ -174,7 +192,7 @@ $(document).ready(function() {
 				$("#produktymalejacanazwa").hide();
 				$("#gorastrzalka").show();
 				$("#dolstrzalka").show();
-				}
+				}*/
               });
 });
 

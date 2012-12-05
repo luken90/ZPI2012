@@ -1,5 +1,5 @@
 ﻿# Create your views here.
-# coding: utf-8
+#-*- coding: utf-8 -*-
 from django.http import Http404
 from django import http 
 from django.utils.translation import check_for_language 
@@ -98,7 +98,8 @@ def koszykobsluga(request):
         formset = OpisyZamowienFormSet(request.POST, request.FILES)# , initial=[{'ident': u'Article #1', 'idzamowienia1': u'Article #2','idtowaru': u'Article #3','ilosc': u'Article #4'},]
         if form.is_valid() and formset.is_valid(): # All validation rules pass
             zam=Zamowienia.objects.all().order_by('idzamowienia').reverse()[0]
-            wynik=zam.idzamowienia
+            #wynik=zam.idzamowienia
+            wynik=0
             new_zamowienia = form.save(commit=False)
             new_zamowienia.idzamowienia = wynik+1
             new_zamowienia.nik = klient
@@ -108,10 +109,12 @@ def koszykobsluga(request):
             new_zamowienia.save()
             suma=0;
             for forA in formset:
+                zam1=Zamowienia.objects.all().order_by('idzamowienia').reverse()[0]
+                wynik1=zam1.idzamowienia
                 wartosc= produkty.__getitem__(zmienna)
                 new_opis = forA.save(commit=False)
                 new_opis.ident = -1
-                new_opis.idzamowienia1 = new_zamowienia
+                new_opis.idzamowienia1 = zam1
                 new_opis.idtowaru = wartosc
                 #new_opis.ilosc = forA.ilosc
                 zmienna+=1
@@ -442,7 +445,7 @@ def produkty_z_kategorii(request, id_kategorii):
 	
     return object_list(
         request,
-        queryset=Towary.objects.filter(kategoria=kategoria1, ilosc_w_sklepie__gt=0).select_related('kategoria'),
+        queryset=Towary.objects.filter(kategoria=kategoria1, ilosc_w_sklepie__gt=0).select_related('kategoria').order_by('nazwa_towaru'),
         #queryset=queryset.filter
         paginate_by=8,
         extra_context={'kategoria1': kategoria1}

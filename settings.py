@@ -1,7 +1,9 @@
-﻿# Django settings for zpi project.
+﻿#-*- coding: utf-8 -*-
+# Django settings for zpi project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+DEFAULT_CHARSET = 'utf-8'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -130,6 +132,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',

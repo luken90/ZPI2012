@@ -1,10 +1,11 @@
-﻿from django.conf.urls.defaults import *
+﻿#-*- coding: utf-8 -*-
+from django.conf.urls.defaults import *
 from sklep.models import Towary, Klienci
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import password_reset
 
 urlpatterns = patterns('',
-    url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.filter(ilosc_w_sklepie__gt=0).select_related('kategorie'), 'paginate_by': 8}, "sklep_produkty"),
+    url(r'^produkty/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.filter(ilosc_w_sklepie__gt=0).select_related('kategorie').order_by('nazwa_towaru'), 'paginate_by': 8}, "sklep_produkty"),
     url(r'^produkty/rosnacacena/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.filter(ilosc_w_sklepie__gt=0).select_related('kategorie').order_by('cena_sklepowa'), 'paginate_by': 8}, "sklep_produkty_rosnace"),
     url(r'^produkty/malejacacena/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.filter(ilosc_w_sklepie__gt=0).select_related('kategorie').order_by('-cena_sklepowa'), 'paginate_by': 8}, "sklep_produkty_malejace"),
     url(r'^produkty/rosnacanazwa/$', 'django.views.generic.list_detail.object_list', {'queryset': Towary.objects.filter(ilosc_w_sklepie__gt=0).select_related('kategorie').order_by('nazwa_towaru'), 'paginate_by': 8}, "sklep_produkty_rosnacenazwa"),
