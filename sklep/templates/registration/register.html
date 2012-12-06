@@ -1,4 +1,4 @@
-
+﻿
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 {% extends "base.html" %}
@@ -30,7 +30,7 @@
         <p class="error">{% trans "Popraw błędy"%}</p>
     {% endif %}
   
-  <form action="" method="post" accept-charset="UTF-8">{% csrf_token %}
+  <form action="" method="post">{% csrf_token %}
 
 	{{ formB.non_field_errors }}
 	<table>
@@ -245,6 +245,7 @@ $("#id_nazwa_firmy").val("")
 			$("#id_nazwa_firmy").show();
 			$("#nazwa_firmy").show();
 			$('.errorlist').hide();
+			$('.error').hide();
         }
         else {
             $("#id_nazwa_firmy").hide();
@@ -255,6 +256,7 @@ $("#id_nazwa_firmy").val("")
 			$("#id_imie").show();
 			$("#imie").show();
 			$('.errorlist').hide();
+			$('.error').hide();
         }
                     });
 </script>

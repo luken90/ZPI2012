@@ -170,3 +170,9 @@ class ZamowieniaForm(forms.ModelForm):
 class OpisyZamowienForm(forms.ModelForm):
     class Meta:
 	    model = OpisyZamowien
+		
+    #def clean_ilosc(self):
+    #    if self.cleaned_data['ilosc']>0:
+    #        return self.cleaned_data['ilosc']
+    #    else:
+    #        raise ValidationError("Ilość musi być dodatnia")	

@@ -23,13 +23,13 @@
 
     <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  <br>
 	
-	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie1" for="id_sortowanie1"></label>
+	<p style="font-size: 16px;">Sortuj według: <label id="sortowanie1" for="id_sortowanie1"></label>
 <select name="sortowaniekategoria" id="id_sortowaniekategoria">
 <option value="1" selected="selected">Nazwa towaru</option>
 <option value="2">Cena towaru</option>
 </select>
-<img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
-<img id="dolstrzalka" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />
+<!--<img id="gorastrzalka0" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
+<img id="dolstrzalka0" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />-->
 <a id="kategoriarosnacacena" href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">
 <img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="kategoriarosnacacena" href="{% url sklep_kategoria_rosnace kategoria1.identyfikator %}">rosnące cena</a>--> <a id="kategoriamalejacacena" href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">
 <img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="kategoriamalejacacena" href="{% url sklep_kategoria_malejace kategoria1.identyfikator %}">
@@ -38,13 +38,13 @@ malejaco cena</a>--> <a id="kategoriarosnacanazwa" href="{% url sklep_kategoria_
 rosnące nazwa</a>--> <a id="kategoriamalejacanazwa" href="{% url sklep_kategoria_malejacenazwa kategoria1.identyfikator %}">
 <img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="kategoriamalejacanazwa" href="{% url sklep_kategoria_malejacenazwa kategoria1.identyfikator %}">
 malejaco nazwa</a> -->
-	{% else %}<br>
-	<p style="font-size: 16px;">Sortuj według: </p><label id="sortowanie2" for="id_sortowanie2"></label><select name="sortowanie" id="id_sortowanie">
+	</p>{% else %}<br>
+	<p style="font-size: 16px;">Sortuj według: <label id="sortowanie2" for="id_sortowanie2"></label><select name="sortowanie" id="id_sortowanie">
 <option value="3" selected="selected">Nazwa towaru</option>
 <option value="4">Cena towaru</option>
 </select>
-<img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
-<img id="dolstrzalka" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />
+<!--<img id="gorastrzalka" alt="strzałka" src="/files/Pictures/strzalka1.png" width="30" height="30" />
+<img id="dolstrzalka" alt="strzałka" src="/files/Pictures/strzalka2.png" width="30" height="30" />-->
 	<a id="produktyrosnacacena" href="{% url sklep_produkty_rosnace %}">
 <img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="produktyrosnacacena" href="{% url sklep_produkty_rosnace %}">rosnące 
 cena</a>--> <a id="produktymalejacacena" href="{% url sklep_produkty_malejace %}">
@@ -53,7 +53,7 @@ malejaco cena</a>--> <a id="produktyrosnacanazwa" href="{% url sklep_produkty_ro
 <img alt="Sortuj rosnąco" src="/files/Pictures/strzalka1.png" width="30" height="30"></a><!--<a id="produktyrosnacanazwa" href="{% url sklep_produkty_rosnacenazwa %}">
 rosnące nazwa</a>--> <a id="produktymalejacanazwa" href="{% url sklep_produkty_malejacenazwa %}">
 <img alt="Sortuj malejąco" src="/files/Pictures/strzalka2.png" width="30" height="30"></a><!--<a id="produktymalejacanazwa" href="{% url sklep_produkty_malejacenazwa %}">
-malejaco nazwa</a>--> {% endif %}</h2>
+malejaco nazwa</a>--> </p>{% endif %}</h2>
 
     {% for object in object_list %} <br>
 <table style="width: 100%">

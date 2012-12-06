@@ -1,5 +1,5 @@
 ﻿# Create your views here.
-#-*- coding: utf-8 -*-
+# coding: utf-8
 from django.http import Http404
 from django import http 
 from django.utils.translation import check_for_language 
@@ -92,7 +92,7 @@ def koszykobsluga(request):
 	
     if request.method == 'POST': # If the form has been submitted...
 	klient = Klienci.objects.get(login=request.user.pk)
-	pracownik = Pracownicy.objects.get(nazwisko='Sklep internetowy')
+	pracownik = Pracownicy.objects.get(nazwisko='Sklep Internetowy')
 	
         form = ZamowieniaForm(request.POST) # A form bound to the POST data
         formset = OpisyZamowienFormSet(request.POST, request.FILES)# , initial=[{'ident': u'Article #1', 'idzamowienia1': u'Article #2','idtowaru': u'Article #3','ilosc': u'Article #4'},]
