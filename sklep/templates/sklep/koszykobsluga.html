@@ -82,7 +82,7 @@ text-align: center;
 <table style="width: 100%; float: left" align="left">
 <tr>
 <td class="style1">	<strong>{% trans "Nazwa" %}:</strong></td>
-<td class="style1"><strong>{% trans "Liczba" %}:</strong></td>
+<td class="style1"><strong>{% trans "Liczba" %}:</strong> </td>
 <td class="style1"><strong>{% trans "Cena" %}:</strong></td>
 <td class="style1" style="width: 233px"><strong>{% trans "Razem" %}:</strong></td>
 <td class="style1"><strong>{% trans "Usuń" %}</strong></td>
@@ -94,7 +94,7 @@ text-align: center;
 <br>
 {% endfor %}</td>
 <td class="style1">{% for form in formset %}{{ form.ident.as_hidden }}{{ form.idzamowienia1.as_hidden }}{{ form.idtowaru.as_hidden }}{{ form.ilosc }}<br>
-<br>
+{{ form.ilosc.errors.as_hidden }}<br>
 {% endfor %}</td>
 <td class="style1">{% for object in koszyk %} {{ object.cena_sklepowa }}<input type="hidden" name="form-1[{{ forloop.counter0}}" id="form-1[{{ forloop.counter0 }}" value="{{ object.cena_sklepowa|floatformat:"2" }}" readonly="readonly"/>
 
@@ -109,17 +109,10 @@ text-align: center;
 <br>
 {% endfor %}</td>
 </tr>
-<tr>
-<td class="style1">	&nbsp;</td>
-<td class="style1">{{ form.ilosc.errors }}</td>
-<td class="style1">&nbsp;</td>
-<td class="style1" style="width: 100px">&nbsp;</td>
-<td class="style1">&nbsp;</td>
-</tr>
 </table>
 <br>
 <br>
-
+<div id="blad" class="errorlist"></div>
 <h4>{% trans "Razem: " %}</h4>
 <div id="razem"></div>
 
@@ -202,20 +195,57 @@ $('input[name|="form"]').change( function(){
 
 <script>
 $(document).ready(function() {
+	
 $('input[name="cena"]').val(0);
 
 if ($('input[name$="-ilosc"]').val()== ""){
 $('input[name$="-ilosc"]').val(1);}
      suma=0;
+	 
+ $('input[name|="wynik"]').each(function(index) {
+index = $(this).attr('name').substr(7);
+  index1 = index;
+  //alert(index1);
+  val = (parseFloat($('input[name="form-1[' + index1 +'"]').val().replace(",","."), 10) || 0).toFixed(2)* (parseFloat($('input[name="form-' + index1 + '-ilosc"]').val(), 10) || 0);
+  //ola = val.val().replace(".","/");
+  $('input[name="wynik-[' + index1 + '"]').val(val.toFixed(2));
+  a= $('input[name="wynik-[' + index1 + '"]').val();
+  //suma+=a;
+  b=a.replace( ".", "," )
+  //alert(b);
+  $('#cenusia'+index1).text(b+" zł");
+ });	 
+	 
+	 
+	 
  $('input[name|="wynik"]').each(function(index) {
   (suma+=parseFloat($(this).val().replace(",","."),10) || 0);
   //alert(index + ': ' + $(this).val());
  });
  
-  a=suma.toFixed(2);
- b=a.replace( ".", "," );
- $('div#razem').text(b+" zł");
+ 
+  c=suma.toFixed(2);
+ d=c.replace( ".", "," );
+ $('div#razem').text(d+" zł");
 });
+
+//$('div#blad').hide();
+	//wart="Liczba musi być dodatnia";
+	//war=parseInt(
+	
+	/*z=(parseInt("a"));
+var eVal = (isNaN(z)) ? 0 : z;
+alert(eVal);*/
+	var intRegex = /^\d+$/;
+	 $('input[name$="-ilosc"]').each(function(index) {
+	 z=($(this).val());
+	 
+	if ((parseInt(z) < 1)||(isNaN(z))||intRegex.test(z)){
+$('div#blad').text("Liczba musi być całkowita, dodatnia");}
+ });
+	
+	
+
 </script>
 
 

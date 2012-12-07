@@ -131,6 +131,8 @@
 $("#target").click(function() {
   if ($('#id_nip').val() == ''){
   $("#id_nip").val(" ")}
+    if ($('#id_telefon').val() == ''){
+  $("#id_telefon").val(" ")}
   
   	if ($("#r1").prop("checked")) {
 		//alert("zmieniam imie i nazwisko");
@@ -188,7 +190,22 @@ if ($('#id_nip').val() != " "){
 }
 else{
 $("#id_nip").val("")
-}                
+} 
+
+if ($('#id_telefon').val() != " "){
+    var wartosc = $("#id_telefon").val();
+    index1 = wartosc.substr(0, 1);
+    index2 =  parseInt(wartosc.substr(1));
+    if (index1 == " "){
+		$("#id_telefon").val(index2)
+    }
+    else{
+		$("#id_telefon").val(wartosc)
+   }
+}
+else{
+$("#id_telefon").val("")
+}               
 if ($('#id_imie').val() != " "){
     var wartosc = $("#id_imie").val();
     index1 = wartosc.substr(0, 1);

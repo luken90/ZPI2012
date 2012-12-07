@@ -104,7 +104,7 @@ class KlForm(forms.ModelForm):
     #miasto = forms.RegexField(regex =r'(?iL)^[\s\*\?a-z]*$',error_message = ("Tylko litery polskie"))
     #miasto = forms.RegexField(re.compile(r'^\w+', flags=re.UNICODE|re.IGNORE))
     #miasto = forms.RegexField(regex =r'^(?L)/$'',error_message = ("Tylko litery")
-    #telefon = forms.RegexField(regex =r'^\d{7,9}|\d{0}$',error_message = ("Podaj tylko cyfry. Od 7 do 9"))
+    telefon = forms.RegexField(regex =r'^\d{7,9}$|\s$',error_message = ("Podaj tylko cyfry. Od 7 do 9"))
 	
     class Meta:
         model = Klienci
@@ -114,6 +114,12 @@ class KlForm(forms.ModelForm):
         if not nip or nip == " ":
             nip = None
         return nip
+		
+    def clean_telefon(self):
+        telefon = self.cleaned_data.get('telefon')
+        if not telefon or telefon == " ":
+            telefon = None
+        return telefon
 		
     def clean_nazwisko(self):
         if self.cleaned_data['nazwisko'].isalpha():
@@ -176,3 +182,14 @@ class OpisyZamowienForm(forms.ModelForm):
     #        return self.cleaned_data['ilosc']
     #    else:
     #        raise ValidationError("Ilość musi być dodatnia")	
+	
+    def clean_ilosc(self):
+        """
+        Validates that the input can be converted to a value between 0 and 1.
+        Returns a Decimal
+        """
+        value = self.cleaned_data['ilosc']
+        if (value > 0):
+            return value
+        if (value <= 0):
+            raise ValidationError("Liczba musi być dodatnia")
