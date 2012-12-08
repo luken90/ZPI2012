@@ -24,7 +24,7 @@
 <h2>{% trans "Brak produktów" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  {% endif %}</h2>
 
 {% else %}
-    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  <br>
+    <h2>{% trans "Produkty" %}{% if kategoria1 %} {% trans "z kategorii" %} {{ kategoria1|lower }}  </h2><br>
 	
 	<p style="font-size: 16px;">{% trans "Sortuj według: " %}<label id="sortowanie1" for="id_sortowanie1"></label>
 <select name="sortowaniekategoria" id="id_sortowaniekategoria">

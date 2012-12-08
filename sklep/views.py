@@ -399,7 +399,7 @@ def strona_glowna(request):
     #else:
     kontekst = {'koszyk': []}
     
-    return direct_to_template(request, 'sklep/glowna.html', extra_context = kontekst)
+    return direct_to_template(request, 'sklep/glowna.html', extra_context = kontekst)	
 	
 def strona_kontakt(request):
     koszyk = request.session.get('koszyk', [])

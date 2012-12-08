@@ -25,7 +25,7 @@
                                 <input type="text" id="id_q" name="q" value="{{ query|default_if_none:"" }}" />&nbsp;&nbsp;&nbsp;
                     			<br>
 								<br>
-                    <input type="submit" value='{% trans "Szukaj"%}'> <br></form>
+                    <input type="submit" value='{% trans "Szukaj"%}'> <br>
         {% if query %}
             <h2>{% trans "Wynik" %}</h2>
 
@@ -47,7 +47,7 @@
             <td></td>
                 <td>{% trans "Nic nie znaleziono" %}</td>
             {% endfor %}
-            </table>
+            
 		
 
 
@@ -63,8 +63,9 @@
                 </div>
             {% endif %}
         {% else %}
-
+		
         {% endif %}   
-
+	</table>	
+</form>
 		
 {% endblock %}
