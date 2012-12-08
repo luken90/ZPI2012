@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 16:34+0100\n"
+"POT-Creation-Date: 2012-12-08 21:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "You have been log out"
 #: sklep/templates/registration/register2.html:9
 #: sklep/templates/search/search.html:12
 #: sklep/templates/sklep/finalizacja.html:16
-#: sklep/templates/sklep/glowna.html:15 sklep/templates/sklep/index.html:16
+#: sklep/templates/sklep/glowna.html:24 sklep/templates/sklep/index.html:16
 #: sklep/templates/sklep/klienci.html:16 sklep/templates/sklep/kontakt.html:18
 #: sklep/templates/sklep/koszyk.html:24
 #: sklep/templates/sklep/koszykobsluga.html:23
@@ -50,23 +50,23 @@ msgstr "Inappropriate details or password"
 #: sklep/templates/registration/login.html:35
 #: sklep/templates/registration/password_reset_complete1.html:19
 #: sklep/templates/sklep/koszyk.html:88
-#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:62
+#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:65
 #: webroot/base.html:62
 msgid "Zaloguj"
 msgstr "Log in"
 
-#: sklep/templates/registration/login.html:39 templates/base.html:63
+#: sklep/templates/registration/login.html:39 templates/base.html:66
 #: webroot/base.html:63
 msgid "Rejestracja"
 msgstr "Register"
 
 #: sklep/templates/registration/login.html:40
 msgid "Resetowanie hasła"
-msgstr "Forgot password"
+msgstr "Reset password"
 
 #: sklep/templates/registration/password_change_done1.html:17
 msgid "Zmieniono hasło"
-msgstr "Change password"
+msgstr "Password changed"
 
 #: sklep/templates/registration/password_change_done1.html:19
 msgid "Twoje hasło zostało zmienione."
@@ -104,7 +104,7 @@ msgstr "Repeat password"
 
 #: sklep/templates/registration/password_change_form1.html:51
 #: sklep/templates/registration/password_reset_confirm1.html:33
-#: templates/base.html:53 webroot/base.html:53
+#: templates/base.html:56 webroot/base.html:53
 msgid "Zmień hasło"
 msgstr "Change password"
 
@@ -249,9 +249,9 @@ msgstr "Send"
 
 #: sklep/templates/search/search.html:18
 msgid "Szukaj towar"
-msgstr "Search a product"
+msgstr "Search for a product"
 
-#: sklep/templates/search/search.html:28 templates/base.html:85
+#: sklep/templates/search/search.html:28 templates/base.html:88
 #: webroot/base.html:85
 msgid "Szukaj"
 msgstr "Search"
@@ -291,20 +291,39 @@ msgstr "Product not found"
 
 #: sklep/templates/sklep/finalizacja.html:7
 msgid "Dziękujemy za dokonanie zakupów w naszym sklepie"
-msgstr ""
+msgstr "Thank you for purchasing at our shop."
 
 #: sklep/templates/sklep/finalizacja.html:9
 msgid "Prosimu o dokonanie płatności."
-msgstr ""
+msgstr "Please make a payment."
 
 #: sklep/templates/sklep/finalizacja.html:10
 msgid ""
 "Na Twój adres e-mail została wysłana wiadomość z instrukcją postępowania."
-msgstr ""
+msgstr "Message with user conduct was sent on your e-mail address."
 
 #: sklep/templates/sklep/glowna.html:7
 msgid "Witaj na stronie głównej"
 msgstr "Welcome on main page"
+
+#: sklep/templates/sklep/glowna.html:9
+msgid "System e-commerce wspierający sprzedaż artykułów biurowych"
+msgstr "System e-commerce with purpose of aiding office supplies sale."
+
+#: sklep/templates/sklep/glowna.html:10
+msgid ""
+"Projekt realizowany w ramach przedmiotu ''Zespołowe przedsięwzięcie "
+"inżynierskie''"
+msgstr "Project executed under ''Zespołowe przedsięwzięcie "
+"inżynierskie'' class."
+
+#: sklep/templates/sklep/glowna.html:11
+msgid "Autorzy:"
+msgstr "Implemented by:"
+
+#: sklep/templates/sklep/glowna.html:19
+msgid "Zapraszamy do zapoznania się z ofertą naszego sklepu."
+msgstr "Feel free to familiarize yourself with our shops offer."
 
 #: sklep/templates/sklep/index.html:26
 msgid "Dodaj stanowisko"
@@ -322,8 +341,8 @@ msgstr "possition"
 msgid "Twój profil"
 msgstr "Your profile"
 
-#: sklep/templates/sklep/kontakt.html:7 templates/base.html:84
-#: templates/base.html.py:109 webroot/base.html:84
+#: sklep/templates/sklep/kontakt.html:7 templates/base.html:87
+#: templates/base.html.py:112 webroot/base.html:84
 msgid "Kontakt"
 msgstr "Contact"
 
@@ -344,7 +363,6 @@ msgid "nr konta: PL 11 1111 1111 1111 1111 1111 1111"
 msgstr "account number: PL 11 1111 1111 1111 1111 1111 1111"
 
 #: sklep/templates/sklep/kontakt.html:12
-#, fuzzy
 msgid "Adres e-mail: cytrynowypatrol@gmail.com"
 msgstr "Password cytrynowypatrol.no-ip.org has been reset"
 
@@ -402,7 +420,7 @@ msgstr "Shipment"
 
 #: sklep/templates/sklep/koszykobsluga.html:85
 msgid "Liczba"
-msgstr ""
+msgstr "Quantity"
 
 #: sklep/templates/sklep/manage_articles.html:26
 msgid "Zarządaj"
@@ -429,7 +447,7 @@ msgstr "No products"
 msgid "z kategorii"
 msgstr "in category"
 
-#: sklep/templates/sklep/towary_list.html:27 templates/base.html:82
+#: sklep/templates/sklep/towary_list.html:27 templates/base.html:85
 #: webroot/base.html:82
 msgid "Produkty"
 msgstr "Products"
@@ -441,13 +459,11 @@ msgstr "Sort by"
 
 #: sklep/templates/sklep/towary_list.html:31
 #: sklep/templates/sklep/towary_list.html:46
-#, fuzzy
 msgid "Nazwa towaru"
 msgstr "Product name"
 
 #: sklep/templates/sklep/towary_list.html:32
 #: sklep/templates/sklep/towary_list.html:47
-#, fuzzy
 msgid "Cena towaru"
 msgstr "Product price"
 
@@ -479,55 +495,54 @@ msgstr "Error 500"
 msgid "ZPI"
 msgstr "ZPI"
 
-#: templates/base.html:42 webroot/base.html:42
+#: templates/base.html:45 webroot/base.html:42
 #, python-format
 msgctxt "greeting"
 msgid "Witaj, %(name)s"
 msgstr "Greetings, %(name)s"
 
-#: templates/base.html:47 webroot/base.html:47
+#: templates/base.html:50 webroot/base.html:47
 msgid "Wyloguj sie"
 msgstr "Log out"
 
-#: templates/base.html:50 webroot/base.html:50
+#: templates/base.html:53 webroot/base.html:50
 msgid "Zmień dane"
 msgstr "Change personal details"
 
-#: templates/base.html:57 webroot/base.html:57
+#: templates/base.html:60 webroot/base.html:57
 msgid "Jesteś niezalogowany"
 msgstr "You are not logged in"
 
-#: templates/base.html:78 webroot/base.html:78
+#: templates/base.html:81 webroot/base.html:78
 msgid "A"
 msgstr "O"
 
-#: templates/base.html:78
-#, fuzzy
+#: templates/base.html:81
 msgid "RTYKUŁY BIUROWE"
 msgstr "FFICE SUPPLIES"
 
-#: templates/base.html:79 webroot/base.html:79
+#: templates/base.html:82 webroot/base.html:79
 msgid "Sklep internetowy"
 msgstr "Online shop"
 
-#: templates/base.html:81 webroot/base.html:81
+#: templates/base.html:84 webroot/base.html:81
 msgid "Strona Główna"
 msgstr "Main Page"
 
-#: templates/base.html:83 webroot/base.html:83
+#: templates/base.html:86 webroot/base.html:83
 #, python-format
 msgid "Koszyk (%(stan_koszyka)s) "
 msgstr "Basket (%(stan_koszyka)s) "
 
-#: templates/base.html:110
+#: templates/base.html:113
 msgid "Regulamin"
-msgstr ""
+msgstr "Regulations"
 
-#: templates/base.html:111
+#: templates/base.html:114
 msgid "Sklep"
-msgstr ""
+msgstr "Shop"
 
-#: templates/base.html:111
+#: templates/base.html:114
 msgid "Copyright © 2012 ZPI. Wszelkie prawa zastrzeżone."
 msgstr "Copyright © 2012 ZPI. All rights reserved."
 
