@@ -1,4 +1,4 @@
-{% load i18n %}
+﻿{% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>{% trans "ZPI" %}</title>
@@ -45,7 +45,7 @@
 						-->
 
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Wyloguj sie"%}' ONCLICK="window.location.href='/sklep/accounts/logout/'"> 
-						<!--<INPUT TYPE="BUTTON" VALUE="ZmieĹ„ dane" ONCLICK="window.location.href='/sklep/klient/'">
+						<!--<INPUT TYPE="BUTTON" VALUE="ZmieÄąâ€ž dane" ONCLICK="window.location.href='/sklep/klient/'">
 						-->
 						<INPUT TYPE="BUTTON" style="background-color:8ba8bc" VALUE='{% trans "Zmień dane"%}' ONCLICK="window.location.href='{% url zmien_klienta user.pk %}'">
 						<!--
@@ -75,7 +75,7 @@
  
 
   <div id="logo">
-    <h1 style="left: 205px; top: 5px; width: 535px"><span class="style3">{% trans "A"%}</span><span class="style4">{% trans "RTYKUŁY BIUROWE"%}</span></h1>
+    <h1 style="left: 205px; top: 5px; width: 535px"><span class="style3">{% trans "A"%}</span><span class="style4">{% trans "RTYKUŁY BIUROWE"%}</span></h1>
 	<h2 style="left: 214px; top: 71px; width: 200px">{% trans "Sklep internetowy"%}</h2>
 	<ul id="menu" style="right: -56px; bottom: 1px; width: 776px" class="style5">
 	  <li><a href="/sklep/" class="links"><center>{% trans "Strona Główna"%}</center></a></li>
@@ -106,7 +106,9 @@
   </div>
     
 </div>
-<div id="footer" class="polozenie">				<br><a><span class="stylerozmiar">{% trans "Copyright © 2012 ZPI. Wszelkie prawa zastrzeżone."%}</span></a><br><br>
+<div id="footer" class="polozenie">				<a href="/sklep/kontakt/" class="stylerozmiar">{% trans "Kontakt"%}</a> <a class="stylerozmiar">|</a>
+				<a href="/sklep/regulamin/" target="_blank" class="stylerozmiar">{% trans "Regulamin"%}</a> <a class="stylerozmiar">|</a> 
+				<a href="/sklep/" class="stylerozmiar">{% trans "Sklep"%}</a><br><a><span class="stylerozmiar">{% trans "Copyright © 2012 ZPI. Wszelkie prawa zastrzeżone."%}</span></a><br><br>
                                     
     </td>
 

@@ -1,6 +1,14 @@
 ﻿
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
+<head>
+<style type="text/css">
+.style1 {
+				white-space: nowrap;
+}
+</style>
+</head>
+
 {% extends "base.html" %}
 {% load i18n %}
 {% load kategorie_sidebar %}
@@ -30,7 +38,7 @@
         <p class="error">{% trans "Popraw błędy"%}</p>
     {% endif %}
   
-  <form action="" method="post">{% csrf_token %}
+  <form id="myform" action="" method="post">{% csrf_token %}
 
 	{{ formB.non_field_errors }}
 	<table>
@@ -123,6 +131,15 @@
 
       <!--{{ form.as_p }}-->
 
+        		
+				<table style="width: 100%">
+								<tr>
+												<td class="style1" style="width: 61px">Akceptuję <a href="/sklep/regulamin/" target="_blank" style="font-size: 15px; color: blue">regulamin</a> <input name="regulamin" type="checkbox"></td>
+												<td><div id="blad" class="errorlist"></div></td>
+								</tr>
+				</table>
+				<br>
+
 
         <input id="target" type="submit" value='{% trans "Wyślij"%}'>
 		<input type="hidden" name="next" value="{{ next }}" />
@@ -135,14 +152,12 @@ $("#target").click(function() {
   $("#id_telefon").val(" ")}
   
   	if ($("#r1").prop("checked")) {
-		//alert("zmieniam imie i nazwisko");
 		if ($('#id_nazwisko').val() == ''){
         $("#id_nazwisko").val(" ")}
 	    if ($('#id_imie').val() == ''){
         $("#id_imie").val(" ")}
         }
 	if ($("#r2").prop("checked")) {
-	//alert("zmieniam firme");
 		if ($('#id_nazwa_firmy').val() == ''){
         $("#id_nazwa_firmy").val(" ")}
         }
@@ -151,6 +166,10 @@ $("#target").click(function() {
 </script>
 	<script>
 	$(document).ready(function() {
+	$("#target").attr("disabled", true);
+	$('div#blad').text("*");
+	
+	
 	if (($('#id_nazwisko').val() == "")||($('#id_imie').val() == "")||($('#id_nazwisko').val() != " ")||($('#id_imie').val() != " ")){
 	$("#r2").attr('checked', true);
 	}
@@ -250,6 +269,20 @@ $("#id_nazwa_firmy").val("")
 }			
 					});
 </script>
+
+<script>
+$("input[name=regulamin]").change(function () {
+if($('input[name=regulamin]').is(':checked')){
+$("#target").attr("disabled", false);
+$('div#blad').text("");
+}
+else {
+$("#target").attr("disabled", true);
+$('div#blad').text("*");
+}
+});
+</script>
+	
 	<script>
 	$("input[name=group2]").change(function () {
 	if ($("#r1").attr("checked")) {

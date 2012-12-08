@@ -40,6 +40,23 @@ def index(request):
         new_stanowiska = form.save()
     return render_to_response('sklep/index.html', context_instance=RequestContext(request))	
 
+def finalizacja(request):
+    koszyk = request.session.get('koszyk', [])
+    #if koszyk:
+    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+    #else:
+    kontekst = {'koszyk': []}
+    
+    return direct_to_template(request, 'sklep/finalizacja.html', extra_context = kontekst)
+
+def regulamin(request):
+    koszyk = request.session.get('koszyk', [])
+    #if koszyk:
+    #    kontekst = {'koszyk': produkty, 'formularz': formularz}
+    #else:
+    kontekst = {'koszyk': []}
+    
+    return direct_to_template(request, 'sklep/regulamin.html', extra_context = kontekst)
 	
 def set_language(request, lang_code): 
     """ 
@@ -138,7 +155,7 @@ def koszykobsluga(request):
 
             del request.session['koszyk']
             
-            return HttpResponseRedirect(reverse('koszykobsluga'))
+            return HttpResponseRedirect(reverse('finalizacja'))
             #return HttpResponseRedirect('/sklep/') # Redirect after POST
     else:
         form = ZamowieniaForm()		
