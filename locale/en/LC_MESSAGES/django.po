@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 22:39+0100\n"
+"POT-Creation-Date: 2012-12-08 16:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,11 +28,13 @@ msgstr "You have been log out"
 #: sklep/templates/registration/password_reset_confirm1.html:12
 #: sklep/templates/registration/password_reset_done1.html:12
 #: sklep/templates/registration/password_reset_form1.html:12
-#: sklep/templates/registration/register.html:9
+#: sklep/templates/registration/register.html:17
 #: sklep/templates/registration/register2.html:9
-#: sklep/templates/search/search.html:12 sklep/templates/sklep/glowna.html:13
-#: sklep/templates/sklep/index.html:16 sklep/templates/sklep/klienci.html:16
-#: sklep/templates/sklep/kontakt.html:17 sklep/templates/sklep/koszyk.html:24
+#: sklep/templates/search/search.html:12
+#: sklep/templates/sklep/finalizacja.html:16
+#: sklep/templates/sklep/glowna.html:15 sklep/templates/sklep/index.html:16
+#: sklep/templates/sklep/klienci.html:16 sklep/templates/sklep/kontakt.html:18
+#: sklep/templates/sklep/koszyk.html:24
 #: sklep/templates/sklep/koszykobsluga.html:23
 #: sklep/templates/sklep/manage_articles.html:16
 #: sklep/templates/sklep/opiszamowienia.html:16
@@ -48,7 +50,7 @@ msgstr "Inappropriate details or password"
 #: sklep/templates/registration/login.html:35
 #: sklep/templates/registration/password_reset_complete1.html:19
 #: sklep/templates/sklep/koszyk.html:88
-#: sklep/templates/sklep/koszykobsluga.html:132 templates/base.html:62
+#: sklep/templates/sklep/koszykobsluga.html:125 templates/base.html:62
 #: webroot/base.html:62
 msgid "Zaloguj"
 msgstr "Log in"
@@ -163,84 +165,84 @@ msgstr "Reset my password"
 msgid "Zresetowano haslo cytrynowypatrol.no-ip.org"
 msgstr "Password cytrynowypatrol.no-ip.org has been reset"
 
-#: sklep/templates/registration/register.html:14
+#: sklep/templates/registration/register.html:22
 #: sklep/templates/registration/register2.html:14
 msgid "Stwórz konto"
 msgstr "Create an account"
 
-#: sklep/templates/registration/register.html:16
+#: sklep/templates/registration/register.html:24
 #: sklep/templates/registration/register2.html:16
 msgid "Firma"
 msgstr "Company"
 
-#: sklep/templates/registration/register.html:17
+#: sklep/templates/registration/register.html:25
 #: sklep/templates/registration/register2.html:17
 msgid "Osoba prywatna"
 msgstr "An individual"
 
-#: sklep/templates/registration/register.html:30
+#: sklep/templates/registration/register.html:38
 #: sklep/templates/registration/register2.html:30
 msgid "Popraw błędy"
 msgstr "Correct mistakes"
 
-#: sklep/templates/registration/register.html:72
+#: sklep/templates/registration/register.html:80
 #: sklep/templates/registration/register2.html:72
 #: sklep/templates/sklep/klienci.html:44
 msgid "Nazwa firmy"
 msgstr "Company name"
 
-#: sklep/templates/registration/register.html:77
+#: sklep/templates/registration/register.html:85
 #: sklep/templates/registration/register2.html:77
 #: sklep/templates/sklep/klienci.html:49
 msgid "Nazwisko"
 msgstr "Surname"
 
-#: sklep/templates/registration/register.html:82
+#: sklep/templates/registration/register.html:90
 #: sklep/templates/registration/register2.html:82
 #: sklep/templates/sklep/klienci.html:54
 msgid "Imię"
 msgstr "Name"
 
-#: sklep/templates/registration/register.html:87
+#: sklep/templates/registration/register.html:95
 #: sklep/templates/registration/register2.html:87
 #: sklep/templates/sklep/klienci.html:59
 msgid "Miasto"
 msgstr "City"
 
-#: sklep/templates/registration/register.html:92
+#: sklep/templates/registration/register.html:100
 #: sklep/templates/registration/register2.html:92
 #: sklep/templates/sklep/klienci.html:64
 msgid "Ulica"
 msgstr "Street"
 
-#: sklep/templates/registration/register.html:97
+#: sklep/templates/registration/register.html:105
 #: sklep/templates/registration/register2.html:97
 #: sklep/templates/sklep/klienci.html:69
 msgid "Numer"
 msgstr "Number"
 
-#: sklep/templates/registration/register.html:102
+#: sklep/templates/registration/register.html:110
 #: sklep/templates/registration/register2.html:102
 #: sklep/templates/sklep/klienci.html:74
 msgid "Kod pocztowy"
 msgstr "Zip code"
 
-#: sklep/templates/registration/register.html:107
+#: sklep/templates/registration/register.html:115
 #: sklep/templates/registration/register2.html:107
 #: sklep/templates/sklep/klienci.html:79
 msgid "Poczta"
 msgstr "Post office"
 
-#: sklep/templates/registration/register.html:112
+#: sklep/templates/registration/register.html:120
 #: sklep/templates/registration/register2.html:112
 #: sklep/templates/sklep/klienci.html:84
 msgid "Telefon"
 msgstr "Phone number"
 
-#: sklep/templates/registration/register.html:127
+#: sklep/templates/registration/register.html:144
 #: sklep/templates/registration/register2.html:127
 #: sklep/templates/sklep/index.html:41 sklep/templates/sklep/klienci.html:101
-#: sklep/templates/sklep/koszykobsluga.html:129
+#: sklep/templates/sklep/koszykobsluga.html:122
 #: sklep/templates/sklep/opiszamowienia.html:51
 msgid "Wyślij"
 msgstr "Send"
@@ -287,6 +289,19 @@ msgstr "Add to basket"
 msgid "Nic nie znaleziono"
 msgstr "Product not found"
 
+#: sklep/templates/sklep/finalizacja.html:7
+msgid "Dziękujemy za dokonanie zakupów w naszym sklepie"
+msgstr ""
+
+#: sklep/templates/sklep/finalizacja.html:9
+msgid "Prosimu o dokonanie płatności."
+msgstr ""
+
+#: sklep/templates/sklep/finalizacja.html:10
+msgid ""
+"Na Twój adres e-mail została wysłana wiadomość z instrukcją postępowania."
+msgstr ""
+
 #: sklep/templates/sklep/glowna.html:7
 msgid "Witaj na stronie głównej"
 msgstr "Welcome on main page"
@@ -308,7 +323,7 @@ msgid "Twój profil"
 msgstr "Your profile"
 
 #: sklep/templates/sklep/kontakt.html:7 templates/base.html:84
-#: webroot/base.html:84
+#: templates/base.html.py:109 webroot/base.html:84
 msgid "Kontakt"
 msgstr "Contact"
 
@@ -327,6 +342,11 @@ msgstr "Phone number: (11) 111-11-11"
 #: sklep/templates/sklep/kontakt.html:11
 msgid "nr konta: PL 11 1111 1111 1111 1111 1111 1111"
 msgstr "account number: PL 11 1111 1111 1111 1111 1111 1111"
+
+#: sklep/templates/sklep/kontakt.html:12
+#, fuzzy
+msgid "Adres e-mail: cytrynowypatrol@gmail.com"
+msgstr "Password cytrynowypatrol.no-ip.org has been reset"
 
 #: sklep/templates/sklep/koszyk.html:31
 #: sklep/templates/sklep/koszykobsluga.html:33
@@ -359,7 +379,7 @@ msgid "Usuń"
 msgstr "Remove"
 
 #: sklep/templates/sklep/koszyk.html:47
-#: sklep/templates/sklep/koszykobsluga.html:123
+#: sklep/templates/sklep/koszykobsluga.html:116
 msgid "Razem: "
 msgstr "Sum: "
 
@@ -368,7 +388,7 @@ msgid "Finalizuj"
 msgstr "Finalize"
 
 #: sklep/templates/sklep/koszyk.html:95
-#: sklep/templates/sklep/koszykobsluga.html:224
+#: sklep/templates/sklep/koszykobsluga.html:254
 msgid "Koszyk jest pusty!"
 msgstr "The basket is empty!"
 
@@ -481,8 +501,9 @@ msgstr "You are not logged in"
 msgid "A"
 msgstr "O"
 
-#: templates/base.html:78 webroot/base.html:78
-msgid "RTYKUŁY BIUROWE"
+#: templates/base.html:78
+#, fuzzy
+msgid "RTYKUŁY BIUROWE"
 msgstr "FFICE SUPPLIES"
 
 #: templates/base.html:79 webroot/base.html:79
@@ -498,6 +519,18 @@ msgstr "Main Page"
 msgid "Koszyk (%(stan_koszyka)s) "
 msgstr "Basket (%(stan_koszyka)s) "
 
-#: templates/base.html:109
+#: templates/base.html:110
+msgid "Regulamin"
+msgstr ""
+
+#: templates/base.html:111
+msgid "Sklep"
+msgstr ""
+
+#: templates/base.html:111
 msgid "Copyright © 2012 ZPI. Wszelkie prawa zastrzeżone."
 msgstr "Copyright © 2012 ZPI. All rights reserved."
+
+#: webroot/base.html:78
+msgid "RTYKUŁY BIUROWE"
+msgstr "FFICE SUPPLIES"
